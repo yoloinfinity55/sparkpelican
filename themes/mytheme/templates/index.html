@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for article in articles_page.object_list %}
+    <article class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <div class="p-6 flex-grow">
+            <h2 class="text-xl font-bold mb-3 line-clamp-2">
+                <a href="{{ SITEURL }}/{{ article.url }}" class="text-gray-900 hover:text-blue-600">
+                    {{ article.title }}
+                </a>
+            </h2>
+            <div class="text-gray-500 text-xs mb-4">
+                <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            </div>
+            <div class="text-gray-700 text-sm line-clamp-3 mb-4">
+                {{ article.summary }}
+            </div>
+        </div>
+        <div class="px-6 pb-6 text-center">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="inline-block text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                Read more →
+            </a>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+
+{% if articles_paginator.num_pages > 1 %}
+<div class="flex justify-center space-x-4 mt-12">
+    {% if articles_page.has_previous() %}
+    <a href="{{ SITEURL }}/{{ articles_previous_page.url }}" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+        ← Previous
+    </a>
+    {% endif %}
+    {% if articles_page.has_next() %}
+    <a href="{{ SITEURL }}/{{ articles_next_page.url }}" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+        Next →
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

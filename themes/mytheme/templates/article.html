@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<article class="bg-white rounded-lg shadow-md p-8">
+    <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">{{ article.title }}</h1>
+        <div class="text-gray-600">
+            <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+            {% if article.category %}
+            <span class="mx-2">•</span>
+            <span>{{ article.category }}</span>
+            {% endif %}
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        {{ article.content }}
+    </div>
+</article>
+{% endblock %}

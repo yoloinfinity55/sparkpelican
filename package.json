@@ -1,0 +1,11 @@
+{
+  "name": "sparkpelican",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "tailwindcss -i ./themes/mytheme/static/css/input.css -o ./themes/mytheme/static/css/output.css --minify",
+    "watch:css": "tailwindcss -i ./themes/mytheme/static/css/input.css -o ./themes/mytheme/static/css/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.14"
+  }
+}

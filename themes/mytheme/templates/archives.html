@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Archives - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<h1 class="text-4xl font-bold mb-8">Archives</h1>
+
+<div class="space-y-4">
+    {% for article in dates %}
+    <div class="bg-white rounded-lg shadow p-4">
+        <div class="flex justify-between items-center">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="text-xl font-semibold text-blue-600 hover:text-blue-800">
+                {{ article.title }}
+            </a>
+            <time class="text-gray-600 text-sm" datetime="{{ article.date.isoformat() }}">
+                {{ article.locale_date }}
+            </time>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
