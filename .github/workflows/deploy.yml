@@ -34,11 +34,11 @@ jobs:
     
     - name: Install Node dependencies
       run: |
-        npm install
+        npm ci
     
     - name: Build Tailwind CSS
       run: |
-        npm run build:css
+        npx tailwindcss -i ./themes/mytheme/static/css/input.css -o ./themes/mytheme/static/css/output.css --minify
     
     - name: Build Pelican site
       run: |
