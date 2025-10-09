@@ -25,3 +25,7 @@ DEFAULT_PAGINATION = 12
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
+
+JINJA_FILTERS = {
+    'raw_url': lambda x: x,
+}

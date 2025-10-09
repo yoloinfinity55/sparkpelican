@@ -5,9 +5,9 @@
 {% block content %}
 <article class="bg-white rounded-lg shadow-md">
     {% if article.image %}
-    <img src="{{ article.image }}" alt="{{ article.title }}" class="rounded-t-lg w-full h-96 object-cover">
+    <img src='{{ article.image | raw_url }}' alt='{{ article.title | e }}' class="rounded-t-lg w-full h-96 object-cover">
     {% else %}
-    <img src="https://picsum.photos/seed/{{ article.slug }}/1200/600" alt="Default cover image" class="rounded-t-lg w-full h-96 object-cover">
+    <img src='https://picsum.photos/seed/{{ article.slug }}/1200/600' alt='Default cover image' class="rounded-t-lg w-full h-96 object-cover">
     {% endif %}
     <div class="p-8">
         <header class="mb-8">

@@ -5,7 +5,7 @@ date: 2025-10-09
 description: "A summary of the YouTube video 'The Only 5 Web Design Skills That Actually Matter (2025)', highlighting the five key skills for web designers."
 author: "Infinity Spark"
 readingTime: "2 min read"
-image: "https://i.ytimg.com/vi/vbFn0C-pvis/maxresdefault.jpg"
+image: https://i.ytimg.com/vi/vbFn0C-pvis/maxresdefault.jpg
 ---
 
 # The Only 5 Web Design Skills That Actually Matter (2025)
