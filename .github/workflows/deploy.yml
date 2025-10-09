@@ -38,7 +38,7 @@ jobs:
     
     - name: Build Tailwind CSS
       run: |
-        npx tailwindcss -i ./themes/mytheme/static/css/input.css -o ./themes/mytheme/static/css/output.css --minify
+        npx tailwindcss -i ./themes/sparkpelican-theme/static/css/input.css -o ./themes/sparkpelican-theme/static/css/output.css --minify
     
     - name: Build Pelican site
       run: |
