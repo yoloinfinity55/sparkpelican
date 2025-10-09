@@ -2,8 +2,8 @@
   "name": "sparkpelican",
   "version": "1.0.0",
   "scripts": {
-    "build:css": "npx @tailwindcss/cli -i ./themes/mytheme/static/css/input.css -o ./themes/mytheme/static/css/output.css --minify",
-    "watch:css": "npx @tailwindcss/cli -i ./themes/mytheme/static/css/input.css -o ./themes/mytheme/static/css/output.css --watch"
+    "build:css": "npx @tailwindcss/cli -i ./themes/sparkpelican-theme/static/css/input.css -o ./themes/sparkpelican-theme/static/css/output.css --minify",
+    "watch:css": "npx @tailwindcss/cli -i ./themes/sparkpelican-theme/static/css/input.css -o ./themes/sparkpelican-theme/static/css/output.css --watch"
   },
   "dependencies": {},
   "devDependencies": {
