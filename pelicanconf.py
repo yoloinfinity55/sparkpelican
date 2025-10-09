@@ -7,7 +7,7 @@ TIMEZONE = 'America/Toronto'
 DEFAULT_LANG = 'en'
 
 # Theme settings
-THEME = 'themes/mytheme'
+THEME = 'themes/sparkpelican-theme'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
