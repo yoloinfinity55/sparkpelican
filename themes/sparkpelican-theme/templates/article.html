@@ -3,7 +3,7 @@
 {% block title %}{{ article.title }} - {{ SITENAME }}{% endblock %}
 
 {% block content %}
-<article class="bg-white rounded-lg shadow-md">
+<article class="bg-white rounded-lg shadow-md p-8">
     {% if article.image %}
         {% if article.image.startswith('https://i.ytimg.com') or article.image.startswith('https://img.youtube.com') %}
         <!-- YouTube thumbnail detected - embed video instead of showing image -->
@@ -11,10 +11,14 @@
             <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/{{ article.image | youtube_video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         {% else %}
-        <img src='{{ article.image | raw_url }}' alt='{{ article.title | e }}' class="rounded-t-lg w-full object-contain max-h-96">
+        <div class="m-8 mt-8">
+            <img src='{{ article.image | raw_url }}' alt='{{ article.title | e }}' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+        </div>
         {% endif %}
     {% else %}
-    <img src='https://picsum.photos/seed/{{ article.slug }}/1200/600' alt='Default cover image' class="rounded-t-lg w-full object-contain max-h-96">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/{{ article.slug }}/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
     {% endif %}
     <div class="p-8">
         <header class="mb-8">
