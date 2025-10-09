@@ -97,38 +97,50 @@ def livereload(c):
     """Automatically reload browser tab upon file modification."""
     from livereload import Server
 
-    def cached_build():
-        cmd = "-s {settings_base} -e CACHE_CONTENT=true LOAD_CONTENT_CACHE=true"
-        pelican_run(cmd.format(**CONFIG))
+    def simple_build():
+        try:
+            cmd = "-s {settings_base}"
+            pelican_run(cmd.format(**CONFIG))
+        except Exception as e:
+            print(f"Error during build: {e}")
+            return False
+        return True
 
-    cached_build()
-    server = Server()
-    theme_path = SETTINGS["THEME"]
-    watched_globs = [
-        CONFIG["settings_base"],
-        f"{theme_path}/templates/**/*.html",
-    ]
+    try:
+        simple_build()
+        server = Server()
+        theme_path = SETTINGS["THEME"]
+        watched_globs = [
+            CONFIG["settings_base"],
+            f"{theme_path}/templates/**/*.html",
+        ]
 
-    content_file_extensions = [".md", ".rst"]
-    for extension in content_file_extensions:
-        content_glob = "{}/**/*{}".format(SETTINGS["PATH"], extension)
-        watched_globs.append(content_glob)
+        content_file_extensions = [".md", ".rst"]
+        for extension in content_file_extensions:
+            content_glob = "{}/**/*{}".format(SETTINGS["PATH"], extension)
+            watched_globs.append(content_glob)
 
-    static_file_extensions = [".css", ".js"]
-    for extension in static_file_extensions:
-        static_file_glob = f"{theme_path}/static/**/*{extension}"
-        watched_globs.append(static_file_glob)
+        static_file_extensions = [".css", ".js"]
+        for extension in static_file_extensions:
+            static_file_glob = f"{theme_path}/static/**/*{extension}"
+            watched_globs.append(static_file_glob)
 
-    for glob in watched_globs:
-        server.watch(glob, cached_build)
+        for glob in watched_globs:
+            server.watch(glob, simple_build)
 
-    if OPEN_BROWSER_ON_SERVE:
-        # Open site in default browser
-        import webbrowser
+        if OPEN_BROWSER_ON_SERVE:
+            # Open site in default browser
+            import webbrowser
 
-        webbrowser.open("http://{host}:{port}".format(**CONFIG))
+            webbrowser.open("http://{host}:{port}".format(**CONFIG))
 
-    server.serve(host=CONFIG["host"], port=CONFIG["port"], root=CONFIG["deploy_path"])
+        print(f"Serving at {CONFIG['host']}:{CONFIG['port']} with live reload...")
+        server.serve(host=CONFIG["host"], port=CONFIG["port"], root=CONFIG["deploy_path"])
+    except KeyboardInterrupt:
+        print("\nLive reload server stopped.")
+    except Exception as e:
+        print(f"Error starting live reload server: {e}")
+        print("Try running 'invoke build' first, then 'invoke serve' for basic serving.")
 
 
 @task

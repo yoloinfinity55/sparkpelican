@@ -1,6 +1,6 @@
 ---
 layout: post.njk
-title: "Pelican 博客工作流程指南 - 从创建到发布的完整步骤"
+title: Pelican 博客工作流程指南 - 从创建到发布的完整步骤
 date: 2025-10-09
 description: 详细介绍如何在 Pelican 静态站点生成器中创建新博客文章的完整工作流程，包括文件创建、内容编写、本地预览和发布部署。
 author: "Infinity Spark"

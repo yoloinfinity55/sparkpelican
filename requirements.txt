@@ -2,3 +2,4 @@ pelican
 invoke
 ghp-import
 Markdown
+livereload==2.6.3
