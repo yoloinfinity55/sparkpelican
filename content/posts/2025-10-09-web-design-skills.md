@@ -1,6 +1,6 @@
 ---
 layout: post.njk
-title: "The Only 5 Web Design Skills That Actually Matter (2025)"
+title: The Only 5 Web Design Skills That Actually Matter (2025)
 date: 2025-10-09
 description: "A summary of the YouTube video 'The Only 5 Web Design Skills That Actually Matter (2025)', highlighting the five key skills for web designers."
 author: "Infinity Spark"
@@ -19,5 +19,3 @@ The YouTube video "The Only 5 Web Design Skills That Actually Matter (2025)" hig
 5.  **Conversion Skills:** Designing to encourage user action.
 
 The video suggests focusing on these areas to improve web design skills quickly and effectively.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vbFn0C-pvis" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

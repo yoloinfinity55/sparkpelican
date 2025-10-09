@@ -28,4 +28,5 @@ DEFAULT_PAGINATION = 12
 
 JINJA_FILTERS = {
     'raw_url': lambda x: x,
+    'youtube_video_id': lambda url: url.split('/vi/')[1].split('/')[0] if '/vi/' in url else None,
 }
