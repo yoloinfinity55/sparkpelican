@@ -1,0 +1,35 @@
+#!/bin/bash
+"""
+Git Pre-commit Hook for Pelican Blog Title Validation
+
+This hook runs automatically before each commit to validate that all blog post
+titles are properly formatted (no quotes around titles in front matter).
+
+To install this hook:
+1. Copy this file to .git/hooks/pre-commit
+2. Make it executable: chmod +x .git/hooks/pre-commit
+
+The hook will:
+- Check all markdown files in content/posts/ for title formatting
+- Prevent the commit if any titles have incorrect formatting
+- Provide helpful error messages and fix suggestions
+"""
+
+set -e
+
+echo "🔍 Validating blog post titles before commit..."
+
+# Run the title validation script
+python scripts/validate-titles.py
+
+if [ $? -eq 0 ]; then
+    echo "✅ All titles are properly formatted!"
+    echo "🚀 Proceeding with commit..."
+    exit 0
+else
+    echo ""
+    echo "❌ Commit blocked due to title formatting issues!"
+    echo "💡 To fix automatically, run: python scripts/fix-titles.py"
+    echo "🔄 After fixing, try committing again."
+    exit 1
+fi

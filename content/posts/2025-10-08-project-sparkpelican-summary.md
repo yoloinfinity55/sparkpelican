@@ -1,6 +1,6 @@
 ---
 layout: post.njk
-title: "Project SparkPelican: A Deep Dive into This Pelican Blog"
+title: Project SparkPelican: A Deep Dive into This Pelican Blog
 date: 2025-10-08T00:00:00.000Z
 description: "A comprehensive overview of the SparkPelican project, detailing its technology stack, core features, development workflow, and architecture."
 author: "Infinity Spark"
@@ -133,7 +133,7 @@ All content is stored as Markdown files in the `content/` directory with front m
 ```markdown
 ---
 layout: post.njk
-title: "Your Post Title"
+title: Your Post Title
 date: 2025-10-08T00:00:00.000Z
 description: "Brief description of the post"
 author: "Infinity Spark"

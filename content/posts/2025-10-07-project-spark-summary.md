@@ -1,6 +1,6 @@
 ---
 layout: post.njk
-title: "Project Spark: A Deep Dive into This Eleventy Blog"
+title: Project Spark: A Deep Dive into This Eleventy Blog
 date: 2025-10-07T00:00:00.000Z
 description: "A comprehensive overview of the Spark blog project, detailing its technology stack, core features, development workflow, and potential for future enhancements."
 author: "Infinity Spark"

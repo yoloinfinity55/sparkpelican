@@ -40,8 +40,22 @@ def clean(c):
 
 
 @task
+def validate_titles(c):
+    """Validate that all blog post titles are properly formatted (no quotes)"""
+    print("🔍 Validating blog post titles...")
+    result = c.run("python scripts/validate-titles.py", warn=True)
+    if result.failed:
+        print("❌ Title validation failed! Please fix the issues above.")
+        print("💡 To fix automatically, run: python scripts/fix-titles.py")
+        sys.exit(1)
+    else:
+        print("✅ All titles are properly formatted!")
+
+
+@task
 def build(c):
     """Build local version of site"""
+    validate_titles(c)  # Validate titles before building
     pelican_run("-s {settings_base}".format(**CONFIG))
 
 
@@ -90,6 +104,7 @@ def reserve(c):
 @task
 def preview(c):
     """Build production version of site"""
+    validate_titles(c)  # Validate titles before production build
     pelican_run("-s {settings_publish}".format(**CONFIG))
 
 @task

@@ -32,7 +32,7 @@ Pelican 是一个强大的静态站点生成器，使用 Python 构建。整个�
 ```markdown
 ---
 layout: post.njk
-title: "你的文章标题"
+title: 你的文章标题
 date: 2025-10-09
 description: 文章的简要描述（用于 meta 标签和预览）
 author: "Infinity Spark"
@@ -166,7 +166,7 @@ git push origin main
 ```markdown
 ---
 layout: post.njk
-title: "文章标题"
+title: 文章标题
 date: 2025-10-09
 description: "吸引人的描述，包含关键词"
 author: "Infinity Spark"
@@ -185,7 +185,7 @@ category: "技术教程"  # 分类
 ```markdown
 ---
 layout: post.njk
-title: "草稿文章"
+title: 草稿文章
 date: 2025-10-09
 status: draft  # 标记为草稿，不会发布
 ---
@@ -198,7 +198,7 @@ status: draft  # 标记为草稿，不会发布
 ```markdown
 ---
 layout: post.njk
-title: "定时发布文章"
+title: 定时发布文章
 date: 2025-12-25  # 未来的日期
 ---
 ```

@@ -1,6 +1,6 @@
 ---
 layout: post.njk
-title: "将 Eleventy 网站部署到 GitHub Pages 的常见问题解析"
+title: 将 Eleventy 网站部署到 GitHub Pages 的常见问题解析
 date: 2025-10-06
 description: 解决将 Eleventy 网站部署到 GitHub Pages 时遇到的常见问题，包括分支设置、令牌配置和文章链接 404 错误。
 author: "Infinity Spark"
@@ -111,7 +111,7 @@ jobs:
 
 ```markdown
 ---
-title: "我的未来文章"
+title: 我的未来文章
 date: 2099-01-01 # 这是一个未来的日期
 layout: post.njk
 ---

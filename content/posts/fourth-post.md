@@ -1,5 +1,5 @@
 ---
-title: "( Plain text list ) Eleventy (11ty) beginner tutorials for 2025"
+title: ( Plain text list ) Eleventy (11ty) beginner tutorials for 2025
 description: A comprehensive plain text list of 30 beginner-friendly Eleventy tutorials for 2025, including titles, dates, and direct URLs for easy reference.
 date: 2025-10-06
 layout: post.njk
