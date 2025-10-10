@@ -3,3 +3,14 @@ invoke
 ghp-import
 Markdown
 livereload==2.6.3
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+aiofiles
+jinja2
+google-generativeai
+youtube-transcript-api
+aiohttp
+python-slugify
+pyyaml

@@ -180,6 +180,115 @@ def gh_pages(c):
         "{deploy_path} --no-jekyll -p".format(**CONFIG)
     )
 
+@task
+def api_validate_posts(c, fix=False):
+    """Validate all blog posts for proper FastAPI integration"""
+    print("🔍 Validating blog posts for FastAPI compatibility...")
+    result = c.run("python scripts/validate-titles.py", warn=True)
+    if result.failed:
+        print("❌ Post validation failed!")
+        if fix:
+            print("🔧 Auto-fixing title issues...")
+            fix_result = c.run("python scripts/fix-titles.py", warn=True)
+            if fix_result.failed:
+                print("❌ Auto-fix failed. Please fix manually.")
+                sys.exit(1)
+            else:
+                print("✅ Titles fixed automatically!")
+        else:
+            print("💡 Run 'invoke api-validate-posts --fix' to auto-fix issues.")
+            sys.exit(1)
+    else:
+        print("✅ All posts are API-compatible!")
+
+@task
+def api_server(c, host="localhost", port=8001, reload=True):
+    """Start the FastAPI server for AI-powered post generation"""
+    print(f"🚀 Starting FastAPI server on {host}:{port}")
+    print("Endpoints available:")
+    print(f"  Health: http://{host}:{port}/health")
+    print(f"  Generate: http://{host}:{port}/generate")
+    print(f"  Validate: http://{host}:{port}/validate")
+    print("")
+
+    # Ensure environment variables are set
+    if not os.getenv('GEMINI_API_KEY'):
+        print("⚠️  Warning: GEMINI_API_KEY environment variable not set")
+        print("   Set it with: export GEMINI_API_KEY=your_key_here")
+        print("")
+
+    reload_flag = "--reload" if reload else ""
+    cmd = f"uvicorn myapp.main:app --host {host} --port {port} {reload_flag}"
+    c.run(cmd)
+
+@task
+def api_docs(c, port=8001):
+    """Open FastAPI interactive documentation"""
+    print("📖 Opening FastAPI documentation...")
+    import webbrowser
+    docs_url = f"http://localhost:{port}/docs"
+    webbrowser.open(docs_url)
+    print(f"📋 Documentation: {docs_url}")
+
+@task
+def api_generate(c, youtube_url=None, title=None, category="General", tags=""):
+    """Generate a blog post from YouTube URL using the API"""
+    if not youtube_url:
+        print("❌ YouTube URL required. Usage: invoke api-generate --youtube-url='https://youtube.com/...'")
+        print("Example: invoke api-generate --youtube-url='https://youtube.com/watch?v=dQw4w9WgXcQ'")
+        return
+
+    print(f"🎬 Generating post from: {youtube_url}")
+
+    # Split tags if provided
+    tag_list = [tag.strip() for tag in tags.split(',')] if tags else []
+
+    try:
+        # Import the FastAPI modules directly
+        import asyncio
+        from myapp.youtube_transcript import get_transcript_async
+        from myapp.ai_generator import generate_post_async
+        from myapp.pelican_integrator import save_markdown_post
+        from pathlib import Path
+
+        async def generate():
+            # Get transcript
+            print("📝 Extracting transcript...")
+            transcript = await get_transcript_async(youtube_url)
+
+            # Generate post
+            print("🤖 Generating AI content...")
+            post_data = await generate_post_async(
+                transcript=transcript,
+                video_id=youtube_url.split('/')[-1].split('=')[-1][:11],
+                custom_title=title,
+                category=category,
+                tags=tag_list
+            )
+
+            # Save to Pelican
+            print("💾 Saving to Pelican...")
+            content_dir = Path("content/posts")
+            filename = await save_markdown_post(post_data, content_dir)
+
+            print(f"✅ Post generated and saved: {filename}")
+            print(f"📄 Title: {post_data['title']}")
+            print(f"🏷️  Tags: {', '.join(post_data['tags'])}")
+
+            return filename
+
+        # Run the async generation
+        filename = asyncio.run(generate())
+
+        print("\nNext steps:")
+        print(f"  1. Review the generated post: content/posts/{filename}")
+        print("  2. Run 'invoke build' to include it in your site")
+        print("  3. Run 'invoke serve' to preview the changes")
+
+    except Exception as e:
+        print(f"❌ Generation failed: {str(e)}")
+        sys.exit(1)
+
 def pelican_run(cmd):
     cmd += " " + program.core.remainder  # allows to pass-through args to pelican
     pelican_main(shlex.split(cmd))
