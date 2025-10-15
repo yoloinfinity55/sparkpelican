@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Under the Hood: The SparkPelican Project Specification - sparkpelican</title>
+    <link rel="stylesheet" href="https://yoloinfinity55.github.io/sparkpelican/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/under-the-hood-the-sparkpelican-project-specification/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Under the Hood: The SparkPelican Project Specification</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-08T00:00:00-04:00">Wed 08 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>This document outlines the project specification for the SparkPelican website, a modern static site built with a focus on simplicity, performance, and a streamlined content workflow. This specification serves as a guide for understanding the project's architecture, technologies, and conventions.</p>
+<h3>Core Technologies</h3>
+<p>The SparkPelican project is built upon a foundation of powerful and flexible open-source technologies:</p>
+<ul>
+<li><strong>Pelican:</strong> A static site generator written in Python. It's used to convert Markdown content into a fully functional HTML website.</li>
+<li><strong>Tailwind CSS:</strong> A utility-first CSS framework for rapidly building custom user interfaces. It's used for all styling and theming.</li>
+<li><strong>Python:</strong> The primary programming language for the backend and build process, utilizing the Pelican and Invoke libraries.</li>
+<li><strong>Node.js:</strong> Used for managing the Tailwind CSS dependency and running the CSS build process.</li>
+<li><strong>Invoke:</strong> A Python task execution tool used to automate common development tasks like building the site and serving it locally.</li>
+<li><strong>GitHub Actions:</strong> A CI/CD platform used to automate the deployment of the website to GitHub Pages.</li>
+</ul>
+<h3>Project Structure</h3>
+<p>The project is organized into the following key directories and files:</p>
+<ul>
+<li><code>content/posts/</code>: This directory contains all the website's content in the form of Markdown files. Each file represents a single blog post.</li>
+<li><code>themes/sparkpelican-theme/</code>: This directory contains the theme for the website, including all templates and static assets.<ul>
+<li><code>templates/</code>: Contains the Jinja2 templates that define the structure and layout of the site.</li>
+<li><code>static/css/</code>: Contains the CSS files, including the input for Tailwind CSS and the final generated output.</li>
+</ul>
+</li>
+<li><code>pelicanconf.py</code>: The main configuration file for Pelican, used for development settings.</li>
+<li><code>publishconf.py</code>: The configuration file for Pelican, used for production settings.</li>
+<li><code>tasks.py</code>: An Invoke script that defines a set of commands for automating common tasks.</li>
+<li><code>package.json</code>: The Node.js configuration file, which defines the project's npm dependencies (primarily Tailwind CSS).</li>
+<li><code>requirements.txt</code>: The Python configuration file, which lists the project's Python dependencies.</li>
+<li><code>.github/workflows/deploy.yml</code>: The GitHub Actions workflow file that defines the automated deployment process.</li>
+</ul>
+<h3>Content Management</h3>
+<p>All content for the website is written in Markdown and stored in the <code>content/posts/</code> directory. To create a new post, simply add a new <code>.md</code> file to this directory. The file should include the following metadata at the top:</p>
+<div class="highlight"><pre><span></span><code>---
+title: Your Post Title
+date: YYYY-MM-DD
+<span class="gu">author: Your Name</span>
+<span class="gu">---</span>
+
+Your post content goes here...
+</code></pre></div>
+
+<h3>Styling and Theming</h3>
+<p>The website's styling is managed by Tailwind CSS. The main input file is located at <code>themes/sparkpelican-theme/static/css/input.css</code>. When the site is built, this file is processed by Tailwind CSS to generate the final <code>output.css</code> file, which is then used by the website.</p>
+<p>The theme's HTML structure is defined by a set of Jinja2 templates in the <code>themes/sparkpelican-theme/templates/</code> directory. These templates are used by Pelican to generate the final HTML pages.</p>
+<h3>Automation and Deployment</h3>
+<p>The project uses a combination of Invoke and GitHub Actions to automate the development and deployment workflow.</p>
+<ul>
+<li><strong>Local Development:</strong> The <code>tasks.py</code> file provides a set of commands for common development tasks, such as:<ul>
+<li><code>invoke build</code>: Builds the Pelican site.</li>
+<li><code>invoke serve</code>: Serves the site locally for testing.</li>
+<li><code>invoke livereload</code>: Automatically rebuilds the site and reloads the browser when changes are made.</li>
+</ul>
+</li>
+<li><strong>Deployment:</strong> The website is automatically deployed to GitHub Pages whenever a new commit is pushed to the <code>main</code> branch. The deployment process is defined in the <code>.github/workflows/deploy.yml</code> file and consists of the following steps:<ol>
+<li>Checkout the code.</li>
+<li>Set up the Python and Node.js environments.</li>
+<li>Install the required dependencies.</li>
+<li>Build the Tailwind CSS.</li>
+<li>Build the Pelican site.</li>
+<li>Deploy the generated <code>output</code> directory to GitHub Pages.</li>
+</ol>
+</li>
+</ul>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sparkpelican - Testing</title><link href="https://yoloinfinity55.github.io/sparkpelican/" rel="alternate"/><link href="https://yoloinfinity55.github.io/sparkpelican/feeds/testing.atom.xml" rel="self"/><id>https://yoloinfinity55.github.io/sparkpelican/</id><updated>2025-10-08T19:00:00-04:00</updated><entry><title>Testing My New Pelican Blog Deployment</title><link href="https://yoloinfinity55.github.io/sparkpelican/test-deployment.html" rel="alternate"/><published>2025-10-08T19:00:00-04:00</published><updated>2025-10-08T19:00:00-04:00</updated><author><name>Infinity Spark</name></author><id>tag:yoloinfinity55.github.io,2025-10-08:/sparkpelican/test-deployment.html</id><summary type="html">&lt;p&gt;My first real test post after successfully deploying sparkpelican to GitHub Pages!&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Hello from sparkpelican! 🚀&lt;/h1&gt;
+&lt;p&gt;This is my &lt;strong&gt;first test post&lt;/strong&gt; after successfully deploying my Pelican blog with Tailwind CSS to GitHub Pages.&lt;/p&gt;
+&lt;h2&gt;What I've Accomplished&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ Set up Pelican static site generator&lt;/li&gt;
+&lt;li&gt;✅ Integrated Tailwind CSS v4&lt;/li&gt;
+&lt;li&gt;✅ Created a beautiful responsive grid layout&lt;/li&gt;
+&lt;li&gt;✅ Deployed to GitHub Pages with GitHub Actions&lt;/li&gt;
+&lt;li&gt;✅ Automated deployment on every push&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technologies Used&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Pelican&lt;/strong&gt;: Python-based static site generator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tailwind CSS v4&lt;/strong&gt;: Modern utility-first CSS framework&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub Pages&lt;/strong&gt;: Free hosting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub Actions&lt;/strong&gt;: Automated CI/CD pipeline&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Next Steps&lt;/h2&gt;
+&lt;p&gt;Now I can:
+1. Write blog posts in Markdown
+2. Push to GitHub
+3. Automatically deploy&lt;/p&gt;
+&lt;p&gt;It's that simple! 🎉&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Posted from my Mac Mini M1&lt;/em&gt;&lt;/p&gt;</content><category term="Testing"/><category term="pelican"/><category term="tailwindcss"/><category term="github-pages"/><category term="deployment"/></entry></feed>

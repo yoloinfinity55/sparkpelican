@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Spark: A Deep Dive into This Eleventy Blog - sparkpelican</title>
+    <link rel="stylesheet" href="https://yoloinfinity55.github.io/sparkpelican/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/project-spark-a-deep-dive-into-this-eleventy-blog/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Project Spark: A Deep Dive into This Eleventy Blog</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-07T00:00:00+00:00">Tue 07 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <ul>
+<li>Eleventy</li>
+<li>TailwindCSS</li>
+<li>Project Overview</li>
+<li>Jamstack</li>
+</ul>
+<hr>
+<p>Welcome to a behind-the-scenes look at the Spark blog project. This post serves as a summary of the architecture, technologies, and features that power this site. Whether you're a developer looking for inspiration or just curious about how it works, here's a breakdown of what makes Spark tick.</p>
+<h3>The Technology Stack</h3>
+<p>At its core, Spark is a modern static site built with a focus on performance, developer experience, and clean aesthetics. The key technologies used are:</p>
+<ul>
+<li><strong>Eleventy (11ty):</strong> A flexible and powerful static site generator that transforms our Markdown content and Nunjucks templates into a fast, pre-rendered website.</li>
+<li><strong>Tailwind CSS v4:</strong> A utility-first CSS framework that allows for rapid UI development and a highly customizable design system without writing custom CSS.</li>
+<li><strong>Nunjucks:</strong> A rich and powerful templating language for JavaScript, used by Eleventy to create reusable layouts and components (<code>base.njk</code>, <code>post.njk</code>, etc.).</li>
+<li><strong>PostCSS:</strong> A tool for transforming CSS with JavaScript plugins. Here, it's used to process Tailwind CSS and minify the final stylesheet for production.</li>
+<li><strong>Google Generative AI:</strong> The project includes a script (<code>generate-descriptions.js</code>) that leverages the Google Generative AI SDK, demonstrating a modern workflow for automating content creation tasks like writing post descriptions.</li>
+</ul>
+<h3>Core Features</h3>
+<p>This project isn't just a simple blog; it comes with several features built-in:</p>
+<ul>
+<li><strong>Modern &amp; Animated UI:</strong> The frontend is designed with a clean, "glassmorphism" aesthetic, featuring subtle animations and gradients to create a polished user experience.</li>
+<li><strong>Dynamic Blog Content:</strong> All posts are managed as simple Markdown files in the <code>src/posts</code> directory, making content creation straightforward. The site automatically generates post pages, lists, and an RSS feed.</li>
+<li><strong>Data-Driven Templates:</strong> The templates are designed to be dynamic, pulling information like author and reading time directly from each post's front matter.</li>
+<li><strong>Search-Ready:</strong> The project includes <code>flexsearch</code>, a fast client-side search library, and generates a search index. The UI for the search functionality is the next step to be implemented.</li>
+<li><strong>Embed-Friendly:</strong> Using the <code>eleventy-plugin-embed-everything</code> plugin, embedding content like YouTube videos is seamless.</li>
+</ul>
+<h3>Development Workflow</h3>
+<p>The project is set up with a simple and efficient development workflow managed by npm scripts:</p>
+<ul>
+<li><code>npm run dev</code>: Starts a local development server with hot-reloading for both Eleventy and Tailwind CSS, allowing for real-time previews of any changes.</li>
+<li><code>npm run build</code>: Creates a production-ready build of the site in the <code>_site</code> directory, with minified CSS.</li>
+<li><code>npm run generate:descriptions</code>: An example of a custom script to automate content tasks using AI.</li>
+</ul>
+<h3>What's Next?</h3>
+<p>While the foundation is solid, there are several exciting improvements planned:</p>
+<ol>
+<li><strong>Full Search Implementation:</strong> Building the UI to connect with the already-generated search index.</li>
+<li><strong>Social Sharing:</strong> Adding buttons to make it easy for readers to share posts on social media.</li>
+<li><strong>Tag Pages:</strong> Creating dedicated pages for each tag to allow for better content discovery.</li>
+<li><strong>Performance Optimization:</strong> Implementing automated image optimization and purging unused CSS to make the site even faster.</li>
+</ol>
+<p>This project serves as a strong starting point for anyone looking to build a modern, feature-rich static blog. Thanks for reading!</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

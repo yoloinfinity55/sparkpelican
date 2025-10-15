@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>5 Ways to Supercharge Your Pelican Workflow - sparkpelican</title>
+    <link rel="stylesheet" href="https://yoloinfinity55.github.io/sparkpelican/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/5-ways-to-supercharge-your-pelican-workflow/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">5 Ways to Supercharge Your Pelican Workflow</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-08T00:00:00-04:00">Wed 08 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>A clean and well-organized project structure is crucial for any web project, and static sites built with Pelican are no exception. A streamlined setup not only makes development and maintenance easier but also improves collaboration. Based on a recent analysis of a Pelican project, here are five actionable suggestions to improve your workflow and project structure.</p>
+<h3>1. Consolidate Your Build and Automation Scripts</h3>
+<p>Many projects evolve to have multiple automation files, such as a <code>Makefile</code> and a <code>tasks.py</code> (using Invoke). While both can get the job done, having two separate files for similar tasks creates redundancy and can be confusing for new contributors.</p>
+<p><strong>Suggestion:</strong> Choose one automation tool and stick with it. For a Python-based project like Pelican, <strong>Invoke (<code>tasks.py</code>)</strong> is a more powerful and flexible choice. Migrate all your build, serve, and deployment tasks to <code>tasks.py</code> and remove the <code>Makefile</code>. This creates a single source of truth for all project automation.</p>
+<h3>2. Add a <code>requirements.txt</code> for Python Dependencies</h3>
+<p>Your project relies on Python packages like Pelican, Invoke, and <code>ghp-import</code>, but without a <code>requirements.txt</code> file, there's no explicit list of these dependencies. This makes it difficult for others (or your future self on a new machine) to set up the project environment correctly.</p>
+<p><strong>Suggestion:</strong> Create a <code>requirements.txt</code> file in your project's root directory. You can generate it by running:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<p>This file should be committed to your repository, allowing anyone to install the correct dependencies with a single command: <code>pip install -r requirements.txt</code>.</p>
+<h3>3. Integrate Your CSS Build with Pelican</h3>
+<p>In modern web development, it's common to use tools like Tailwind CSS, which require a build step. Often, this is handled by a separate npm script, forcing you to run two commands (<code>npm run build:css</code> and <code>pelican</code>) to build your site.</p>
+<p><strong>Suggestion:</strong> Integrate your CSS build process directly into the Pelican build. The <code>pelican-assets</code> plugin is an excellent tool for this. You can configure it to run your <code>npm run build:css</code> command automatically whenever you build your Pelican site, creating a seamless, one-command build process.</p>
+<h3>4. Organize Your Content into Subdirectories</h3>
+<p>As your website grows, a flat <code>content</code> directory with all your articles and pages in one place can become unwieldy. This makes it hard to find and manage your content.</p>
+<p><strong>Suggestion:</strong> Organize your content into subdirectories based on categories, topics, or content types. For example, you could structure your <code>content</code> directory like this:</p>
+<div class="highlight"><pre><span></span><code>content/
+├── posts/
+│   ├── my-first-post.md
+│   └── another-great-post.md
+├── pages/
+│   └── about.md
+└── projects/
+    └── my-project.md
+</code></pre></div>
+
+<p>You can then configure Pelican in your <code>pelicanconf.py</code> to recognize and process this structure, leading to a much more organized and scalable project.</p>
+<h3>5. Refine Your Theme Structure</h3>
+<p>Your theme is the heart of your site's design, and its structure matters. Using a generic name like <code>mytheme</code> is a missed opportunity for branding and clarity.</p>
+<p><strong>Suggestion:</strong> Give your theme a more descriptive name, such as <code>sparkpelican-theme</code>. Additionally, consider the future of your theme by creating a <code>js</code> directory alongside your <code>css</code> directory for any JavaScript you might add later. You can also add a <code>theme.conf</code> file to your theme's root to specify theme-specific settings, making it more self-contained and reusable.</p>
+<p>By implementing these five suggestions, you can create a more robust, maintainable, and efficient Pelican project that's a pleasure to work on.</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

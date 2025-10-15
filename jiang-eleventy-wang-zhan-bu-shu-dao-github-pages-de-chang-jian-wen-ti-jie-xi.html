@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>将 Eleventy 网站部署到 GitHub Pages 的常见问题解析 - sparkpelican</title>
+    <link rel="stylesheet" href="https://yoloinfinity55.github.io/sparkpelican/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/jiang-eleventy-wang-zhan-bu-shu-dao-github-pages-de-chang-jian-wen-ti-jie-xi/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">将 Eleventy 网站部署到 GitHub Pages 的常见问题解析</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-06T00:00:00-04:00">Mon 06 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>当你按照教程将 Eleventy (11ty) 网站部署到 GitHub Pages 时，通常会遵循一系列步骤，包括创建部署分支和设置 GitHub Actions 自动化工作流。然而，在这个过程中，有几个关键点常常引起混淆，甚至导致部署失败。</p>
+<p>本文将总结两个在部署过程中遇到的真实问题，帮助你避开这些常见的“坑”。</p>
+<h2>问题一：<code>gh-pages</code> 分支真的是“可选”的吗？</h2>
+<p>许多教程（包括我参考的指南）在创建部署分支时会提到“（可选）”字样。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 指南中的步骤</span>
+git<span class="w"> </span>checkout<span class="w"> </span>--orphan<span class="w"> </span>gh-pages
+git<span class="w"> </span>reset<span class="w"> </span>--hard
+git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial commit for gh-pages&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>gh-pages
+</code></pre></div>
+
+<p><strong>结论是：对于本指南描述的自动化部署流程，这一步实际上是必需的，而不是可选的。</strong></p>
+<h3>为什么必需？</h3>
+<p>GitHub Actions 的工作流程是：在 <code>main</code> 分支有更新时，自动构建你的网站（生成 <code>_site</code> 文件夹），然后将这个文件夹的内容推送到一个指定的分支（通常是 <code>gh-pages</code>），GitHub Pages 再从这个分支读取文件并展示你的网站。</p>
+<p>如果 <code>gh-pages</code> 分支在 GitHub 远程仓库上不存在，那么当 GitHub Actions 第一次运行时，<code>push</code> 操作会因为找不到目标分支而失败。</p>
+<p>因此，<strong>提前手动创建并推送一个空的 <code>gh-pages</code> 分支，是为自动化部署提供一个可以推送的目标，这是确保工作流首次运行成功的关键准备步骤。</strong></p>
+<h2>问题二：修复 GitHub Actions 配置文件中的 <code>github_token</code></h2>
+<p>在设置 <code>.github/workflows/deploy.yml</code> 文件时，一个微小但致命的错误是 <code>github_token</code> 的配置。</p>
+<p><strong>错误的配置：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$</span><span class="w"> </span><span class="c1"># 这是一个无效的占位符</span>
+<span class="w">    </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./_site</span>
+</code></pre></div>
+
+<p>这个 <code>$</code> 符号只是一个占位符，如果直接使用，工作流会因为没有权限推送到你的仓库而失败。</p>
+<p><strong>正确的配置：</strong>
+必须使用 GitHub Actions 提供的特殊语法来访问它为每次运行自动生成的令牌。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span><span class="w"> </span><span class="c1"># 正确的语法</span>
+<span class="w">    </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./_site</span>
+</code></pre></div>
+
+<h3>优化后的完整工作流</h3>
+<p>这是一个经过修正和优化的 <code>deploy.yml</code> 文件，它使用了更新的 Actions 版本、更合适的 Node.js 版本，并开启了依赖缓存以加快构建速度。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/deploy.yml</span>
+
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy 11ty Blog to GitHub Pages</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build-deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout repository</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Node.js</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;18&#39;</span><span class="w"> </span><span class="c1"># 使用一个较新的 LTS 版本</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;npm&#39;</span><span class="w"> </span><span class="c1"># 缓存 npm 依赖</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span><span class="w"> </span><span class="c1"># 在 CI/CD 环境中比 npm install 更快、更安全</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build the site</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm run build</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">github_token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+<span class="w">          </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./_site</span>
+</code></pre></div>
+
+<h2>问题三：部署成功但文章链接 404 Not Found</h2>
+<p>有时你会发现，网站主页 <code>yoursite.com</code> 访问正常，但某一篇具体的文章链接 <code>yoursite.com/posts/xxxx/</code> 却返回 404 错误。</p>
+<p>这通常不是部署流程的问题，而是 Eleventy 本身的一个特性导致的。</p>
+<p><strong>最可能的原因是：文章的发布日期被设置为了未来。</strong></p>
+<p>例如，如果你的文章元数据（Front Matter）中这样写：</p>
+<div class="highlight"><pre><span></span><code>---
+title: 我的未来文章
+date: 2099-01-01 # 这是一个未来的日期
+<span class="gu">layout: post.njk</span>
+<span class="gu">---</span>
+</code></pre></div>
+
+<p>Eleventy 在执行 <code>npm run build</code> 时，会默认<strong>忽略</strong>所有日期在未来的文章。因此，这篇“未来文章”的 HTML 文件根本不会被生成并放到 <code>_site</code> 目录中。既然文件不存在，访问它的链接自然就会返回 404。</p>
+<h3>如何解决？</h3>
+<ol>
+<li><strong>修改文章日期</strong>：将文章 <code>.md</code> 文件中的 <code>date</code> 修改为今天或过去的日期。</li>
+<li><strong>强制构建未来文章</strong>：如果你确实需要在本地预览未来的文章，可以在构建命令中加入 <code>--future</code> 参数。
+    <code>json
+    // package.json
+    "scripts": {
+      "build": "eleventy",
+      "build-future": "eleventy --future", // 添加一个新命令
+      "start": "eleventy --serve"
+    },</code>
+    但请注意，用于线上部署的 <code>build</code> 命令通常不应包含此参数，以防意外发布未到期的内容。</li>
+</ol>
+<p>希望这些总结能帮助你顺利完成 Eleventy 网站的部署！
+```</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Complete Guide to Using SparkPelican: AI-Powered Blog Post Generation - sparkpelican</title>
+    <link rel="stylesheet" href="https://yoloinfinity55.github.io/sparkpelican/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/complete-guide-to-using-sparkpelican-ai-powered-blog-post-generation/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Complete Guide to Using SparkPelican: AI-Powered Blog Post Generation</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-15T06:37:00+00:00">Wed 15 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>Learn how to use SparkPelican to automatically generate blog posts from YouTube videos using AI. This comprehensive guide covers installation, configuration, and all usage methods.
+author: "Infinity Spark"
+readingTime: "15 min read"
+tags: ["AI", "Pelican", "YouTube", "Automation", "Tutorial"]</p>
+<hr>
+<h1>Complete Guide to Using SparkPelican: AI-Powered Blog Post Generation</h1>
+<p>SparkPelican is an innovative AI-powered blog post generation system that automatically creates blog posts from YouTube videos. It combines YouTube transcript extraction, AI content generation, and Pelican static site generation to create a seamless content creation workflow.</p>
+<h2>What Makes SparkPelican Special?</h2>
+<p>SparkPelican revolutionizes content creation by:
+- <strong>Automatically extracting transcripts</strong> from YouTube videos
+- <strong>Using Google Gemini AI</strong> to generate high-quality blog posts
+- <strong>Seamlessly integrating</strong> with Pelican static site generator
+- <strong>Providing multiple usage methods</strong> for different workflows
+- <strong>Including built-in validation</strong> and quality checks</p>
+<h2>Prerequisites</h2>
+<p>Before getting started with SparkPelican, ensure you have:</p>
+<ul>
+<li><strong>Python 3.8+</strong> installed on your system</li>
+<li><strong>Node.js and npm</strong> for CSS building (Tailwind CSS)</li>
+<li><strong>Git</strong> for version control</li>
+<li><strong>Google Gemini API Key</strong> for AI content generation</li>
+</ul>
+<h2>Installation</h2>
+<h3>Step 1: Clone the Repository</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yoloinfinity55/sparkpelican.git
+<span class="nb">cd</span><span class="w"> </span>sparkpelican
+</code></pre></div>
+
+<h3>Step 2: Install Python Dependencies</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<h3>Step 3: Install Node.js Dependencies</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install
+</code></pre></div>
+
+<h3>Step 4: Set Environment Variables</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GEMINI_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_google_gemini_api_key_here&quot;</span>
+</code></pre></div>
+
+<h2>Quick Start</h2>
+<h3>Method 1: Command Line Script (Easiest)</h3>
+<p>Generate a blog post from any YouTube video with a single command:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>process_youtube_video.py<span class="w"> </span><span class="s2">&quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;</span>
+</code></pre></div>
+
+<p>This script will:
+1. Extract the transcript from the YouTube video
+2. Generate AI content using Gemini
+3. Save a properly formatted markdown file to <code>content/posts/</code></p>
+<h3>Method 2: Using Invoke Tasks (Recommended)</h3>
+<p>For more control and additional features:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate a post with custom options</span>
+invoke<span class="w"> </span>api-generate<span class="w"> </span>--youtube-url<span class="o">=</span><span class="s2">&quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;</span><span class="w"> </span>--title<span class="o">=</span><span class="s2">&quot;Custom Title&quot;</span><span class="w"> </span>--category<span class="o">=</span><span class="s2">&quot;Technology&quot;</span><span class="w"> </span>--tags<span class="o">=</span><span class="s2">&quot;AI,Tutorial&quot;</span>
+
+<span class="c1"># Build the site</span>
+invoke<span class="w"> </span>build
+
+<span class="c1"># Serve locally</span>
+invoke<span class="w"> </span>serve
+</code></pre></div>
+
+<h3>Method 3: FastAPI Server (For Integration)</h3>
+<p>Start the API server for web-based usage:</p>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-server
+</code></pre></div>
+
+<p>Then make POST requests to <code>http://localhost:8001/generate</code> with your YouTube URL.</p>
+<h2>Understanding the Architecture</h2>
+<p>SparkPelican consists of several key components:</p>
+<h3>Core Components</h3>
+<p><strong>FastAPI Backend</strong> (<code>myapp/main.py</code>)
+- REST API server with endpoints for post generation and validation
+- Background processing for video content
+- CORS middleware for web integration</p>
+<p><strong>Pelican Integration</strong> (<code>pelicanconf.py</code>)
+- Static site generator configuration
+- Custom theme integration
+- Feed and pagination settings</p>
+<p><strong>Task Automation</strong> (<code>tasks.py</code>)
+- Invoke-based command system
+- Build, serve, and deployment tasks
+- Title validation and fixing</p>
+<h2>Usage Methods in Detail</h2>
+<h3>Command Line Script</h3>
+<p>The <code>process_youtube_video.py</code> script provides the simplest entry point:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>process_youtube_video.py<span class="w"> </span><span class="s2">&quot;YOUTUBE_URL&quot;</span>
+</code></pre></div>
+
+<p><strong>Features:</strong>
+- Automatic transcript extraction
+- AI content generation with Gemini
+- Markdown file creation in <code>content/posts/</code>
+- Automatic title and slug generation
+- Error handling and logging</p>
+<h3>Invoke Tasks</h3>
+<p>The <code>tasks.py</code> file provides a comprehensive task system:</p>
+<p><strong>Post Generation:</strong></p>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-generate<span class="w"> </span>--youtube-url<span class="o">=</span><span class="s2">&quot;URL&quot;</span><span class="w"> </span>--title<span class="o">=</span><span class="s2">&quot;Custom Title&quot;</span><span class="w"> </span>--category<span class="o">=</span><span class="s2">&quot;Tech&quot;</span><span class="w"> </span>--tags<span class="o">=</span><span class="s2">&quot;AI,Machine Learning&quot;</span>
+</code></pre></div>
+
+<p><strong>Site Management:</strong></p>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>build<span class="w">          </span><span class="c1"># Build the site</span>
+invoke<span class="w"> </span>serve<span class="w">          </span><span class="c1"># Serve locally on port 8001</span>
+invoke<span class="w"> </span>preview<span class="w">        </span><span class="c1"># Build for production</span>
+invoke<span class="w"> </span>clean<span class="w">          </span><span class="c1"># Remove generated files</span>
+</code></pre></div>
+
+<p><strong>Quality Assurance:</strong></p>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>validate-titles<span class="w">                    </span><span class="c1"># Check title formatting</span>
+invoke<span class="w"> </span>api-validate-posts<span class="w">                 </span><span class="c1"># Validate API compatibility</span>
+invoke<span class="w"> </span>api-validate-posts<span class="w"> </span>--fix<span class="w">           </span><span class="c1"># Auto-fix title issues</span>
+</code></pre></div>
+
+<h3>FastAPI Server</h3>
+<p>For programmatic access or web integration:</p>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-server<span class="w"> </span>--host<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="o">=</span><span class="m">8001</span><span class="w"> </span>--reload
+</code></pre></div>
+
+<p><strong>Available endpoints:</strong>
+- <code>GET /health</code> - Health check
+- <code>POST /generate</code> - Generate post from YouTube URL
+- <code>POST /validate</code> - Validate front matter
+- <code>GET /docs</code> - Interactive API documentation</p>
+<h2>API Integration Examples</h2>
+<h3>Generate Post via API</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://localhost:8001/generate&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;youtube_url&quot;: &quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;,</span>
+<span class="s1">    &quot;custom_title&quot;: &quot;Optional custom title&quot;,</span>
+<span class="s1">    &quot;category&quot;: &quot;Technology&quot;,</span>
+<span class="s1">    &quot;tags&quot;: [&quot;AI&quot;, &quot;Tutorial&quot;]</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
+
+<h3>Validate Front Matter</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://localhost:8001/validate&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;front_matter&quot;: {</span>
+<span class="s1">      &quot;title&quot;: &quot;Post Title&quot;,</span>
+<span class="s1">      &quot;date&quot;: &quot;2024-01-01T00:00:00&quot;,</span>
+<span class="s1">      &quot;author&quot;: &quot;Author Name&quot;</span>
+<span class="s1">    }</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
+
+<h2>Development Workflow</h2>
+<h3>Project Structure</h3>
+<div class="highlight"><pre><span></span><code>sparkpelican/
+├── content/                 # Pelican content directory
+│   ├── pages/              # Static pages
+│   └── posts/              # Blog posts (markdown files)
+├── myapp/                  # FastAPI application
+│   ├── main.py            # API server
+│   ├── ai_generator.py    # AI content generation
+│   ├── youtube_transcript.py  # YouTube integration
+│   └── pelican_integrator.py  # Pelican integration
+├── themes/                 # Pelican themes
+│   └── sparkpelican-theme/    # Custom theme with Tailwind CSS
+├── scripts/                # Utility scripts
+├── output/                 # Generated site (after build)
+└── tasks.py               # Invoke tasks
+</code></pre></div>
+
+<h3>CSS Development</h3>
+<p><strong>Build CSS:</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build:css
+</code></pre></div>
+
+<p><strong>Watch for changes:</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>watch:css
+</code></pre></div>
+
+<h3>Customizing AI Generation</h3>
+<p>You can modify the AI prompts in <code>myapp/ai_generator.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Customize the generation prompt</span>
+<span class="n">custom_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Generate a blog post based on this transcript: </span><span class="si">{</span><span class="n">transcript</span><span class="si">}</span>
+<span class="s2">Style: Technical tutorial</span>
+<span class="s2">Length: 800-1200 words</span>
+<span class="s2">Include code examples and practical steps</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<h2>Deployment Options</h2>
+<h3>Development Server</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Live reload development</span>
+invoke<span class="w"> </span>livereload
+
+<span class="c1"># Basic development serving</span>
+invoke<span class="w"> </span>reserve<span class="w">  </span><span class="c1"># Builds and serves</span>
+</code></pre></div>
+
+<h3>Production Deployment</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Build for production</span>
+invoke<span class="w"> </span>preview
+
+<span class="c1"># Deploy to GitHub Pages</span>
+invoke<span class="w"> </span>gh-pages
+
+<span class="c1"># Custom deployment (modify tasks.py for your needs)</span>
+invoke<span class="w"> </span>publish
+</code></pre></div>
+
+<h2>Troubleshooting Common Issues</h2>
+<h3>1. Missing API Key</h3>
+<p><strong>Error:</strong> "GEMINI_API_KEY not set"
+<strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GEMINI_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_api_key_here&quot;</span>
+</code></pre></div>
+
+<h3>2. Title Validation Errors</h3>
+<p><strong>Error:</strong> "Title validation failed"
+<strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-validate-posts<span class="w"> </span>--fix<span class="w">  </span><span class="c1"># Auto-fix title formatting</span>
+</code></pre></div>
+
+<h3>3. YouTube Transcript Issues</h3>
+<p><strong>Error:</strong> "YouTube transcript not available"
+<strong>Solutions:</strong>
+- Ensure the video has captions/subtitles enabled
+- Check if the video is publicly accessible
+- Try a different video URL
+- Verify the video ID is correct</p>
+<h3>4. Port Conflicts</h3>
+<p><strong>Error:</strong> "Port already in use"
+<strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Kill process using port 8001</span>
+lsof<span class="w"> </span>-ti:8001<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9
+
+<span class="c1"># Or use different port</span>
+invoke<span class="w"> </span>api-server<span class="w"> </span>--port<span class="o">=</span><span class="m">8002</span>
+</code></pre></div>
+
+<h2>Advanced Usage</h2>
+<h3>Batch Processing Multiple Videos</h3>
+<p>Create a script to process multiple videos:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">process_youtube_video</span> <span class="kn">import</span> <span class="n">process_youtube_video</span>
+
+<span class="n">videos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;https://youtube.com/watch?v=video1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://youtube.com/watch?v=video2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://youtube.com/watch?v=video3&quot;</span>
+<span class="p">]</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">batch_process</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">video_url</span> <span class="ow">in</span> <span class="n">videos</span><span class="p">:</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="k">await</span> <span class="n">process_youtube_video</span><span class="p">(</span><span class="n">video_url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Processed: </span><span class="si">{</span><span class="n">video_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Failed: </span><span class="si">{</span><span class="n">video_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">batch_process</span><span class="p">())</span>
+</code></pre></div>
+
+<h3>Custom Post Processing</h3>
+<p>Add custom logic in <code>myapp/pelican_integrator.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">custom_post_processing</span><span class="p">(</span><span class="n">post_data</span><span class="p">):</span>
+    <span class="c1"># Add SEO metadata</span>
+    <span class="n">post_data</span><span class="p">[</span><span class="s1">&#39;seo_description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">generate_seo_description</span><span class="p">(</span><span class="n">post_data</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span>
+    <span class="c1"># Add reading time calculation</span>
+    <span class="n">post_data</span><span class="p">[</span><span class="s1">&#39;reading_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_reading_time</span><span class="p">(</span><span class="n">post_data</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">post_data</span>
+</code></pre></div>
+
+<h3>Integration with External Tools</h3>
+<p>SparkPelican's API can be integrated with:
+- <strong>Content management systems</strong>
+- <strong>Social media automation tools</strong>
+- <strong>Custom web applications</strong>
+- <strong>CI/CD pipelines</strong></p>
+<h2>Best Practices</h2>
+<h3>Content Quality</h3>
+<ol>
+<li><strong>Choose videos with clear audio</strong> and good captions</li>
+<li><strong>Review generated content</strong> before publishing</li>
+<li><strong>Customize AI prompts</strong> for your specific use case</li>
+<li><strong>Use descriptive titles</strong> and proper tagging</li>
+</ol>
+<h3>Performance</h3>
+<ol>
+<li><strong>Use background processing</strong> for large batches</li>
+<li><strong>Monitor API rate limits</strong> for Gemini API</li>
+<li><strong>Cache transcripts</strong> when possible</li>
+<li><strong>Batch similar operations</strong> together</li>
+</ol>
+<h3>Maintenance</h3>
+<ol>
+<li><strong>Regularly update dependencies</strong></li>
+<li><strong>Monitor for API changes</strong> in YouTube and Gemini</li>
+<li><strong>Backup your content</strong> regularly</li>
+<li><strong>Keep your API keys secure</strong></li>
+</ol>
+<h2>Getting Help</h2>
+<h3>Documentation</h3>
+<ul>
+<li><strong>API Documentation:</strong> <code>http://localhost:8001/docs</code></li>
+<li><strong>Project Repository:</strong> <a href="https://github.com/yoloinfinity55/sparkpelican">GitHub</a></li>
+<li><strong>Pelican Documentation:</strong> <a href="https://docs.getpelican.com/">Official Site</a></li>
+</ul>
+<h3>Community Support</h3>
+<ul>
+<li>Check existing blog posts in <code>content/posts/</code></li>
+<li>Review configuration files for examples</li>
+<li>Test with sample videos first</li>
+</ul>
+<h2>Contributing</h2>
+<p>SparkPelican is an open-source project. Contributions are welcome:</p>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch</li>
+<li>Make your improvements</li>
+<li>Test thoroughly</li>
+<li>Submit a pull request</li>
+</ol>
+<h2>Conclusion</h2>
+<p>SparkPelican provides a powerful yet easy-to-use solution for AI-powered content generation. Whether you're a developer looking to automate your blog workflow or a content creator wanting to leverage AI for post generation, SparkPelican offers the flexibility and features you need.</p>
+<p>Start with the simple command-line script for immediate results, then explore the API and task system for more advanced workflows. The combination of YouTube transcript extraction, AI content generation, and Pelican integration makes SparkPelican a unique and valuable tool in the modern content creation landscape.</p>
+<hr>
+<p><em>This guide was automatically generated using SparkPelican's AI-powered content generation system. For more information about SparkPelican, visit the <a href="https://github.com/yoloinfinity55/sparkpelican">GitHub repository</a>.</em></p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

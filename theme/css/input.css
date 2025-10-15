@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Custom styles */
+@layer components {
+  .article-content h2 {
+    @apply text-2xl font-bold mt-6 mb-4;
+  }
+  
+  .article-content h3 {
+    @apply text-xl font-semibold mt-4 mb-3;
+  }
+  
+  .article-content p {
+    @apply mb-4 leading-relaxed;
+  }
+  
+  .article-content a {
+    @apply text-blue-600 hover:text-blue-800 underline;
+  }
+  
+  .article-content ul {
+    @apply list-disc list-inside mb-4;
+  }
+  
+  .article-content code {
+    @apply bg-gray-100 px-2 py-1 rounded text-sm;
+  }
+}

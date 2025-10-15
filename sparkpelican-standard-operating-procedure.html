@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SparkPelican Standard Operating Procedure - sparkpelican</title>
+    <link rel="stylesheet" href="https://yoloinfinity55.github.io/sparkpelican/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/sparkpelican-standard-operating-procedure/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">SparkPelican Standard Operating Procedure</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-08T00:00:00-04:00">Wed 08 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>This document provides a Standard Operating Procedure (SOP) for developing and managing the SparkPelican website. It is intended to guide developers through the common tasks and workflows involved in maintaining the site.</p>
+<h3>1. Project Setup</h3>
+<p>To set up the development environment, you will need to have Python, Node.js, and pip installed. Once these prerequisites are in place, follow these steps:</p>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong>
+    <code>bash
+    git clone https://github.com/your-username/sparkpelican.git
+    cd sparkpelican</code></p>
+</li>
+<li>
+<p><strong>Create a virtual environment:</strong>
+    <code>bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`</code></p>
+</li>
+<li>
+<p><strong>Install Python dependencies:</strong>
+    <code>bash
+    pip install -r requirements.txt</code></p>
+</li>
+<li>
+<p><strong>Install Node.js dependencies:</strong>
+    <code>bash
+    npm install</code></p>
+</li>
+</ol>
+<h3>2. Content Creation</h3>
+<p>All content for the website is written in Markdown and stored in the <code>content/posts/</code> directory. To create a new blog post, follow these steps:</p>
+<ol>
+<li>
+<p><strong>Create a new Markdown file:</strong>
+    Create a new <code>.md</code> file in the <code>content/posts/</code> directory. The filename should be descriptive and follow the convention <code>YYYY-MM-DD-your-post-title.md</code>.</p>
+</li>
+<li>
+<p><strong>Add post metadata:</strong>
+    At the top of the new file, add the following metadata:
+    <code>markdown
+    ---
+    title: Your Post Title
+    date: YYYY-MM-DD
+    author: Your Name
+    ---</code></p>
+</li>
+<li>
+<p><strong>Write your content:</strong>
+    Write the content of your blog post in Markdown format below the metadata.</p>
+</li>
+</ol>
+<h3>3. Styling and Theming</h3>
+<p>The website's styling is managed by Tailwind CSS. To modify the styling, you will need to edit the Tailwind CSS input file and then rebuild the CSS.</p>
+<ol>
+<li>
+<p><strong>Edit the input CSS file:</strong>
+    The main input file for Tailwind CSS is located at <code>themes/sparkpelican-theme/static/css/input.css</code>. You can modify this file to add or change CSS classes.</p>
+</li>
+<li>
+<p><strong>Build the output CSS file:</strong>
+    After editing the input file, you will need to run the following command to rebuild the <code>output.css</code> file:
+    <code>bash
+    npm run build:css</code></p>
+</li>
+</ol>
+<h3>4. Local Development</h3>
+<p>The project uses Invoke to automate common development tasks. The following commands are available:</p>
+<ul>
+<li>
+<p><strong>Build the site:</strong>
+    <code>bash
+    invoke build</code>
+    This command will build the Pelican site and generate the HTML files in the <code>output</code> directory.</p>
+</li>
+<li>
+<p><strong>Serve the site locally:</strong>
+    <code>bash
+    invoke serve</code>
+    This command will start a local web server at <code>http://localhost:8000</code> to serve the generated site.</p>
+</li>
+<li>
+<p><strong>Live reload:</strong>
+    <code>bash
+    invoke livereload</code>
+    This command will automatically rebuild the site and reload the browser whenever you make changes to the content or theme files.</p>
+</li>
+</ul>
+<h3>5. Deployment</h3>
+<p>The website is automatically deployed to GitHub Pages whenever a new commit is pushed to the <code>main</code> branch. The deployment process is defined in the <code>.github/workflows/deploy.yml</code> file.</p>
+<p>To deploy the site, simply push your changes to the <code>main</code> branch:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<p>The GitHub Actions workflow will then automatically build and deploy the site to your GitHub Pages URL.</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>
