@@ -1,8 +1,11 @@
 """
-AI Blog Post Generation Module - FIXED VERSION
+AI Blog Post Generation Module - IMPROVED VERSION
 
-Fixed title extraction to remove "Title 1:", "Title 2:" prefixes
-Updated model to use models/gemini-2.5-flash
+Enhanced with:
+1. Better title generation (SEO-optimized, no quotes, multiple formats)
+2. More concise content generation (40-60% compression)
+3. Structured blog formatting
+4. Better prompt engineering
 """
 
 import asyncio
@@ -28,7 +31,7 @@ class AIGenerationError(Exception):
     pass
 
 class AIGenerator:
-    """AI-powered blog post generator using Google Gemini - FIXED."""
+    """AI-powered blog post generator using Google Gemini - IMPROVED."""
 
     def __init__(self):
         """Initialize the AI generator with Gemini configuration."""
@@ -40,8 +43,6 @@ class AIGenerator:
             raise AIGenerationError("GEMINI_API_KEY environment variable not set")
 
         genai.configure(api_key=api_key)
-        
-        # Use Gemini 2.5 Flash (latest stable model)
         self.model = genai.GenerativeModel('models/gemini-2.5-flash')
 
         # Optimized generation parameters
@@ -98,8 +99,7 @@ class AIGenerator:
                 "youtube_id": video_id,
                 "category": category,
                 "tags": generated_tags,
-                "summary": summary,
-                "filename": f"{post_slug}.md"
+                "summary": summary
             }
 
         except Exception as e:
@@ -109,7 +109,13 @@ class AIGenerator:
     async def _generate_title_improved(self, transcript: str, custom_title: Optional[str]) -> str:
         """
         IMPROVED: Generate better, SEO-optimized titles.
-        FIXED: Removes "Title 1:", "Title 2:" prefixes
+        
+        Improvements:
+        - Multiple title format options
+        - Power words included
+        - 50-60 character optimization
+        - Removes video-specific language
+        - No quotes in output
         """
         if custom_title:
             return self._clean_title(custom_title)
@@ -138,22 +144,20 @@ Key Topics Identified: {key_topics}
 Transcript excerpt:
 {transcript[:1500]}
 
-Generate 3 title options:
+Generate 3 title options, then select the best one:
 
-Option 1:
-Option 2:
-Option 3:
+Title 1:
+Title 2:
+Title 3:
 
-Now select the BEST title and write it below with NO prefix, NO label, JUST the title text:
-
-BEST TITLE:"""
+BEST TITLE (without quotes):"""
 
         try:
             response = await asyncio.get_event_loop().run_in_executor(
                 None, self._call_gemini, prompt
             )
             
-            # Extract the best title from response (FIXED)
+            # Extract the best title from response
             title = self._extract_best_title(response)
             title = self._clean_title(title)
             title = self._optimize_title_length(title)
@@ -178,21 +182,16 @@ Main topics (comma-separated, 5 words max):"""
             response = await asyncio.get_event_loop().run_in_executor(
                 None, self._call_gemini, prompt
             )
-            return response.strip()[:100]
+            return response.strip()[:100]  # Limit length
         except:
+            # Fallback: extract first meaningful nouns
             words = transcript_excerpt.split()[:50]
             return ' '.join(words[:10])
 
     def _clean_title(self, title: str) -> str:
-        """Remove quotes, extra spaces, prefixes, and video-specific language."""
+        """Remove quotes, extra spaces, and video-specific language."""
         # Remove quotes
         title = title.strip().strip('"').strip("'").strip('`')
-        
-        # FIXED: Remove "Title 1:", "Title 2:", etc. prefixes
-        title = re.sub(r'^(Title|Option)\s*\d+:\s*', '', title, flags=re.IGNORECASE)
-        
-        # Remove "BEST TITLE:" prefix if present
-        title = re.sub(r'^BEST\s*TITLE:\s*', '', title, flags=re.IGNORECASE)
         
         # Remove video-specific terms
         video_terms = ['watch this', 'in this video', 'episode', 'part', '#', '|']
@@ -201,10 +200,6 @@ Main topics (comma-separated, 5 words max):"""
         
         # Clean up extra spaces
         title = ' '.join(title.split())
-        
-        # Remove trailing ellipsis or "for..." artifacts
-        title = re.sub(r'\s*\.\.\.$', '', title)
-        title = re.sub(r'\s+for\.\.\.$', '', title)
         
         # Capitalize properly
         title = self._title_case(title)
@@ -242,66 +237,50 @@ Main topics (comma-separated, 5 words max):"""
         if len(title) > 60:
             title = title[:57]
             last_space = title.rfind(' ')
-            if last_space > 40:
+            if last_space > 40:  # Keep at least 40 chars
                 title = title[:last_space]
-            # Don't add ellipsis - better to have clean cut
+            title += '...'
         
         return title
 
     def _extract_best_title(self, response: str) -> str:
-        """Extract the best title from multi-option response - FIXED."""
-        lines = [l.strip() for l in response.split('\n') if l.strip()]
+        """Extract the best title from multi-option response."""
+        lines = response.split('\n')
         
-        # Look for "BEST TITLE" marker first
+        # Look for "BEST TITLE" marker
         for i, line in enumerate(lines):
-            if 'BEST TITLE' in line.upper():
-                # Get next non-empty line
-                for j in range(i + 1, len(lines)):
-                    candidate = lines[j].strip()
-                    # Remove any prefix
-                    candidate = re.sub(r'^(Title|Option)\s*\d+:\s*', '', candidate, flags=re.IGNORECASE)
-                    candidate = re.sub(r'^BEST\s*TITLE:\s*', '', candidate, flags=re.IGNORECASE)
-                    if candidate and len(candidate) > 10 and not candidate.startswith(('---', '*', 'Generate', 'Option')):
-                        return candidate
+            if 'BEST TITLE' in line.upper() or 'best:' in line.lower():
+                if i + 1 < len(lines):
+                    return lines[i + 1].strip()
         
-        # Look for lines after "Option 1:", "Option 2:", etc.
-        best_options = []
-        for i, line in enumerate(lines):
-            if re.match(r'^(Title|Option)\s*\d+:', line, re.IGNORECASE):
-                # Extract the title part after the colon
-                title_part = re.sub(r'^(Title|Option)\s*\d+:\s*', '', line, flags=re.IGNORECASE)
-                if title_part and len(title_part) > 10:
-                    best_options.append(title_part)
-                # Check next line too
-                elif i + 1 < len(lines):
-                    next_line = lines[i + 1]
-                    if len(next_line) > 10 and not re.match(r'^(Title|Option)\s*\d+:', next_line, re.IGNORECASE):
-                        best_options.append(next_line)
-        
-        # Return the last option (usually the refined one)
-        if best_options:
-            return best_options[-1]
-        
-        # Fallback: get last substantial non-empty line
+        # Otherwise, get last non-empty line (usually the selected title)
         for line in reversed(lines):
-            # Remove any prefix
-            line = re.sub(r'^(Title|Option)\s*\d+:\s*', '', line, flags=re.IGNORECASE)
-            line = re.sub(r'^BEST\s*TITLE:\s*', '', line, flags=re.IGNORECASE)
-            if line and len(line) > 10 and not line.startswith(('---', '*', 'Generate', 'Create', 'Now select')):
+            line = line.strip()
+            if line and not line.startswith(('Title', 'BEST', '---', '*')):
+                return line
+        
+        # Fallback to first non-empty line
+        for line in lines:
+            line = line.strip()
+            if line and len(line) > 10:
                 return line
         
         return "Generated Blog Post"
 
     def _generate_fallback_title(self, transcript: str, key_topics: str) -> str:
         """Generate a fallback title when AI fails."""
+        # Extract first meaningful sentence
         sentences = transcript.split('.')[:5]
         for sentence in sentences:
             sentence = sentence.strip()
             if len(sentence) > 20 and len(sentence) < 100:
+                # Create title from sentence
                 title = sentence[:60]
-                title = self._optimize_title_length(title)
+                if not title.endswith('.'):
+                    title = self._optimize_title_length(title)
                 return self._clean_title(title)
         
+        # Ultimate fallback
         if key_topics:
             return f"Guide to {key_topics[:40]}"
         return "Essential Video Content Guide"
@@ -309,8 +288,16 @@ Main topics (comma-separated, 5 words max):"""
     async def _generate_content_improved(self, transcript: str, video_id: str) -> str:
         """
         IMPROVED: Generate concise, well-structured blog content.
+        
+        Improvements:
+        - 40-60% compression of transcript
+        - Clear structure with sections
+        - Removes filler words and repetition
+        - Professional blog style (not spoken style)
+        - Includes key takeaways
         """
         
+        # Calculate target length (50% of transcript)
         transcript_words = len(transcript.split())
         target_words = int(transcript_words * 0.5)
         
@@ -369,7 +356,10 @@ Blog Post (markdown format):"""
                 None, self._call_gemini, prompt
             )
             
+            # Post-process to ensure quality
             content = self._post_process_content(response)
+            
+            # Verify length target was met
             content_words = len(content.split())
             logger.info(f"Generated content: {content_words} words (target: {target_words}, ratio: {content_words/transcript_words:.1%})")
             
@@ -381,15 +371,17 @@ Blog Post (markdown format):"""
 
     def _post_process_content(self, content: str) -> str:
         """Clean up generated content."""
+        # Remove common filler phrases
         filler_phrases = [
             r'\b(um|uh|like|you know|basically|actually)\b',
             r'\b(in this video|the speaker says|as mentioned)\b',
-            r'\[.*?\]',
+            r'\[.*?\]',  # Remove bracket annotations
         ]
         
         for pattern in filler_phrases:
             content = re.sub(pattern, '', content, flags=re.IGNORECASE)
         
+        # Clean up extra whitespace
         content = re.sub(r'\n{3,}', '\n\n', content)
         content = re.sub(r' +', ' ', content)
         
@@ -397,8 +389,9 @@ Blog Post (markdown format):"""
 
     def _generate_fallback_content(self, transcript: str, video_id: str) -> str:
         """Generate fallback content when AI fails."""
+        # Create basic structure from transcript
         words = transcript.split()
-        content_length = min(len(words) // 2, 500)
+        content_length = min(len(words) // 2, 500)  # 50% but max 500 words
         
         content = f"""## Introduction
 
@@ -415,7 +408,9 @@ For the complete discussion, watch the [original video](https://www.youtube.com/
         return content
 
     async def _generate_summary_improved(self, transcript: str) -> str:
-        """IMPROVED: Generate concise, engaging 2-3 sentence summary."""
+        """
+        IMPROVED: Generate concise, engaging 2-3 sentence summary.
+        """
         prompt = f"""Create a compelling 2-3 sentence summary that makes someone want to read this blog post.
 
 REQUIREMENTS:
@@ -437,6 +432,7 @@ Summary:"""
             )
             summary = response.strip()
             
+            # Validate summary quality
             if len(summary) > 20 and not any(word in summary.lower() for word in ['error', 'failed', 'unable']):
                 return summary
         except Exception as e:
@@ -448,8 +444,9 @@ Summary:"""
         """Generate fallback summary when AI fails."""
         try:
             sentences = [s.strip() for s in transcript.split('.') if len(s.strip()) > 30]
-            meaningful = []
             
+            # Find sentences that don't start with common filler
+            meaningful = []
             for sentence in sentences[:15]:
                 if not any(sentence.lower().startswith(word) for word in ['hey', 'hi', 'hello', 'so', 'okay', 'um', 'uh']):
                     meaningful.append(sentence)
@@ -462,6 +459,7 @@ Summary:"""
                     summary += '.'
                 return summary
             
+            # Ultimate fallback
             words = transcript.split()[:40]
             return f"{' '.join(words)}..."
             
@@ -519,10 +517,11 @@ Tags (comma-separated):"""
         summary: str
     ) -> str:
         """Create Pelican front matter YAML - WITHOUT QUOTES around title."""
+        # Ensure title doesn't have quotes
         title = title.strip('"').strip("'")
         
         front_matter_lines = [
-            f"title: {title}",
+            f"title: {title}",  # No quotes!
             f"date: {date}",
             f"author: {author}",
             f"category: {category}",
