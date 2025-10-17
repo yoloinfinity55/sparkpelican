@@ -58,22 +58,34 @@ class AIGenerator:
         video_id: str,
         custom_title: Optional[str] = None,
         category: str = "General",
-        tags: List[str] = None
+        tags: List[str] = None,
+        youtube_title: Optional[str] = None,
+        youtube_thumbnail: Optional[str] = None,
+        language: str = "en"
     ) -> Dict[str, str]:
         """Generate a complete blog post from YouTube transcript."""
         try:
             # Generate different parts concurrently
-            title_task = self._generate_title_improved(transcript, custom_title)
+            # Use YouTube title if provided, otherwise generate one
+            if youtube_title:
+                title = self._clean_title(youtube_title)
+            else:
+                title = await self._generate_title_improved(transcript, custom_title)
+
             content_task = self._generate_content_improved(transcript, video_id)
             summary_task = self._generate_summary_improved(transcript)
             tags_task = self._generate_tags_improved(transcript, tags or [])
 
-            title, content, summary, generated_tags = await asyncio.gather(
-                title_task, content_task, summary_task, tags_task
+            content, summary, generated_tags = await asyncio.gather(
+                content_task, summary_task, tags_task
             )
 
             # Create post slug
             post_slug = slugify(title)
+
+            # Generate filename with date prefix (YYYY-MM-DD-slug.md)
+            date_prefix = datetime.now().strftime("%Y-%m-%d")
+            filename = f"{date_prefix}-{post_slug}.md"
 
             # Generate front matter (without quotes around title)
             front_matter = self._create_front_matter(
@@ -84,7 +96,8 @@ class AIGenerator:
                 tags=generated_tags,
                 slug=post_slug,
                 youtube_id=video_id,
-                summary=summary
+                summary=summary,
+                youtube_thumbnail=youtube_thumbnail
             )
 
             # Combine into full markdown
@@ -99,7 +112,7 @@ class AIGenerator:
                 "category": category,
                 "tags": generated_tags,
                 "summary": summary,
-                "filename": f"{post_slug}.md"
+                "filename": filename
             }
 
         except Exception as e:
@@ -306,15 +319,19 @@ Main topics (comma-separated, 5 words max):"""
             return f"Guide to {key_topics[:40]}"
         return "Essential Video Content Guide"
 
-    async def _generate_content_improved(self, transcript: str, video_id: str) -> str:
+    async def _generate_content_improved(self, transcript: str, video_id: str, language: str = "en") -> str:
         """
-        IMPROVED: Generate concise, well-structured blog content.
+        IMPROVED: Generate concise, well-structured blog content in specified language.
         """
-        
+        # Get language-specific instructions
+        language_instructions = self._get_language_instructions(language)
+
         transcript_words = len(transcript.split())
         target_words = int(transcript_words * 0.5)
-        
+
         prompt = f"""Transform this YouTube video transcript into a professional blog post.
+
+{language_instructions}
 
 CRITICAL REQUIREMENTS:
 - Length: Approximately {target_words} words (50% of original)
@@ -399,7 +416,7 @@ Blog Post (markdown format):"""
         """Generate fallback content when AI fails."""
         words = transcript.split()
         content_length = min(len(words) // 2, 500)
-        
+
         content = f"""## Introduction
 
 This content is based on a YouTube video exploring important concepts and insights.
@@ -411,8 +428,61 @@ This content is based on a YouTube video exploring important concepts and insigh
 ## Conclusion
 
 For the complete discussion, watch the [original video](https://www.youtube.com/watch?v={video_id})."""
-        
+
         return content
+
+    def _get_language_instructions(self, language: str) -> str:
+        """Get language-specific instructions for content generation."""
+        language_map = {
+            'en': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in English
+- Use professional, clear English suitable for international readers
+- Maintain formal tone appropriate for blog content""",
+
+            'zh-cn': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in Chinese (Simplified Chinese)
+- Use professional, clear Chinese suitable for readers
+- Maintain formal tone appropriate for blog content
+- Use proper Chinese grammar and punctuation""",
+
+            'zh-tw': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in Traditional Chinese
+- Use professional, clear Traditional Chinese suitable for readers
+- Maintain formal tone appropriate for blog content
+- Use proper Traditional Chinese grammar and punctuation""",
+
+            'ko': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in Korean
+- Use professional, clear Korean suitable for readers
+- Maintain formal tone appropriate for blog content
+- Use proper Korean grammar and punctuation""",
+
+            'ja': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in Japanese
+- Use professional, clear Japanese suitable for readers
+- Maintain formal tone appropriate for blog content
+- Use proper Japanese grammar and punctuation""",
+
+            'es': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in Spanish
+- Use professional, clear Spanish suitable for readers
+- Maintain formal tone appropriate for blog content
+- Use proper Spanish grammar and punctuation""",
+
+            'fr': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in French
+- Use professional, clear French suitable for readers
+- Maintain formal tone appropriate for blog content
+- Use proper French grammar and punctuation""",
+
+            'de': """LANGUAGE REQUIREMENTS:
+- Write the entire blog post in German
+- Use professional, clear German suitable for readers
+- Maintain formal tone appropriate for blog content
+- Use proper German grammar and punctuation"""
+        }
+
+        return language_map.get(language, language_map['en'])
 
     async def _generate_summary_improved(self, transcript: str) -> str:
         """IMPROVED: Generate concise, engaging 2-3 sentence summary."""
@@ -516,11 +586,12 @@ Tags (comma-separated):"""
         tags: List[str],
         slug: str,
         youtube_id: str,
-        summary: str
+        summary: str,
+        youtube_thumbnail: Optional[str] = None
     ) -> str:
         """Create Pelican front matter YAML - WITHOUT QUOTES around title."""
         title = title.strip('"').strip("'")
-        
+
         front_matter_lines = [
             f"title: {title}",
             f"date: {date}",
@@ -531,6 +602,11 @@ Tags (comma-separated):"""
             f"youtube_id: {youtube_id}",
             f"summary: {summary}"
         ]
+
+        # Add image field if YouTube thumbnail is provided
+        if youtube_thumbnail:
+            front_matter_lines.append(f"image: {youtube_thumbnail}")
+
         return '\n'.join(front_matter_lines)
 
 

@@ -20,7 +20,7 @@ from pathlib import Path
 # Add the myapp directory to the Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'myapp'))
 
-from youtube_transcript import get_transcript_async, extract_video_id
+from youtube_transcript import get_transcript_async, extract_video_id, get_video_title_and_thumbnail, detect_transcript_language, download_youtube_thumbnail
 from ai_generator import generate_post_async
 from pelican_integrator import save_markdown_post
 
@@ -38,18 +38,34 @@ async def process_youtube_video(youtube_url: str):
         transcript = await get_transcript_async(youtube_url)
         print(f"✅ Transcript extracted ({len(transcript)} characters)")
 
-        # Step 3: Generate AI content
+        # Step 3: Download video thumbnail locally
+        print("📷 Downloading thumbnail...")
+        youtube_title, local_thumbnail_path = await download_youtube_thumbnail(youtube_url)
+        if youtube_title:
+            print(f"📺 Video title: {youtube_title}")
+        if local_thumbnail_path:
+            print(f"🖼️  Thumbnail saved to: {local_thumbnail_path}")
+
+        # Step 4: Detect transcript language
+        print("🌐 Detecting language...")
+        detected_language = await detect_transcript_language(transcript)
+        print(f"🗣️  Detected language: {detected_language}")
+
+        # Step 5: Generate AI content
         print("🤖 Generating blog post...")
         post_data = await generate_post_async(
             transcript=transcript,
             video_id=video_id,
             custom_title=None,
             category="General",
-            tags=["youtube", "video", "content"]
+            tags=["youtube", "video", "content"],
+            youtube_title=youtube_title,
+            youtube_thumbnail=local_thumbnail_path,
+            language=detected_language
         )
         print("✅ Blog post generated")
 
-        # Step 4: Save to content directory
+        # Step 6: Save to content directory
         content_dir = Path("content/posts")
         content_dir.mkdir(parents=True, exist_ok=True)
 

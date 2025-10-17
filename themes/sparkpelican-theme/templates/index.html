@@ -5,7 +5,7 @@
     {% for article in articles_page.object_list %}
     <article class="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
         <div class="p-4">
-            <img src='{{ (article.image | raw_url) if article.image else "https://picsum.photos/seed/" ~ article.slug ~ "/800/600" }}' alt='Cover image for {{ article.title | e }}' class="rounded-lg w-full h-auto object-contain mx-auto">
+            <img src='{{ article.image if article.image else "https://picsum.photos/seed/" ~ article.slug ~ "/800/600" }}' alt='Cover image for {{ article.title | e }}' class="rounded-lg w-full h-auto object-contain mx-auto">
         </div>
         <div class="p-6 flex-grow">
             <h2 class="text-xl font-bold mb-3 line-clamp-2">

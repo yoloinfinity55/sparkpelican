@@ -4,11 +4,16 @@
 
 {% block content %}
 <article class="bg-white rounded-lg shadow-md p-8">
-    {% if article.image %}
+    {% if article.youtube_id %}
+    <!-- YouTube video ID available - embed video instead of image -->
+    <div class="video-container mb-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/{{ article.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    {% elif article.image %}
         {% if article.image.startswith('https://i.ytimg.com') or article.image.startswith('https://img.youtube.com') %}
         <!-- YouTube thumbnail detected - embed video instead of showing image -->
         <div class="video-container mb-8" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/{{ article.image | youtube_video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/{{ article.youtube_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         {% else %}
         <div class="m-8 mt-8">
