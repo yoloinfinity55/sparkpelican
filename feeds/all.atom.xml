@@ -1,5 +1,742 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>sparkpelican</title><link href="https://yoloinfinity55.github.io/sparkpelican/" rel="alternate"/><link href="https://yoloinfinity55.github.io/sparkpelican/feeds/all.atom.xml" rel="self"/><id>https://yoloinfinity55.github.io/sparkpelican/</id><updated>2025-10-15T06:37:00+00:00</updated><entry><title>Complete Guide to Using SparkPelican: AI-Powered Blog Post Generation</title><link href="https://yoloinfinity55.github.io/sparkpelican/complete-guide-to-using-sparkpelican-ai-powered-blog-post-generation.html" rel="alternate"/><published>2025-10-15T06:37:00+00:00</published><updated>2025-10-15T06:37:00+00:00</updated><author><name>Infinity Spark</name></author><id>tag:yoloinfinity55.github.io,2025-10-15:/sparkpelican/complete-guide-to-using-sparkpelican-ai-powered-blog-post-generation.html</id><summary type="html">&lt;p&gt;Learn how to use SparkPelican to automatically generate blog posts from YouTube videos using AI. This comprehensive guide covers installation, configuration, and all usage methods.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>sparkpelican</title><link href="https://yoloinfinity55.github.io/sparkpelican/" rel="alternate"/><link href="https://yoloinfinity55.github.io/sparkpelican/feeds/all.atom.xml" rel="self"/><id>https://yoloinfinity55.github.io/sparkpelican/</id><updated>2025-10-17T11:00:00+00:00</updated><entry><title>Complete Guide - How to Deploy SparkPelican to GitHub Pages</title><link href="https://yoloinfinity55.github.io/sparkpelican/complete-guide-how-to-deploy-sparkpelican-to-github-pages.html" rel="alternate"/><published>2025-10-17T11:00:00+00:00</published><updated>2025-10-17T11:00:00+00:00</updated><author><name>Infinity Spark</name></author><id>tag:yoloinfinity55.github.io,2025-10-17:/sparkpelican/complete-guide-how-to-deploy-sparkpelican-to-github-pages.html</id><summary type="html">&lt;p&gt;Learn how to deploy your SparkPelican blog to GitHub Pages with this comprehensive step-by-step guide. Covers initial setup, configuration, deployment process, and troubleshooting.
+author: "Infinity Spark"
+readingTime: "10 min read"
+tags: ["Deployment", "GitHub Pages", "Pelican", "Tutorial", "DevOps"]&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Complete Guide: How to Deploy SparkPelican to GitHub Pages&lt;/h1&gt;
+&lt;p&gt;Deploying your SparkPelican blog …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Learn how to deploy your SparkPelican blog to GitHub Pages with this comprehensive step-by-step guide. Covers initial setup, configuration, deployment process, and troubleshooting.
+author: "Infinity Spark"
+readingTime: "10 min read"
+tags: ["Deployment", "GitHub Pages", "Pelican", "Tutorial", "DevOps"]&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Complete Guide: How to Deploy SparkPelican to GitHub Pages&lt;/h1&gt;
+&lt;p&gt;Deploying your SparkPelican blog to GitHub Pages is straightforward and automated. This guide covers everything from initial repository setup to ongoing deployment workflows, ensuring your AI-powered blog is live and accessible to the world.&lt;/p&gt;
+&lt;h2&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;Before deploying to GitHub Pages, ensure you have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub account&lt;/strong&gt; with a repository for your blog&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git&lt;/strong&gt; installed and configured on your system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GitHub CLI&lt;/strong&gt; (&lt;code&gt;gh&lt;/code&gt;) installed for seamless deployment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SparkPelican project&lt;/strong&gt; set up and working locally&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;All dependencies installed&lt;/strong&gt; (&lt;code&gt;pip install -r requirements.txt&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Method 1: Initial Repository Setup&lt;/h2&gt;
+&lt;h3&gt;Step 1: Create a GitHub Repository&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Go to GitHub.com&lt;/strong&gt; and sign in to your account&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Click "New repository"&lt;/strong&gt; or use the "+" icon in the top right&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Choose a repository name&lt;/strong&gt; (e.g., &lt;code&gt;yourusername.github.io&lt;/code&gt; for personal pages)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Make it public&lt;/strong&gt; (required for free GitHub Pages)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Don't initialize&lt;/strong&gt; with README, .gitignore, or license (you already have these)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Click "Create repository"&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 2: Connect Local Repository to GitHub&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Navigate to your SparkPelican project&lt;/span&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/path/to/your/sparkpelican
+
+&lt;span class="c1"&gt;# Add GitHub repository as remote (replace with your actual repo URL)&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;remote&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;origin&lt;span class="w"&gt; &lt;/span&gt;https://github.com/yourusername/your-repo-name.git
+
+&lt;span class="c1"&gt;# Verify remote was added&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;remote&lt;span class="w"&gt; &lt;/span&gt;-v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 3: Push Your Code to GitHub&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Add all files to git (if not already done)&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;.
+
+&lt;span class="c1"&gt;# Commit your changes&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;commit&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Initial commit: Add SparkPelican blog&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Push to GitHub&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;push&lt;span class="w"&gt; &lt;/span&gt;-u&lt;span class="w"&gt; &lt;/span&gt;origin&lt;span class="w"&gt; &lt;/span&gt;main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Method 2: Deploy to GitHub Pages&lt;/h2&gt;
+&lt;h3&gt;Step 1: Install GitHub CLI (if not installed)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# On macOS&lt;/span&gt;
+brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;gh
+
+&lt;span class="c1"&gt;# On Ubuntu/Debian&lt;/span&gt;
+curl&lt;span class="w"&gt; &lt;/span&gt;-fsSL&lt;span class="w"&gt; &lt;/span&gt;https://cli.github.com/packages/githubcli-archive-keyring.gpg&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;dd&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/share/keyrings/githubcli-archive-keyring.gpg
+&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;deb [arch=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dpme&lt;span class="w"&gt; &lt;/span&gt;-print-architecture&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt; signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;tee&lt;span class="w"&gt; &lt;/span&gt;/etc/apt/sources.list.d/githubcli.list&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;/dev/null
+sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;update
+sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;gh
+
+&lt;span class="c1"&gt;# On Windows (using winget)&lt;/span&gt;
+winget&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;--id&lt;span class="w"&gt; &lt;/span&gt;GitHub.cli
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 2: Authenticate GitHub CLI&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Authenticate with GitHub&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;auth&lt;span class="w"&gt; &lt;/span&gt;login
+
+&lt;span class="c1"&gt;# Follow the prompts:&lt;/span&gt;
+&lt;span class="c1"&gt;# - Choose &amp;quot;GitHub.com&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;# - Choose &amp;quot;HTTPS&amp;quot; as your preferred protocol&lt;/span&gt;
+&lt;span class="c1"&gt;# - Sign in with your GitHub credentials&lt;/span&gt;
+&lt;span class="c1"&gt;# - Authorize the GitHub CLI when prompted&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 3: Deploy Using Invoke Task&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Deploy to GitHub Pages (single command!)&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;gh-pages
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;What this command does:&lt;/strong&gt;
+1. &lt;strong&gt;Builds production version&lt;/strong&gt; using &lt;code&gt;publishconf.py&lt;/code&gt; settings
+2. &lt;strong&gt;Validates all titles&lt;/strong&gt; to ensure compatibility
+3. &lt;strong&gt;Generates static site&lt;/strong&gt; in the output directory
+4. &lt;strong&gt;Imports to gh-pages branch&lt;/strong&gt; using ghp-import
+5. &lt;strong&gt;Pushes to GitHub&lt;/strong&gt; automatically&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Expected output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;🔍&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Validating&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;blog&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;post&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;titles&lt;/span&gt;...
+✅&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;All&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;titles&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;are&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;properly&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;formatted&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+✅&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;All&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;validations&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;passed&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+🚀&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Pelican&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Blog&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Title&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Validation&lt;/span&gt;
+&lt;span class="o"&gt;========================================&lt;/span&gt;
+✅&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;All&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;titles&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;are&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;properly&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;formatted&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+⠋&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Generating&lt;/span&gt;...
+&lt;span class="nv"&gt;Done&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Processed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;27&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;articles&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;drafts&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;hidden&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;articles&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pages&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;hidden&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pages&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;.&lt;span class="mi"&gt;45&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;seconds&lt;/span&gt;.
+✅&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Site&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;built&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;successfully&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;production&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;
+🚀&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Deploying&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;GitHub&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Pages&lt;/span&gt;...
+✅&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Deployment&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;completed&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;Your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;site&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;live&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;at&lt;/span&gt;:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;https&lt;/span&gt;:&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="nv"&gt;yourusername&lt;/span&gt;.&lt;span class="nv"&gt;github&lt;/span&gt;.&lt;span class="nv"&gt;io&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Method 3: Manual Deployment (Alternative)&lt;/h2&gt;
+&lt;p&gt;If you prefer more control over the deployment process:&lt;/p&gt;
+&lt;h3&gt;Step 1: Build Production Version&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Build using production settings&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;preview
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 2: Install ghp-import (if not installed)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ghp-import
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 3: Import and Push to GitHub Pages&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Import output directory to gh-pages branch&lt;/span&gt;
+ghp-import&lt;span class="w"&gt; &lt;/span&gt;-b&lt;span class="w"&gt; &lt;/span&gt;gh-pages&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Publish site on &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date&lt;span class="w"&gt; &lt;/span&gt;+%Y-%m-%d&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;output&lt;span class="w"&gt; &lt;/span&gt;--no-jekyll&lt;span class="w"&gt; &lt;/span&gt;-p
+
+&lt;span class="c1"&gt;# Alternative manual method:&lt;/span&gt;
+&lt;span class="c1"&gt;# ghp-import -b gh-pages -m &amp;quot;Update site&amp;quot; output --no-jekyll&lt;/span&gt;
+&lt;span class="c1"&gt;# git push origin gh-pages&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Method 4: Automated Deployment Workflow&lt;/h2&gt;
+&lt;h3&gt;Step 1: Create GitHub Actions Workflow&lt;/h3&gt;
+&lt;p&gt;Create &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Deploy to GitHub Pages&lt;/span&gt;
+
+&lt;span class="nt"&gt;on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;push&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;branches&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;[&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;main&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;workflow_dispatch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+&lt;span class="nt"&gt;permissions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;contents&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;read&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;write&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;id-token&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;write&lt;/span&gt;
+
+&lt;span class="nt"&gt;concurrency&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;group&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pages&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;cancel-in-progress&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+
+&lt;span class="nt"&gt;jobs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;runs-on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ubuntu-latest&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;steps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Checkout&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/checkout@v4&lt;/span&gt;
+
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Setup Python&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/setup-python@v4&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;with&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nt"&gt;python-version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;3.9&amp;#39;&lt;/span&gt;
+
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Install dependencies&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;|&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="no"&gt;python -m pip install --upgrade pip&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="no"&gt;pip install -r requirements.txt&lt;/span&gt;
+
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Build site&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;|&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="no"&gt;invoke preview&lt;/span&gt;
+
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Setup Pages&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/configure-pages@v4&lt;/span&gt;
+
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Upload artifact&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/upload-pages-artifact@v3&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;with&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nt"&gt;path&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;./output&amp;#39;&lt;/span&gt;
+
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;deploy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;environment&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;github-pages&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;url&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;${{ steps.deployment.outputs.page_url }}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;runs-on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ubuntu-latest&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;needs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;build&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;steps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Deploy to GitHub Pages&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;deployment&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/deploy-pages@v4&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 2: Enable GitHub Pages&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Go to your repository settings&lt;/strong&gt; on GitHub&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Navigate to "Pages"&lt;/strong&gt; in the left sidebar&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Under "Source"&lt;/strong&gt;, select "GitHub Actions"&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Save&lt;/strong&gt; the settings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 3: Trigger Deployment&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Push any changes to trigger deployment&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;.
+git&lt;span class="w"&gt; &lt;/span&gt;commit&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Trigger GitHub Pages deployment&amp;quot;&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;push&lt;span class="w"&gt; &lt;/span&gt;origin&lt;span class="w"&gt; &lt;/span&gt;main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Configuration Settings&lt;/h2&gt;
+&lt;h3&gt;Production Configuration (&lt;code&gt;publishconf.py&lt;/code&gt;)&lt;/h3&gt;
+&lt;p&gt;Ensure your &lt;code&gt;publishconf.py&lt;/code&gt; has the correct settings:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Site URL for production&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;https://yourusername.github.io&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Disable feeds for GitHub Pages (optional)&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Enable relative URLs (important for GitHub Pages)&lt;/span&gt;
+&lt;span class="n"&gt;RELATIVE_URLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Repository Settings&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;For User/Organization Pages:&lt;/strong&gt;
+- Repository name: &lt;code&gt;username.github.io&lt;/code&gt;
+- Site URL: &lt;code&gt;https://username.github.io&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For Project Pages:&lt;/strong&gt;
+- Repository name: &lt;code&gt;any-name&lt;/code&gt;
+- Site URL: &lt;code&gt;https://username.github.io/repository-name&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Troubleshooting Common Issues&lt;/h2&gt;
+&lt;h3&gt;Problem: "gh command not found"&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Install GitHub CLI&lt;/span&gt;
+&lt;span class="c1"&gt;# macOS&lt;/span&gt;
+brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;gh
+
+&lt;span class="c1"&gt;# Ubuntu/Debian&lt;/span&gt;
+sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;gh
+
+&lt;span class="c1"&gt;# Then authenticate&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;auth&lt;span class="w"&gt; &lt;/span&gt;login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Problem: "Permission denied" or "Could not read from remote repository"&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Check if you&amp;#39;re authenticated&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;auth&lt;span class="w"&gt; &lt;/span&gt;status
+
+&lt;span class="c1"&gt;# Re-authenticate if needed&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;auth&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;logout&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;auth&lt;span class="w"&gt; &lt;/span&gt;login
+
+&lt;span class="c1"&gt;# Check remote URL&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;remote&lt;span class="w"&gt; &lt;/span&gt;-v
+
+&lt;span class="c1"&gt;# Fix remote URL if incorrect&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;remote&lt;span class="w"&gt; &lt;/span&gt;set-url&lt;span class="w"&gt; &lt;/span&gt;origin&lt;span class="w"&gt; &lt;/span&gt;https://github.com/username/repo.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Problem: Site not loading after deployment&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Common causes:&lt;/strong&gt;
+1. &lt;strong&gt;Build errors&lt;/strong&gt; - Check the build output for errors
+2. &lt;strong&gt;Wrong branch&lt;/strong&gt; - Ensure you're deploying to &lt;code&gt;gh-pages&lt;/code&gt;
+3. &lt;strong&gt;Site URL mismatch&lt;/strong&gt; - Verify &lt;code&gt;SITEURL&lt;/code&gt; in &lt;code&gt;publishconf.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Debugging steps:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Check build output&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;preview
+
+&lt;span class="c1"&gt;# Verify generated files&lt;/span&gt;
+ls&lt;span class="w"&gt; &lt;/span&gt;-la&lt;span class="w"&gt; &lt;/span&gt;output/
+
+&lt;span class="c1"&gt;# Check if index.html exists&lt;/span&gt;
+ls&lt;span class="w"&gt; &lt;/span&gt;output/index.html
+
+&lt;span class="c1"&gt;# Validate HTML (optional)&lt;/span&gt;
+curl&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://yourusername.github.io&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;head&lt;span class="w"&gt; &lt;/span&gt;-20
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Problem: "Repository not found" or "Access denied"&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Verify repository exists and is accessible&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;repo&lt;span class="w"&gt; &lt;/span&gt;view&lt;span class="w"&gt; &lt;/span&gt;yourusername/your-repo-name
+
+&lt;span class="c1"&gt;# Check if repository is public&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;repo&lt;span class="w"&gt; &lt;/span&gt;edit&lt;span class="w"&gt; &lt;/span&gt;yourusername/your-repo-name&lt;span class="w"&gt; &lt;/span&gt;--visibility&lt;span class="w"&gt; &lt;/span&gt;public
+
+&lt;span class="c1"&gt;# Verify you have admin access to the repository&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Problem: CSS/JavaScript not loading&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Solution:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Ensure RELATIVE_URLS is set in publishconf.py&lt;/span&gt;
+&lt;span class="nv"&gt;RELATIVE_URLS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;True
+
+&lt;span class="c1"&gt;# Rebuild and redeploy&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;preview
+invoke&lt;span class="w"&gt; &lt;/span&gt;gh-pages
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Best Practices&lt;/h2&gt;
+&lt;h3&gt;Deployment Workflow&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Always test locally&lt;/strong&gt; before deploying&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use production settings&lt;/strong&gt; (&lt;code&gt;invoke preview&lt;/code&gt;) for deployment builds&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validate titles&lt;/strong&gt; before each deployment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Check file sizes&lt;/strong&gt; - GitHub Pages has a 1GB limit&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitor deployment status&lt;/strong&gt; in repository settings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Repository Organization&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;sparkpelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Blog&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Pelican&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;myapp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;FastAPI&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;application&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;scripts&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Utility&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;scripts&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;GitHub&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;workflows&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;optional&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;output&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Generated&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;publishconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Security Considerations&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Keep API keys&lt;/strong&gt; out of version control&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use environment variables&lt;/strong&gt; for sensitive data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regularly update dependencies&lt;/strong&gt; for security patches&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitor access logs&lt;/strong&gt; if needed&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Advanced Deployment Options&lt;/h2&gt;
+&lt;h3&gt;Custom Domain Setup&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Step 1: Buy a domain&lt;/strong&gt; from a registrar&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 2: Add CNAME file&lt;/strong&gt; to your repository:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;yourdomain.com&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;content/pages/CNAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 3: Configure DNS:&lt;/strong&gt;
+- &lt;strong&gt;A Record:&lt;/strong&gt; &lt;code&gt;185.199.108.153&lt;/code&gt;
+- &lt;strong&gt;A Record:&lt;/strong&gt; &lt;code&gt;185.199.109.153&lt;/code&gt;
+- &lt;strong&gt;A Record:&lt;/strong&gt; &lt;code&gt;185.199.110.153&lt;/code&gt;
+- &lt;strong&gt;A Record:&lt;/strong&gt; &lt;code&gt;185.199.111.153&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4: Enable custom domain in GitHub:&lt;/strong&gt;
+1. Go to repository Settings → Pages
+2. Under "Custom domain", enter &lt;code&gt;yourdomain.com&lt;/code&gt;
+3. Click "Save"&lt;/p&gt;
+&lt;h3&gt;Automated Deployment with GitHub Actions&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Benefits:&lt;/strong&gt;
+- &lt;strong&gt;Automatic deployment&lt;/strong&gt; on every push to main
+- &lt;strong&gt;No local dependencies&lt;/strong&gt; required
+- &lt;strong&gt;Consistent environment&lt;/strong&gt; for builds
+- &lt;strong&gt;Easy rollback&lt;/strong&gt; capabilities&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Setup:&lt;/strong&gt;
+1. Create &lt;code&gt;.github/workflows/deploy.yml&lt;/code&gt; (see Method 4 above)
+2. Push to main branch to trigger deployment
+3. Monitor progress in Actions tab&lt;/p&gt;
+&lt;h2&gt;Monitoring and Maintenance&lt;/h2&gt;
+&lt;h3&gt;Check Deployment Status&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Check GitHub Pages status&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;repo&lt;span class="w"&gt; &lt;/span&gt;view&lt;span class="w"&gt; &lt;/span&gt;yourusername/your-repo-name&lt;span class="w"&gt; &lt;/span&gt;--web
+
+&lt;span class="c1"&gt;# Or visit repository Settings → Pages&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;View Site Analytics&lt;/h3&gt;
+&lt;p&gt;GitHub Pages doesn't provide built-in analytics, but you can:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Add Google Analytics&lt;/strong&gt; to your Pelican theme&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use GitHub's traffic insights&lt;/strong&gt; (for public repositories)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitor with external services&lt;/strong&gt; like Cloudflare Analytics&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Regular Maintenance Tasks&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Update dependencies&lt;/strong&gt; monthly:
+   &lt;code&gt;bash
+   pip install -r requirements.txt --upgrade
+   npm update&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Check for broken links&lt;/strong&gt; periodically:
+   ```bash
+   # Install link checker
+   pip install linkchecker&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;# Check your live site
+   linkchecker https://yourusername.github.io
+   ```&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Monitor site performance&lt;/strong&gt; using tools like:&lt;/li&gt;
+&lt;li&gt;Google PageSpeed Insights&lt;/li&gt;
+&lt;li&gt;GTmetrix&lt;/li&gt;
+&lt;li&gt;WebPageTest&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Quick Reference Commands&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# One-command deployment&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;gh-pages
+
+&lt;span class="c1"&gt;# Build only (for testing)&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;preview
+
+&lt;span class="c1"&gt;# Check deployment status&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;repo&lt;span class="w"&gt; &lt;/span&gt;view&lt;span class="w"&gt; &lt;/span&gt;yourusername/repo&lt;span class="w"&gt; &lt;/span&gt;--web
+
+&lt;span class="c1"&gt;# View site in browser&lt;/span&gt;
+gh&lt;span class="w"&gt; &lt;/span&gt;repo&lt;span class="w"&gt; &lt;/span&gt;view&lt;span class="w"&gt; &lt;/span&gt;yourusername/repo&lt;span class="w"&gt; &lt;/span&gt;--web
+
+&lt;span class="c1"&gt;# Manual deployment (alternative)&lt;/span&gt;
+ghp-import&lt;span class="w"&gt; &lt;/span&gt;-b&lt;span class="w"&gt; &lt;/span&gt;gh-pages&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Update site&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;output&lt;span class="w"&gt; &lt;/span&gt;--no-jekyll&lt;span class="w"&gt; &lt;/span&gt;-p
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Getting Help&lt;/h2&gt;
+&lt;h3&gt;Common Issues and Solutions&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Build errors:&lt;/strong&gt; Check Pelican output for specific error messages&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Theme issues:&lt;/strong&gt; Verify theme files are properly configured&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Asset loading:&lt;/strong&gt; Ensure &lt;code&gt;RELATIVE_URLS = True&lt;/code&gt; in production config&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom domain:&lt;/strong&gt; Check DNS settings and GitHub configuration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Documentation Links&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub Pages Documentation:&lt;/strong&gt; &lt;a href="https://docs.github.com/en/pages"&gt;Official Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pelican Deployment:&lt;/strong&gt; &lt;a href="https://docs.getpelican.com/en/stable/deploy.html"&gt;Deployment Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ghp-import:&lt;/strong&gt; &lt;a href="https://github.com/cwjohan/ghp-import"&gt;GitHub Tool&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Community Support&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GitHub Community:&lt;/strong&gt; &lt;a href="https://github.community"&gt;Discussions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pelican Community:&lt;/strong&gt; &lt;a href="https://groups.google.com/forum/#!forum/pelican-users"&gt;Pelican Forum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stack Overflow:&lt;/strong&gt; Tag &lt;code&gt;github-pages&lt;/code&gt; and &lt;code&gt;pelican&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Deploying SparkPelican to GitHub Pages is a seamless process that takes your AI-powered blog from local development to live production in minutes. The &lt;code&gt;invoke gh-pages&lt;/code&gt; command handles everything automatically, from building your site to pushing it live.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key advantages of this setup:&lt;/strong&gt;
+- &lt;strong&gt;Free hosting&lt;/strong&gt; on GitHub Pages
+- &lt;strong&gt;Automatic deployments&lt;/strong&gt; with one command
+- &lt;strong&gt;Custom domains&lt;/strong&gt; supported
+- &lt;strong&gt;SSL certificate&lt;/strong&gt; included automatically
+- &lt;strong&gt;Global CDN&lt;/strong&gt; for fast loading worldwide&lt;/p&gt;
+&lt;p&gt;Start with the simple &lt;code&gt;invoke gh-pages&lt;/code&gt; command, and your SparkPelican blog will be live and accessible to the world!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This deployment guide was created using SparkPelican's AI-powered content generation system. For more information about SparkPelican, visit the &lt;a href="https://github.com/yoloinfinity55/sparkpelican"&gt;GitHub repository&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><category term="posts"/></entry><entry><title>Complete Guide - How to Create New Blog Posts in SparkPelican</title><link href="https://yoloinfinity55.github.io/sparkpelican/complete-guide-how-to-create-new-blog-posts-in-sparkpelican.html" rel="alternate"/><published>2025-10-17T10:00:00+00:00</published><updated>2025-10-17T10:00:00+00:00</updated><author><name>Infinity Spark</name></author><id>tag:yoloinfinity55.github.io,2025-10-17:/sparkpelican/complete-guide-how-to-create-new-blog-posts-in-sparkpelican.html</id><summary type="html">&lt;p&gt;Learn all the methods for creating blog posts in SparkPelican, from simple command-line scripts to API integration and manual creation. This comprehensive guide covers every approach.
+author: "Infinity Spark"
+readingTime: "8 min read"
+tags: ["Tutorial", "Blogging", "Pelican", "Content Creation", "Guide"]&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Complete Guide: How to Create New Blog Posts in SparkPelican …&lt;/h1&gt;</summary><content type="html">&lt;p&gt;Learn all the methods for creating blog posts in SparkPelican, from simple command-line scripts to API integration and manual creation. This comprehensive guide covers every approach.
+author: "Infinity Spark"
+readingTime: "8 min read"
+tags: ["Tutorial", "Blogging", "Pelican", "Content Creation", "Guide"]&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Complete Guide: How to Create New Blog Posts in SparkPelican&lt;/h1&gt;
+&lt;p&gt;Creating blog posts in SparkPelican is straightforward and flexible, with multiple methods to suit different workflows. Whether you prefer simple command-line scripts, powerful task automation, API integration, or manual control, SparkPelican has you covered.&lt;/p&gt;
+&lt;h2&gt;Method 1: Command Line Script (Easiest)&lt;/h2&gt;
+&lt;h3&gt;Step 1: Basic Usage&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;python&lt;span class="w"&gt; &lt;/span&gt;process_youtube_video.py&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://www.youtube.com/watch?v=VIDEO_ID&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 2: Verify the post was created&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Check &lt;code&gt;content/posts/&lt;/code&gt; directory for the new &lt;code&gt;.md&lt;/code&gt; file&lt;/li&gt;
+&lt;li&gt;The file will have front matter with title, date, author, and tags&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Example output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;🔄 Processing YouTube video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+📹 Video ID: dQw4w9WgXcQ
+📝 Extracting transcript...
+✅ Transcript extracted (2847 characters)
+🤖 Generating blog post...
+✅ Blog post generated
+💾 Post saved to: 2025-10-17-never-gonna-give-you-up.md
+🎉 Video processing completed successfully!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Method 2: Invoke Tasks (Recommended)&lt;/h2&gt;
+&lt;h3&gt;Step 1: Generate post with custom options&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;api-generate&lt;span class="w"&gt; &lt;/span&gt;--youtube-url&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://www.youtube.com/watch?v=VIDEO_ID&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--title&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Custom Title&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--category&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Technology&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--tags&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AI,Tutorial&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Available parameters:&lt;/strong&gt;
+- &lt;code&gt;--youtube-url&lt;/code&gt;: The YouTube video URL (required)
+- &lt;code&gt;--title&lt;/code&gt;: Custom title for the post (optional)
+- &lt;code&gt;--category&lt;/code&gt;: Post category (default: "General")
+- &lt;code&gt;--tags&lt;/code&gt;: Comma-separated list of tags (optional)&lt;/p&gt;
+&lt;h3&gt;Step 2: Build the site to include your new post&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 3: Preview your changes locally&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Example with custom options:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;api-generate&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--youtube-url&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://www.youtube.com/watch?v=VIDEO_ID&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--title&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Advanced AI Tutorial&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--category&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Technology&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;--tags&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AI,Machine Learning,Python&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Method 3: Manual Creation (Full Control)&lt;/h2&gt;
+&lt;h3&gt;Step 1: Create a new markdown file&lt;/h3&gt;
+&lt;p&gt;Create a file in &lt;code&gt;content/posts/&lt;/code&gt; with the naming convention: &lt;code&gt;YYYY-MM-DD-post-title.md&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Example filename:&lt;/strong&gt; &lt;code&gt;2025-10-17-my-awesome-post.md&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Step 2: Add front matter metadata&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;---
+title: Your Post Title Here
+date: 2025-10-17T10:00:00.000Z
+layout: post.njk
+description: Brief description of your post content
+author: &amp;quot;Your Name&amp;quot;
+readingTime: &amp;quot;5 min read&amp;quot;
+&lt;span class="gu"&gt;tags: [&amp;quot;Tag1&amp;quot;, &amp;quot;Tag2&amp;quot;, &amp;quot;Tag3&amp;quot;]&lt;/span&gt;
+&lt;span class="gu"&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 3: Write your content&lt;/h3&gt;
+&lt;p&gt;Add your blog post content in markdown format below the front matter.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Required front matter fields:&lt;/strong&gt;
+- &lt;code&gt;title&lt;/code&gt;: The post title
+- &lt;code&gt;date&lt;/code&gt;: Publication date in ISO format
+- &lt;code&gt;layout&lt;/code&gt;: Always &lt;code&gt;post.njk&lt;/code&gt; for blog posts
+- &lt;code&gt;description&lt;/code&gt;: Brief summary for SEO
+- &lt;code&gt;author&lt;/code&gt;: Author name
+- &lt;code&gt;readingTime&lt;/code&gt;: Estimated reading time
+- &lt;code&gt;tags&lt;/code&gt;: Array of relevant tags&lt;/p&gt;
+&lt;h2&gt;Method 4: FastAPI Server (For Integration)&lt;/h2&gt;
+&lt;h3&gt;Step 1: Start the API server&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;api-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Server endpoints:&lt;/strong&gt;
+- Health check: &lt;code&gt;http://localhost:8001/health&lt;/code&gt;
+- Generate post: &lt;code&gt;http://localhost:8001/generate&lt;/code&gt;
+- Validate posts: &lt;code&gt;http://localhost:8001/validate&lt;/code&gt;
+- API documentation: &lt;code&gt;http://localhost:8001/docs&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Step 2: Generate post via API&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl&lt;span class="w"&gt; &lt;/span&gt;-X&lt;span class="w"&gt; &lt;/span&gt;POST&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://localhost:8001/generate&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;-H&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Content-Type: application/json&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;-d&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;{&lt;/span&gt;
+&lt;span class="s1"&gt;    &amp;quot;youtube_url&amp;quot;: &amp;quot;https://www.youtube.com/watch?v=VIDEO_ID&amp;quot;,&lt;/span&gt;
+&lt;span class="s1"&gt;    &amp;quot;custom_title&amp;quot;: &amp;quot;Optional custom title&amp;quot;,&lt;/span&gt;
+&lt;span class="s1"&gt;    &amp;quot;category&amp;quot;: &amp;quot;Technology&amp;quot;,&lt;/span&gt;
+&lt;span class="s1"&gt;    &amp;quot;tags&amp;quot;: [&amp;quot;AI&amp;quot;, &amp;quot;Tutorial&amp;quot;]&lt;/span&gt;
+&lt;span class="s1"&gt;  }&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;API response:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;message&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Post generated successfully&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;filename&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;2025-10-17-post-title.md&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Generated Post Title&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;category&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Technology&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;tags&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;AI&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Tutorial&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Quality Assurance Steps&lt;/h2&gt;
+&lt;h3&gt;Step 1: Validate titles&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;validate-titles
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;What it checks:&lt;/strong&gt;
+- No quotes in titles
+- Proper formatting
+- Consistency across all posts&lt;/p&gt;
+&lt;h3&gt;Step 2: Fix any title issues (if needed)&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;api-validate-posts&lt;span class="w"&gt; &lt;/span&gt;--fix
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 3: Validate API compatibility&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;api-validate-posts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Environment Setup&lt;/h2&gt;
+&lt;h3&gt;Step 1: Install dependencies&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt
+npm&lt;span class="w"&gt; &lt;/span&gt;install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 2: Set your Gemini API key&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;GEMINI_API_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;your_google_gemini_api_key_here&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Verify API key is set:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$GEMINI_API_KEY&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Development Workflow&lt;/h2&gt;
+&lt;h3&gt;Step 1: Generate your post&lt;/h3&gt;
+&lt;p&gt;Choose any method above to create your blog post.&lt;/p&gt;
+&lt;h3&gt;Step 2: Build and serve locally&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;build
+invoke&lt;span class="w"&gt; &lt;/span&gt;serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Step 3: Preview at http://localhost:8001&lt;/h3&gt;
+&lt;p&gt;Open your browser and navigate to &lt;code&gt;http://localhost:8001&lt;/code&gt; to see your site with the new post.&lt;/p&gt;
+&lt;h3&gt;Step 4: Make edits to your post file if needed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Edit the markdown file directly in &lt;code&gt;content/posts/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Update front matter or content as needed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 5: Rebuild to see changes&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;rebuild
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Troubleshooting Common Issues&lt;/h2&gt;
+&lt;h3&gt;Problem: "GEMINI_API_KEY not set"&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;export&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;GEMINI_API_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;your_api_key_here&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Verify it's set:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$GEMINI_API_KEY&lt;/span&gt;
+&lt;span class="c1"&gt;# Should show your API key&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Problem: Title validation errors&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;api-validate-posts&lt;span class="w"&gt; &lt;/span&gt;--fix
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Manual fix process:&lt;/strong&gt;
+1. Check the error message for specific issues
+2. Edit the problematic post files
+3. Run validation again&lt;/p&gt;
+&lt;h3&gt;Problem: Port conflicts&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Kill process using port 8001&lt;/span&gt;
+lsof&lt;span class="w"&gt; &lt;/span&gt;-ti:8001&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;xargs&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;kill&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-9
+
+&lt;span class="c1"&gt;# Or use different port&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;api-server&lt;span class="w"&gt; &lt;/span&gt;--port&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;8002&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Problem: YouTube transcript not available&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Common causes:&lt;/strong&gt;
+- Video doesn't have captions/subtitles
+- Video is private or restricted
+- Video ID is incorrect&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solutions:&lt;/strong&gt;
+- Choose videos with captions enabled
+- Verify the video URL is correct
+- Try a different video&lt;/p&gt;
+&lt;h2&gt;Best Practices&lt;/h2&gt;
+&lt;h3&gt;Content Quality&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Choose videos with clear audio&lt;/strong&gt; and good captions for better AI generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Review generated content&lt;/strong&gt; before publishing - AI isn't perfect&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use descriptive titles&lt;/strong&gt; that clearly indicate the post content&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Add relevant tags&lt;/strong&gt; to help with organization and SEO&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Performance&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Use background processing&lt;/strong&gt; for large batches of videos&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitor API rate limits&lt;/strong&gt; for Gemini API (usually 60 requests per minute)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cache transcripts&lt;/strong&gt; when possible to avoid re-processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Batch similar operations&lt;/strong&gt; together&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Workflow Efficiency&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Validate titles&lt;/strong&gt; before building to catch issues early&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test locally&lt;/strong&gt; before deploying to production&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use consistent naming&lt;/strong&gt; for post files&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Keep front matter&lt;/strong&gt; updated and accurate&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Advanced Usage&lt;/h2&gt;
+&lt;h3&gt;Batch Processing Multiple Videos&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;asyncio&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;process_youtube_video&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;process_youtube_video&lt;/span&gt;
+
+&lt;span class="n"&gt;videos&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;https://youtube.com/watch?v=video1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;https://youtube.com/watch?v=video2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;https://youtube.com/watch?v=video3&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;batch_process&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;video_url&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;videos&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;success&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;process_youtube_video&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;video_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;success&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;✅ Processed: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;video_url&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;❌ Failed: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;video_url&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;batch_process&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;Custom Post Templates&lt;/h3&gt;
+&lt;p&gt;You can modify the AI generation prompts in &lt;code&gt;myapp/ai_generator.py&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Customize the generation prompt&lt;/span&gt;
+&lt;span class="n"&gt;custom_prompt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s2"&gt;Generate a blog post based on this transcript: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;transcript&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="s2"&gt;Style: Technical tutorial&lt;/span&gt;
+&lt;span class="s2"&gt;Length: 800-1200 words&lt;/span&gt;
+&lt;span class="s2"&gt;Include code examples and practical steps&lt;/span&gt;
+&lt;span class="s2"&gt;Focus on: &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;category&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;File Structure Reference&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nx"&gt;sparkpelican&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;content&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nx"&gt;posts&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;              &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;blog&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;posts&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;live&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;here&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;YYYY&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;MM&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;DD&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nx"&gt;title&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;md&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Individual&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;post&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;files&lt;/span&gt;
+&lt;span class="err"&gt;│&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="err"&gt;└──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;py&lt;/span&gt;&lt;span class="w"&gt;             &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Site&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;configuration&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;tasks&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;py&lt;/span&gt;&lt;span class="w"&gt;                   &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Available&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;commands&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;process_youtube_video&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;py&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Simple&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;generation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;script&lt;/span&gt;
+&lt;span class="err"&gt;├──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;myapp&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="w"&gt;                     &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;FastAPI&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;application&lt;/span&gt;
+&lt;span class="err"&gt;└──&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;requirements&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;txt&lt;/span&gt;&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;Python&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;dependencies&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Quick Reference Commands&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Generate post from YouTube&lt;/span&gt;
+python&lt;span class="w"&gt; &lt;/span&gt;process_youtube_video.py&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;YOUTUBE_URL&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Generate with custom options&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;api-generate&lt;span class="w"&gt; &lt;/span&gt;--youtube-url&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;URL&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--title&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Title&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--tags&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;tag1,tag2&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Build site&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;build
+
+&lt;span class="c1"&gt;# Serve locally&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;serve
+
+&lt;span class="c1"&gt;# Validate posts&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;validate-titles
+
+&lt;span class="c1"&gt;# Fix validation issues&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;api-validate-posts&lt;span class="w"&gt; &lt;/span&gt;--fix
+
+&lt;span class="c1"&gt;# Start API server&lt;/span&gt;
+invoke&lt;span class="w"&gt; &lt;/span&gt;api-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Getting Help&lt;/h2&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;API Documentation:&lt;/strong&gt; &lt;code&gt;http://localhost:8001/docs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Repository:&lt;/strong&gt; &lt;a href="https://github.com/yoloinfinity55/sparkpelican"&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pelican Documentation:&lt;/strong&gt; &lt;a href="https://docs.getpelican.com/"&gt;Official Site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Common Next Steps&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Review generated posts&lt;/strong&gt; in &lt;code&gt;content/posts/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customize content&lt;/strong&gt; as needed&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Build and preview&lt;/strong&gt; your site&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deploy to production&lt;/strong&gt; when ready&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This comprehensive guide covers every method for creating blog posts in SparkPelican, from the simplest approaches for beginners to advanced integration options for developers. Choose the method that best fits your workflow and start creating content efficiently!&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;This guide was created using SparkPelican's AI-powered content generation system. For more information about SparkPelican, visit the &lt;a href="https://github.com/yoloinfinity55/sparkpelican"&gt;GitHub repository&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;</content><category term="posts"/></entry><entry><title>Complete Guide to Using SparkPelican: AI-Powered Blog Post Generation</title><link href="https://yoloinfinity55.github.io/sparkpelican/complete-guide-to-using-sparkpelican-ai-powered-blog-post-generation.html" rel="alternate"/><published>2025-10-15T06:37:00+00:00</published><updated>2025-10-15T06:37:00+00:00</updated><author><name>Infinity Spark</name></author><id>tag:yoloinfinity55.github.io,2025-10-15:/sparkpelican/complete-guide-to-using-sparkpelican-ai-powered-blog-post-generation.html</id><summary type="html">&lt;p&gt;Learn how to use SparkPelican to automatically generate blog posts from YouTube videos using AI. This comprehensive guide covers installation, configuration, and all usage methods.
 author: "Infinity Spark"
 readingTime: "15 min read"
 tags: ["AI", "Pelican", "YouTube", "Automation", "Tutorial"]&lt;/p&gt;

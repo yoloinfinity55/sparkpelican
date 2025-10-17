@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Complete Guide - How to Deploy SparkPelican to GitHub Pages - sparkpelican</title>
+    <link rel="stylesheet" href="https://yoloinfinity55.github.io/sparkpelican/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="https://yoloinfinity55.github.io/sparkpelican/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/complete-guide-how-to-deploy-sparkpelican-to-github-pages/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Complete Guide - How to Deploy SparkPelican to GitHub Pages</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-17T11:00:00+00:00">Fri 17 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>Learn how to deploy your SparkPelican blog to GitHub Pages with this comprehensive step-by-step guide. Covers initial setup, configuration, deployment process, and troubleshooting.
+author: "Infinity Spark"
+readingTime: "10 min read"
+tags: ["Deployment", "GitHub Pages", "Pelican", "Tutorial", "DevOps"]</p>
+<hr>
+<h1>Complete Guide: How to Deploy SparkPelican to GitHub Pages</h1>
+<p>Deploying your SparkPelican blog to GitHub Pages is straightforward and automated. This guide covers everything from initial repository setup to ongoing deployment workflows, ensuring your AI-powered blog is live and accessible to the world.</p>
+<h2>Prerequisites</h2>
+<p>Before deploying to GitHub Pages, ensure you have:</p>
+<ul>
+<li><strong>GitHub account</strong> with a repository for your blog</li>
+<li><strong>Git</strong> installed and configured on your system</li>
+<li><strong>GitHub CLI</strong> (<code>gh</code>) installed for seamless deployment</li>
+<li><strong>SparkPelican project</strong> set up and working locally</li>
+<li><strong>All dependencies installed</strong> (<code>pip install -r requirements.txt</code>)</li>
+</ul>
+<h2>Method 1: Initial Repository Setup</h2>
+<h3>Step 1: Create a GitHub Repository</h3>
+<ol>
+<li><strong>Go to GitHub.com</strong> and sign in to your account</li>
+<li><strong>Click "New repository"</strong> or use the "+" icon in the top right</li>
+<li><strong>Choose a repository name</strong> (e.g., <code>yourusername.github.io</code> for personal pages)</li>
+<li><strong>Make it public</strong> (required for free GitHub Pages)</li>
+<li><strong>Don't initialize</strong> with README, .gitignore, or license (you already have these)</li>
+<li><strong>Click "Create repository"</strong></li>
+</ol>
+<h3>Step 2: Connect Local Repository to GitHub</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Navigate to your SparkPelican project</span>
+<span class="nb">cd</span><span class="w"> </span>/path/to/your/sparkpelican
+
+<span class="c1"># Add GitHub repository as remote (replace with your actual repo URL)</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/yourusername/your-repo-name.git
+
+<span class="c1"># Verify remote was added</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div>
+
+<h3>Step 3: Push Your Code to GitHub</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add all files to git (if not already done)</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+
+<span class="c1"># Commit your changes</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial commit: Add SparkPelican blog&quot;</span>
+
+<span class="c1"># Push to GitHub</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<h2>Method 2: Deploy to GitHub Pages</h2>
+<h3>Step 1: Install GitHub CLI (if not installed)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># On macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>gh
+
+<span class="c1"># On Ubuntu/Debian</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://cli.github.com/packages/githubcli-archive-keyring.gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>dd<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/usr/share/keyrings/githubcli-archive-keyring.gpg
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpme<span class="w"> </span>-print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/githubcli.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gh
+
+<span class="c1"># On Windows (using winget)</span>
+winget<span class="w"> </span>install<span class="w"> </span>--id<span class="w"> </span>GitHub.cli
+</code></pre></div>
+
+<h3>Step 2: Authenticate GitHub CLI</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Authenticate with GitHub</span>
+gh<span class="w"> </span>auth<span class="w"> </span>login
+
+<span class="c1"># Follow the prompts:</span>
+<span class="c1"># - Choose &quot;GitHub.com&quot;</span>
+<span class="c1"># - Choose &quot;HTTPS&quot; as your preferred protocol</span>
+<span class="c1"># - Sign in with your GitHub credentials</span>
+<span class="c1"># - Authorize the GitHub CLI when prompted</span>
+</code></pre></div>
+
+<h3>Step 3: Deploy Using Invoke Task</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deploy to GitHub Pages (single command!)</span>
+invoke<span class="w"> </span>gh-pages
+</code></pre></div>
+
+<p><strong>What this command does:</strong>
+1. <strong>Builds production version</strong> using <code>publishconf.py</code> settings
+2. <strong>Validates all titles</strong> to ensure compatibility
+3. <strong>Generates static site</strong> in the output directory
+4. <strong>Imports to gh-pages branch</strong> using ghp-import
+5. <strong>Pushes to GitHub</strong> automatically</p>
+<p><strong>Expected output:</strong></p>
+<div class="highlight"><pre><span></span><code>🔍<span class="w"> </span><span class="nv">Validating</span><span class="w"> </span><span class="nv">blog</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="nv">titles</span>...
+✅<span class="w"> </span><span class="nv">All</span><span class="w"> </span><span class="nv">titles</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">properly</span><span class="w"> </span><span class="nv">formatted</span><span class="o">!</span>
+✅<span class="w"> </span><span class="nv">All</span><span class="w"> </span><span class="nv">validations</span><span class="w"> </span><span class="nv">passed</span><span class="o">!</span>
+🚀<span class="w"> </span><span class="nv">Pelican</span><span class="w"> </span><span class="nv">Blog</span><span class="w"> </span><span class="nv">Title</span><span class="w"> </span><span class="nv">Validation</span>
+<span class="o">========================================</span>
+✅<span class="w"> </span><span class="nv">All</span><span class="w"> </span><span class="nv">titles</span><span class="w"> </span><span class="nv">are</span><span class="w"> </span><span class="nv">properly</span><span class="w"> </span><span class="nv">formatted</span><span class="o">!</span>
+⠋<span class="w"> </span><span class="nv">Generating</span>...
+<span class="nv">Done</span>:<span class="w"> </span><span class="nv">Processed</span><span class="w"> </span><span class="mi">27</span><span class="w"> </span><span class="nv">articles</span>,<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nv">drafts</span>,<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nv">hidden</span><span class="w"> </span><span class="nv">articles</span>,<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nv">pages</span>,<span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nv">hidden</span><span class="w"> </span><span class="nv">pages</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="mi">1</span>.<span class="mi">45</span><span class="w"> </span><span class="nv">seconds</span>.
+✅<span class="w"> </span><span class="nv">Site</span><span class="w"> </span><span class="nv">built</span><span class="w"> </span><span class="nv">successfully</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">production</span><span class="o">!</span>
+🚀<span class="w"> </span><span class="nv">Deploying</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">GitHub</span><span class="w"> </span><span class="nv">Pages</span>...
+✅<span class="w"> </span><span class="nv">Deployment</span><span class="w"> </span><span class="nv">completed</span><span class="o">!</span><span class="w"> </span><span class="nv">Your</span><span class="w"> </span><span class="nv">site</span><span class="w"> </span><span class="nv">is</span><span class="w"> </span><span class="nv">live</span><span class="w"> </span><span class="nv">at</span>:<span class="w"> </span><span class="nv">https</span>:<span class="o">//</span><span class="nv">yourusername</span>.<span class="nv">github</span>.<span class="nv">io</span><span class="o">/</span>
+</code></pre></div>
+
+<h2>Method 3: Manual Deployment (Alternative)</h2>
+<p>If you prefer more control over the deployment process:</p>
+<h3>Step 1: Build Production Version</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Build using production settings</span>
+invoke<span class="w"> </span>preview
+</code></pre></div>
+
+<h3>Step 2: Install ghp-import (if not installed)</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>ghp-import
+</code></pre></div>
+
+<h3>Step 3: Import and Push to GitHub Pages</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Import output directory to gh-pages branch</span>
+ghp-import<span class="w"> </span>-b<span class="w"> </span>gh-pages<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Publish site on </span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>output<span class="w"> </span>--no-jekyll<span class="w"> </span>-p
+
+<span class="c1"># Alternative manual method:</span>
+<span class="c1"># ghp-import -b gh-pages -m &quot;Update site&quot; output --no-jekyll</span>
+<span class="c1"># git push origin gh-pages</span>
+</code></pre></div>
+
+<h2>Method 4: Automated Deployment Workflow</h2>
+<h3>Step 1: Create GitHub Actions Workflow</h3>
+<p>Create <code>.github/workflows/deploy.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+
+<span class="nt">permissions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="w">  </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">  </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+
+<span class="nt">concurrency</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pages&quot;</span>
+<span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Python</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.9&#39;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">python -m pip install --upgrade pip</span>
+<span class="w">          </span><span class="no">pip install -r requirements.txt</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build site</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">invoke preview</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Pages</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/configure-pages@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload artifact</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-pages-artifact@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;./output&#39;</span>
+
+<span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-pages</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.deployment.outputs.page_url }}</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/deploy-pages@v4</span>
+</code></pre></div>
+
+<h3>Step 2: Enable GitHub Pages</h3>
+<ol>
+<li><strong>Go to your repository settings</strong> on GitHub</li>
+<li><strong>Navigate to "Pages"</strong> in the left sidebar</li>
+<li><strong>Under "Source"</strong>, select "GitHub Actions"</li>
+<li><strong>Save</strong> the settings</li>
+</ol>
+<h3>Step 3: Trigger Deployment</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Push any changes to trigger deployment</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Trigger GitHub Pages deployment&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<h2>Configuration Settings</h2>
+<h3>Production Configuration (<code>publishconf.py</code>)</h3>
+<p>Ensure your <code>publishconf.py</code> has the correct settings:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Site URL for production</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s1">&#39;https://yourusername.github.io&#39;</span>
+
+<span class="c1"># Disable feeds for GitHub Pages (optional)</span>
+<span class="n">FEED_ALL_ATOM</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">CATEGORY_FEED_ATOM</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Enable relative URLs (important for GitHub Pages)</span>
+<span class="n">RELATIVE_URLS</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+
+<h3>Repository Settings</h3>
+<p><strong>For User/Organization Pages:</strong>
+- Repository name: <code>username.github.io</code>
+- Site URL: <code>https://username.github.io</code></p>
+<p><strong>For Project Pages:</strong>
+- Repository name: <code>any-name</code>
+- Site URL: <code>https://username.github.io/repository-name</code></p>
+<h2>Troubleshooting Common Issues</h2>
+<h3>Problem: "gh command not found"</h3>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install GitHub CLI</span>
+<span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>gh
+
+<span class="c1"># Ubuntu/Debian</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gh
+
+<span class="c1"># Then authenticate</span>
+gh<span class="w"> </span>auth<span class="w"> </span>login
+</code></pre></div>
+
+<h3>Problem: "Permission denied" or "Could not read from remote repository"</h3>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check if you&#39;re authenticated</span>
+gh<span class="w"> </span>auth<span class="w"> </span>status
+
+<span class="c1"># Re-authenticate if needed</span>
+gh<span class="w"> </span>auth<span class="w"> </span><span class="nb">logout</span>
+gh<span class="w"> </span>auth<span class="w"> </span>login
+
+<span class="c1"># Check remote URL</span>
+git<span class="w"> </span>remote<span class="w"> </span>-v
+
+<span class="c1"># Fix remote URL if incorrect</span>
+git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://github.com/username/repo.git
+</code></pre></div>
+
+<h3>Problem: Site not loading after deployment</h3>
+<p><strong>Common causes:</strong>
+1. <strong>Build errors</strong> - Check the build output for errors
+2. <strong>Wrong branch</strong> - Ensure you're deploying to <code>gh-pages</code>
+3. <strong>Site URL mismatch</strong> - Verify <code>SITEURL</code> in <code>publishconf.py</code></p>
+<p><strong>Debugging steps:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check build output</span>
+invoke<span class="w"> </span>preview
+
+<span class="c1"># Verify generated files</span>
+ls<span class="w"> </span>-la<span class="w"> </span>output/
+
+<span class="c1"># Check if index.html exists</span>
+ls<span class="w"> </span>output/index.html
+
+<span class="c1"># Validate HTML (optional)</span>
+curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;https://yourusername.github.io&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+</code></pre></div>
+
+<h3>Problem: "Repository not found" or "Access denied"</h3>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verify repository exists and is accessible</span>
+gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>yourusername/your-repo-name
+
+<span class="c1"># Check if repository is public</span>
+gh<span class="w"> </span>repo<span class="w"> </span>edit<span class="w"> </span>yourusername/your-repo-name<span class="w"> </span>--visibility<span class="w"> </span>public
+
+<span class="c1"># Verify you have admin access to the repository</span>
+</code></pre></div>
+
+<h3>Problem: CSS/JavaScript not loading</h3>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ensure RELATIVE_URLS is set in publishconf.py</span>
+<span class="nv">RELATIVE_URLS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>True
+
+<span class="c1"># Rebuild and redeploy</span>
+invoke<span class="w"> </span>preview
+invoke<span class="w"> </span>gh-pages
+</code></pre></div>
+
+<h2>Best Practices</h2>
+<h3>Deployment Workflow</h3>
+<ol>
+<li><strong>Always test locally</strong> before deploying</li>
+<li><strong>Use production settings</strong> (<code>invoke preview</code>) for deployment builds</li>
+<li><strong>Validate titles</strong> before each deployment</li>
+<li><strong>Check file sizes</strong> - GitHub Pages has a 1GB limit</li>
+<li><strong>Monitor deployment status</strong> in repository settings</li>
+</ol>
+<h3>Repository Organization</h3>
+<div class="highlight"><pre><span></span><code><span class="n">your</span><span class="o">-</span><span class="n">sparkpelican</span><span class="o">-</span><span class="n">repo</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">content</span><span class="o">/</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Blog</span><span class="w"> </span><span class="n">content</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">themes</span><span class="o">/</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Pelican</span><span class="w"> </span><span class="n">themes</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">myapp</span><span class="o">/</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">FastAPI</span><span class="w"> </span><span class="n">application</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">scripts</span><span class="o">/</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="n">Utility</span><span class="w"> </span><span class="n">scripts</span>
+<span class="err">├──</span><span class="w"> </span><span class="p">.</span><span class="n">github</span><span class="o">/</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">workflows</span><span class="w"> </span><span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">output</span><span class="o">/</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Generated</span><span class="w"> </span><span class="n">site</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">-</span><span class="n">created</span><span class="p">)</span>
+<span class="err">└──</span><span class="w"> </span><span class="p">[</span><span class="n">config</span><span class="w"> </span><span class="n">files</span><span class="p">]</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">pelicanconf</span><span class="p">.</span><span class="n">py</span><span class="p">,</span><span class="w"> </span><span class="n">publishconf</span><span class="p">.</span><span class="n">py</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span><span class="p">.</span>
+</code></pre></div>
+
+<h3>Security Considerations</h3>
+<ol>
+<li><strong>Keep API keys</strong> out of version control</li>
+<li><strong>Use environment variables</strong> for sensitive data</li>
+<li><strong>Regularly update dependencies</strong> for security patches</li>
+<li><strong>Monitor access logs</strong> if needed</li>
+</ol>
+<h2>Advanced Deployment Options</h2>
+<h3>Custom Domain Setup</h3>
+<p><strong>Step 1: Buy a domain</strong> from a registrar</p>
+<p><strong>Step 2: Add CNAME file</strong> to your repository:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;yourdomain.com&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>content/pages/CNAME
+</code></pre></div>
+
+<p><strong>Step 3: Configure DNS:</strong>
+- <strong>A Record:</strong> <code>185.199.108.153</code>
+- <strong>A Record:</strong> <code>185.199.109.153</code>
+- <strong>A Record:</strong> <code>185.199.110.153</code>
+- <strong>A Record:</strong> <code>185.199.111.153</code></p>
+<p><strong>Step 4: Enable custom domain in GitHub:</strong>
+1. Go to repository Settings → Pages
+2. Under "Custom domain", enter <code>yourdomain.com</code>
+3. Click "Save"</p>
+<h3>Automated Deployment with GitHub Actions</h3>
+<p><strong>Benefits:</strong>
+- <strong>Automatic deployment</strong> on every push to main
+- <strong>No local dependencies</strong> required
+- <strong>Consistent environment</strong> for builds
+- <strong>Easy rollback</strong> capabilities</p>
+<p><strong>Setup:</strong>
+1. Create <code>.github/workflows/deploy.yml</code> (see Method 4 above)
+2. Push to main branch to trigger deployment
+3. Monitor progress in Actions tab</p>
+<h2>Monitoring and Maintenance</h2>
+<h3>Check Deployment Status</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check GitHub Pages status</span>
+gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>yourusername/your-repo-name<span class="w"> </span>--web
+
+<span class="c1"># Or visit repository Settings → Pages</span>
+</code></pre></div>
+
+<h3>View Site Analytics</h3>
+<p>GitHub Pages doesn't provide built-in analytics, but you can:</p>
+<ol>
+<li><strong>Add Google Analytics</strong> to your Pelican theme</li>
+<li><strong>Use GitHub's traffic insights</strong> (for public repositories)</li>
+<li><strong>Monitor with external services</strong> like Cloudflare Analytics</li>
+</ol>
+<h3>Regular Maintenance Tasks</h3>
+<ol>
+<li>
+<p><strong>Update dependencies</strong> monthly:
+   <code>bash
+   pip install -r requirements.txt --upgrade
+   npm update</code></p>
+</li>
+<li>
+<p><strong>Check for broken links</strong> periodically:
+   ```bash
+   # Install link checker
+   pip install linkchecker</p>
+</li>
+</ol>
+<p># Check your live site
+   linkchecker https://yourusername.github.io
+   ```</p>
+<ol>
+<li><strong>Monitor site performance</strong> using tools like:</li>
+<li>Google PageSpeed Insights</li>
+<li>GTmetrix</li>
+<li>WebPageTest</li>
+</ol>
+<h2>Quick Reference Commands</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># One-command deployment</span>
+invoke<span class="w"> </span>gh-pages
+
+<span class="c1"># Build only (for testing)</span>
+invoke<span class="w"> </span>preview
+
+<span class="c1"># Check deployment status</span>
+gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>yourusername/repo<span class="w"> </span>--web
+
+<span class="c1"># View site in browser</span>
+gh<span class="w"> </span>repo<span class="w"> </span>view<span class="w"> </span>yourusername/repo<span class="w"> </span>--web
+
+<span class="c1"># Manual deployment (alternative)</span>
+ghp-import<span class="w"> </span>-b<span class="w"> </span>gh-pages<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update site&quot;</span><span class="w"> </span>output<span class="w"> </span>--no-jekyll<span class="w"> </span>-p
+</code></pre></div>
+
+<h2>Getting Help</h2>
+<h3>Common Issues and Solutions</h3>
+<ul>
+<li><strong>Build errors:</strong> Check Pelican output for specific error messages</li>
+<li><strong>Theme issues:</strong> Verify theme files are properly configured</li>
+<li><strong>Asset loading:</strong> Ensure <code>RELATIVE_URLS = True</code> in production config</li>
+<li><strong>Custom domain:</strong> Check DNS settings and GitHub configuration</li>
+</ul>
+<h3>Documentation Links</h3>
+<ul>
+<li><strong>GitHub Pages Documentation:</strong> <a href="https://docs.github.com/en/pages">Official Guide</a></li>
+<li><strong>Pelican Deployment:</strong> <a href="https://docs.getpelican.com/en/stable/deploy.html">Deployment Guide</a></li>
+<li><strong>ghp-import:</strong> <a href="https://github.com/cwjohan/ghp-import">GitHub Tool</a></li>
+</ul>
+<h3>Community Support</h3>
+<ul>
+<li><strong>GitHub Community:</strong> <a href="https://github.community">Discussions</a></li>
+<li><strong>Pelican Community:</strong> <a href="https://groups.google.com/forum/#!forum/pelican-users">Pelican Forum</a></li>
+<li><strong>Stack Overflow:</strong> Tag <code>github-pages</code> and <code>pelican</code></li>
+</ul>
+<h2>Conclusion</h2>
+<p>Deploying SparkPelican to GitHub Pages is a seamless process that takes your AI-powered blog from local development to live production in minutes. The <code>invoke gh-pages</code> command handles everything automatically, from building your site to pushing it live.</p>
+<p><strong>Key advantages of this setup:</strong>
+- <strong>Free hosting</strong> on GitHub Pages
+- <strong>Automatic deployments</strong> with one command
+- <strong>Custom domains</strong> supported
+- <strong>SSL certificate</strong> included automatically
+- <strong>Global CDN</strong> for fast loading worldwide</p>
+<p>Start with the simple <code>invoke gh-pages</code> command, and your SparkPelican blog will be live and accessible to the world!</p>
+<hr>
+<p><em>This deployment guide was created using SparkPelican's AI-powered content generation system. For more information about SparkPelican, visit the <a href="https://github.com/yoloinfinity55/sparkpelican">GitHub repository</a>.</em></p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>
