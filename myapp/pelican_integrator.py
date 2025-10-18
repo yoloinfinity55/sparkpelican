@@ -21,7 +21,7 @@ class PelicanIntegrationError(Exception):
 async def save_markdown_post(
     post_data: Dict[str, str],
     content_dir: Path,
-    filename_template: str = "ai-{slug}-{date}.md",
+    filename_template: str = "{date}-{slug}.md",
     ensure_unique: bool = True
 ) -> str:
     """

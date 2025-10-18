@@ -1,0 +1,35 @@
+🚀 Processing video: https://www.youtube.com/watch?v=wNs2hj5UvK4
+[download]   0.0% of    8.41MiB at  914.19KiB/s ETA 00:09🔄 Processing YouTube video: https://www.youtube.com/watch?v=wNs2hj5UvK4
+📹 Video ID: wNs2hj5UvK4
+📝 Extracting transcript...
+ℹ️  No subtitles available: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=wNs2hj5UvK4! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+⚠️  Falling back to audio transcription...
+🎵 Downloading audio...
+[download]   0.0% of    8.41MiB at 1009.78KiB/s ETA 00:08[download]   0.1% of    8.41MiB at    1.67MiB/s ETA 00:05[download]   0.2% of    8.41MiB at    3.04MiB/s ETA 00:02[download]   0.4% of    8.41MiB at    5.51MiB/s ETA 00:01[download]   0.7% of    8.41MiB at    8.62MiB/s ETA 00:00[download]   1.5% of    8.41MiB at    2.09MiB/s ETA 00:03[download]   3.0% of    8.41MiB at    2.18MiB/s ETA 00:03[download]   5.9% of    8.41MiB at    3.33MiB/s ETA 00:02[download]  11.9% of    8.41MiB at    5.08MiB/s ETA 00:01[download]  23.8% of    8.41MiB at    7.16MiB/s ETA 00:00[download]  47.6% of    8.41MiB at   11.74MiB/s ETA 00:00[download]  95.1% of    8.41MiB at   16.80MiB/s ETA 00:00[download] 100.0% of    8.41MiB at   16.26MiB/s ETA 00:00[download] 100% of    8.41MiB in 00:00:00 at 11.69MiB/s                                                         WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760828124.986633 32816233 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+E0000 00:00:1760828139.986310 32816233 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+E0000 00:00:1760828139.986793 32817262 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+Gemini API call failed: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+Content generation failed: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+✅ Audio downloaded (14.9 MB)
+🤖 Transcribing audio with Gemini AI...
+📤 Preparing audio for Gemini...
+🤖 Transcribing with Gemini 2.0 Flash...
+✅ Transcription complete (1124 characters)
+✅ Transcript extracted from audio (1124 characters)
+✅ Transcript extracted (1124 characters)
+📷 Downloading thumbnail...
+📺 Video title: 2026在日中國移民將破百萬　日人憂心政經失衡　買樓漲三倍租逼搬？自組民間警察組織？中國擴張下的隱形危機｜無聲入侵 隱形戰場｜鏡新聞調查報告｜#鏡新聞
+🖼️  Thumbnail saved to: images/wNs2hj5UvK4_2026在日中國移民將破百萬_日人憂心政經失衡_買樓漲三倍租逼搬_自組民間警察組織_中國擴張下的隱形.jpg
+🌐 Detecting language...
+🗣️  Detected language: zh-cn
+🤖 Generating blog post...
+✅ Blog post generated
+💾 Post saved to: 2025-10-18-japan-travel-guide-tokyo-hidden-gems-wNs2hj5U.md
+🎉 Video processing completed successfully!
+🎉 Finished processing https://www.youtube.com/watch?v=wNs2hj5UvK4

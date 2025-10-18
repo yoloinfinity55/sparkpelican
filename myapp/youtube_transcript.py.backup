@@ -3,7 +3,6 @@ YouTube Transcript Extraction Module
 
 Provides async functions to extract transcripts from YouTube videos.
 Uses youtube-transcript-api for reliable transcript retrieval.
-Falls back to audio transcription using Gemini when subtitles unavailable.
 """
 
 import asyncio
@@ -11,8 +10,6 @@ from typing import Optional, Dict, Any
 from urllib.parse import urlparse
 import logging
 import json
-import os
-import tempfile
 
 try:
     from youtube_transcript_api import YouTubeTranscriptApi
@@ -20,7 +17,7 @@ try:
         TranscriptsDisabled,
         NoTranscriptFound,
         VideoUnavailable,
-        RequestBlocked
+        RequestBlocked  # Using RequestBlocked instead of TooManyRequests
     )
     YOUTUBE_TRANSCRIPT_AVAILABLE = True
 except ImportError as e:
@@ -56,22 +53,6 @@ try:
 except ImportError:
     PIL_AVAILABLE = False
 
-# Try to import yt-dlp for audio extraction
-try:
-    import yt_dlp
-    YT_DLP_AVAILABLE = True
-except ImportError:
-    YT_DLP_AVAILABLE = False
-    print("Warning: yt-dlp not available. Audio fallback will not work.")
-
-# Try to import google.generativeai for audio transcription
-try:
-    import google.generativeai as genai
-    GENAI_AVAILABLE = True
-except ImportError:
-    GENAI_AVAILABLE = False
-    print("Warning: google-generativeai not available. Audio transcription will not work.")
-
 logger = logging.getLogger(__name__)
 
 class TranscriptError(Exception):
@@ -84,7 +65,6 @@ async def get_transcript_async(
 ) -> str:
     """
     Extract transcript from YouTube video asynchronously.
-    Falls back to audio transcription if subtitles are unavailable.
 
     Args:
         youtube_url: YouTube video URL
@@ -96,45 +76,38 @@ async def get_transcript_async(
     Raises:
         TranscriptError: If transcript cannot be extracted
     """
-    # First try subtitle extraction
+    if not YOUTUBE_TRANSCRIPT_AVAILABLE:
+        raise TranscriptError("youtube-transcript-api not installed")
+
     try:
-        if YOUTUBE_TRANSCRIPT_AVAILABLE:
-            video_id = extract_video_id(youtube_url)
-            loop = asyncio.get_event_loop()
-            transcript_data = await loop.run_in_executor(
-                None,
-                _get_transcript_sync,
-                video_id,
-                language
-            )
-            
-            # Combine all transcript segments
-            transcript_parts = [segment.text for segment in transcript_data]
-            transcript = ' '.join(transcript_parts)
-            print(f"✅ Transcript extracted from subtitles ({len(transcript)} characters)")
-            return transcript
-            
-    except (TranscriptsDisabled, NoTranscriptFound) as e:
-        print(f"ℹ️  No subtitles available: {str(e)}")
-        # Fall through to audio transcription
-    except Exception as e:
-        logger.warning(f"Subtitle extraction failed: {str(e)}")
-        # Fall through to audio transcription
-    
-    # Fallback: Audio transcription
-    print("⚠️  Falling back to audio transcription...")
-    if not YT_DLP_AVAILABLE or not GENAI_AVAILABLE:
-        raise TranscriptError(
-            "Audio transcription unavailable. Install yt-dlp and google-generativeai:\n"
-            "pip install yt-dlp google-generativeai"
+        # Extract video ID
+        video_id = extract_video_id(youtube_url)
+
+        # Run transcript extraction in thread pool to avoid blocking
+        loop = asyncio.get_event_loop()
+        transcript_data = await loop.run_in_executor(
+            None,
+            _get_transcript_sync,
+            video_id,
+            language
         )
-    
-    try:
-        transcript = await _transcribe_audio_async(youtube_url)
-        print(f"✅ Transcript extracted from audio ({len(transcript)} characters)")
-        return transcript
+
+        # Combine all transcript segments
+        transcript_parts = []
+        for segment in transcript_data:
+            transcript_parts.append(segment.text)
+
+        return ' '.join(transcript_parts)
+
+    except (TranscriptsDisabled, NoTranscriptFound) as e:
+        raise TranscriptError(f"No transcript available for this video: {str(e)}")
+    except VideoUnavailable as e:
+        raise TranscriptError(f"Video unavailable: {str(e)}")
+    except RequestBlocked as e:
+        raise TranscriptError(f"Rate limited by YouTube: {str(e)}")
     except Exception as e:
-        raise TranscriptError(f"Both subtitle and audio transcription failed: {str(e)}")
+        logger.error(f"Unexpected error extracting transcript: {str(e)}")
+        raise TranscriptError(f"Failed to extract transcript: {str(e)}")
 
 def _get_transcript_sync(video_id: str, language: str) -> list:
     """Synchronous transcript extraction helper."""
@@ -163,7 +136,7 @@ def _get_transcript_sync(video_id: str, language: str) -> list:
 
             # Try any available transcript
             for transcript in transcript_list:
-                if transcript.language_code.startswith(language[:2]):
+                if transcript.language_code.startswith(language[:2]):  # Match language prefix
                     return transcript.fetch()
 
             # If no preferred language found, get first available
@@ -174,129 +147,6 @@ def _get_transcript_sync(video_id: str, language: str) -> list:
 
     except NoTranscriptFound:
         raise NoTranscriptFound("No transcripts available")
-
-async def _transcribe_audio_async(youtube_url: str) -> str:
-    """
-    Download audio from YouTube video and transcribe using Gemini.
-    
-    Args:
-        youtube_url: YouTube video URL
-        
-    Returns:
-        Transcribed text
-    """
-    video_id = extract_video_id(youtube_url)
-    temp_audio_file = None
-    
-    try:
-        # Create temporary file for audio
-        with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as tmp:
-            temp_audio_file = tmp.name
-        
-        # Download audio
-        print("🎵 Downloading audio...")
-        loop = asyncio.get_event_loop()
-        await loop.run_in_executor(
-            None,
-            _download_audio_sync,
-            youtube_url,
-            temp_audio_file
-        )
-        
-        # Check if file was created and has content
-        if not os.path.exists(temp_audio_file) or os.path.getsize(temp_audio_file) == 0:
-            raise TranscriptError("Audio download failed - file not created or empty")
-        
-        print(f"✅ Audio downloaded ({os.path.getsize(temp_audio_file) / 1024 / 1024:.1f} MB)")
-        
-        # Transcribe with Gemini
-        print("🤖 Transcribing audio with Gemini AI...")
-        transcript = await loop.run_in_executor(
-            None,
-            _transcribe_with_gemini_sync,
-            temp_audio_file
-        )
-        
-        return transcript
-        
-    finally:
-        # Clean up temporary file
-        if temp_audio_file and os.path.exists(temp_audio_file):
-            try:
-                os.remove(temp_audio_file)
-                logger.info(f"Cleaned up temporary audio file: {temp_audio_file}")
-            except Exception as e:
-                logger.warning(f"Failed to clean up temp file: {e}")
-
-def _download_audio_sync(youtube_url: str, output_path: str):
-    """Download audio from YouTube video using yt-dlp."""
-    # Remove .mp3 extension for yt-dlp template
-    output_template = output_path.replace('.mp3', '')
-    
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
-        'outtmpl': output_template,
-        'quiet': True,
-        'no_warnings': True,
-        'extract_flat': False,
-    }
-    
-    try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            ydl.download([youtube_url])
-    except Exception as e:
-        raise TranscriptError(f"Failed to download audio: {str(e)}")
-
-def _transcribe_with_gemini_sync(audio_file_path: str) -> str:
-    """Transcribe audio file using Gemini API - alternative approach without file upload."""
-    import base64
-    
-    # Configure Gemini API
-    api_key = os.getenv('GEMINI_API_KEY')
-    if not api_key:
-        raise TranscriptError("GEMINI_API_KEY environment variable not set")
-    
-    genai.configure(api_key=api_key)
-    
-    try:
-        print("📤 Preparing audio for Gemini...")
-        
-        # Read audio file as bytes
-        with open(audio_file_path, 'rb') as f:
-            audio_bytes = f.read()
-        
-        # Use the simpler API with inline audio data
-        model = genai.GenerativeModel('gemini-2.0-flash')
-        
-        # Create the audio part
-        audio_part = {
-            "inline_data": {
-                "mime_type": "audio/mp3",
-                "data": base64.b64encode(audio_bytes).decode('utf-8')
-            }
-        }
-        
-        prompt = "Transcribe this audio file completely and accurately. Include all spoken words. Return only the transcript text, nothing else."
-        
-        print("🤖 Transcribing with Gemini 2.0 Flash...")
-        response = model.generate_content([prompt, audio_part])
-        
-        if not response or not response.text:
-            raise TranscriptError("Empty response from Gemini")
-        
-        transcript = response.text
-        print(f"✅ Transcription complete ({len(transcript)} characters)")
-        
-        return transcript.strip()
-        
-    except Exception as e:
-        raise TranscriptError(f"Gemini transcription failed: {str(e)}")
-
 
 def extract_video_id(youtube_url: str) -> str:
     """Extract video ID from various YouTube URL formats."""
@@ -419,7 +269,7 @@ async def get_video_title_and_thumbnail(youtube_url: str) -> tuple[str, str]:
     metadata = await get_video_metadata(youtube_url)
     return metadata.get("title", ""), metadata.get("thumbnail_url", "")
 
-async def download_youtube_thumbnail(youtube_url: str, output_dir: str = "content/images") -> tuple[str, str]:
+async def download_youtube_thumbnail(youtube_url: str, output_dir: str = "images") -> tuple[str, str]:
     """
     Download YouTube video thumbnail and save it locally.
 
@@ -450,6 +300,7 @@ async def download_youtube_thumbnail(youtube_url: str, output_dir: str = "conten
         video_id = extract_video_id(youtube_url)
 
         # Create output directory if it doesn't exist
+        import os
         os.makedirs(output_dir, exist_ok=True)
 
         # Create filename
@@ -467,11 +318,8 @@ async def download_youtube_thumbnail(youtube_url: str, output_dir: str = "conten
         )
 
         if success:
-            # Return relative path for Pelican (relative to content directory)
-            # Convert content/images/file.jpg -> images/file.jpg
+            # Return relative path for Pelican
             rel_path = os.path.relpath(local_path)
-            if rel_path.startswith('content/'):
-                rel_path = rel_path.replace('content/', '', 1)
             return title, rel_path
         else:
             # Fallback to original URL if download fails
@@ -517,9 +365,11 @@ async def detect_transcript_language(transcript: str) -> str:
         ISO language code (e.g., 'en', 'zh-cn', 'ko', etc.)
     """
     if not LANGDETECT_AVAILABLE:
+        # Fallback: simple detection based on common words/characters
         return _detect_language_fallback(transcript)
 
     try:
+        # Use langdetect library for more accurate detection
         detected_lang = await asyncio.get_event_loop().run_in_executor(
             None,
             _detect_language_sync,
@@ -533,9 +383,11 @@ async def detect_transcript_language(transcript: str) -> str:
 def _detect_language_sync(transcript: str) -> str:
     """Synchronous language detection helper."""
     try:
+        # Clean transcript for better detection
         clean_text = re.sub(r'[^\w\s\u4e00-\u9fff\uac00-\ud7af]', '', transcript)
         detected = detect(clean_text)
 
+        # Map common language codes to more specific ones
         language_map = {
             'en': 'en',
             'zh': 'zh-cn',
@@ -554,14 +406,20 @@ def _detect_language_sync(transcript: str) -> str:
 
         return language_map.get(detected, detected)
     except LangDetectError:
-        return 'en'
+        return 'en'  # Default to English if detection fails
 
 def _detect_language_fallback(transcript: str) -> str:
     """Fallback language detection based on character analysis."""
+    # Count Chinese characters (CJK Unified Ideographs)
     chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', transcript))
+
+    # Count Korean characters (Hangul syllables)
     korean_chars = len(re.findall(r'[\uac00-\ud7af]', transcript))
+
+    # Count Japanese characters (Hiragana, Katakana, Kanji)
     japanese_chars = len(re.findall(r'[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9fff]', transcript))
 
+    # Calculate percentages
     total_chars = len(transcript.replace(' ', ''))
     if total_chars == 0:
         return 'en'
@@ -570,11 +428,12 @@ def _detect_language_fallback(transcript: str) -> str:
     korean_pct = korean_chars / total_chars
     japanese_pct = japanese_chars / total_chars
 
-    if chinese_pct > 0.1:
+    # Determine primary language based on character percentages
+    if chinese_pct > 0.1:  # More than 10% Chinese characters
         return 'zh-cn'
-    elif korean_pct > 0.1:
+    elif korean_pct > 0.1:  # More than 10% Korean characters
         return 'ko'
-    elif japanese_pct > 0.1:
+    elif japanese_pct > 0.1:  # More than 10% Japanese characters
         return 'ja'
     else:
-        return 'en'
+        return 'en'  # Default to English

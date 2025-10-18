@@ -1,0 +1,20 @@
+🚀 Processing video: https://www.youtube.com/watch?v=MfPPQwc15HM
+[download]   0.0% of    6.97MiB at  193.72KiB/s ETA 00:37🔄 Processing YouTube video: https://www.youtube.com/watch?v=MfPPQwc15HM
+📹 Video ID: MfPPQwc15HM
+📝 Extracting transcript...
+ℹ️  No subtitles available: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=MfPPQwc15HM! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+⚠️  Falling back to audio transcription...
+🎵 Downloading audio...
+[download]   0.0% of    6.97MiB at  471.54KiB/s ETA 00:15[download]   0.1% of    6.97MiB at 1002.15KiB/s ETA 00:07[download]   0.2% of    6.97MiB at    1.96MiB/s ETA 00:03[download]   0.4% of    6.97MiB at    3.79MiB/s ETA 00:01[download]   0.9% of    6.97MiB at    2.47MiB/s ETA 00:02[download]   1.8% of    6.97MiB at    3.62MiB/s ETA 00:01[download]   3.6% of    6.97MiB at    4.43MiB/s ETA 00:01[download]   7.2% of    6.97MiB at    6.37MiB/s ETA 00:01[download]  14.3% of    6.97MiB at    9.94MiB/s ETA 00:00[download]  28.7% of    6.97MiB at   15.81MiB/s ETA 00:00[download]  57.4% of    6.97MiB at   16.84MiB/s ETA 00:00[download] 100.0% of    6.97MiB at   24.21MiB/s ETA 00:00[download] 100% of    6.97MiB in 00:00:00 at 14.23MiB/s                                                         WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760824313.611299 32650131 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+✅ Audio downloaded (14.0 MB)
+🤖 Transcribing audio with Gemini AI...
+📤 Uploading audio to Gemini...
+❌ Error processing video: Both subtitle and audio transcription failed: Gemini transcription failed: Missing required parameter "ragStoreName"
+💥 Video processing failed!
+🎉 Finished processing https://www.youtube.com/watch?v=MfPPQwc15HM

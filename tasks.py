@@ -43,10 +43,10 @@ def clean(c):
 def validate_titles(c):
     """Validate that all blog post titles are properly formatted (no quotes)"""
     print("🔍 Validating blog post titles...")
-    result = c.run("python scripts/validate-titles.py", warn=True)
+    result = c.run("python scripts/content_manager.py validate", warn=True)
     if result.failed:
         print("❌ Title validation failed! Please fix the issues above.")
-        print("💡 To fix automatically, run: python scripts/fix-titles.py")
+        print("💡 To fix automatically, run: python scripts/content_manager.py fix-titles")
         sys.exit(1)
     else:
         print("✅ All titles are properly formatted!")
@@ -184,12 +184,12 @@ def gh_pages(c):
 def api_validate_posts(c, fix=False):
     """Validate all blog posts for proper FastAPI integration"""
     print("🔍 Validating blog posts for FastAPI compatibility...")
-    result = c.run("python scripts/validate-titles.py", warn=True)
+    result = c.run("python scripts/content_manager.py validate", warn=True)
     if result.failed:
         print("❌ Post validation failed!")
         if fix:
             print("🔧 Auto-fixing title issues...")
-            fix_result = c.run("python scripts/fix-titles.py", warn=True)
+            fix_result = c.run("python scripts/content_manager.py fix-titles", warn=True)
             if fix_result.failed:
                 print("❌ Auto-fix failed. Please fix manually.")
                 sys.exit(1)

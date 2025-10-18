@@ -1,0 +1,19 @@
+🚀 Processing video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760827394.095199 32782959 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+E0000 00:00:1760827394.095201 32782934 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+🔄 Processing YouTube video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+📹 Video ID: dQw4w9WgXcQ
+📝 Extracting transcript...
+✅ Transcript extracted from subtitles (2089 characters)
+✅ Transcript extracted (2089 characters)
+📷 Downloading thumbnail...
+📺 Video title: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)
+🖼️  Thumbnail saved to: images/dQw4w9WgXcQ_Rick_Astley_-_Never_Gonna_Give_You_Up__Official_Vi.jpg
+🌐 Detecting language...
+🗣️  Detected language: en
+🤖 Generating blog post...
+✅ Blog post generated
+💾 Post saved to: 2025-10-18-japan-travel-guide-tokyo-hidden-gems.md
+🎉 Video processing completed successfully!
+🎉 Finished processing https://www.youtube.com/watch?v=dQw4w9WgXcQ

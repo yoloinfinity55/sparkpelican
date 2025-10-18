@@ -1,0 +1,15 @@
+🚀 Processing video: https://www.youtube.com/watch?v=pyumiobyh6I
+AI generation failed: bad character range *-\s at position 11
+🔄 Processing YouTube video: https://www.youtube.com/watch?v=pyumiobyh6I
+📹 Video ID: pyumiobyh6I
+📝 Extracting transcript...
+✅ Transcript extracted (7801 characters)
+📷 Downloading thumbnail...
+📺 Video title: 穴守稻荷 ｜羽田機場旁的古老漁師町｜祈求飛行平安 穴守稻荷神社、在地美味品牌豬排、老書店改建咖啡館、和平大鳥居｜日本旅遊、Satori日本生活
+🖼️  Thumbnail saved to: content/images/pyumiobyh6I_穴守稻荷__羽田機場旁的古老漁師町_祈求飛行平安_穴守稻荷神社_在地美味品牌豬排_老書店改建咖啡館_.jpg
+🌐 Detecting language...
+🗣️  Detected language: en
+🤖 Generating blog post...
+❌ Error processing video: Failed to generate post: bad character range *-\s at position 11
+💥 Video processing failed!
+🎉 Finished processing https://www.youtube.com/watch?v=pyumiobyh6I

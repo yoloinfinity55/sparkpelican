@@ -1,0 +1,82 @@
+2025-10-18 11:57:16,255 - spark_youtube.processor - INFO - 🚀 SparkYouTube Processor initialized
+2025-10-18 11:57:16,255 - spark_youtube.processor - INFO - 🎬 Processing video: https://www.youtube.com/watch?v=xfBzgMgQAVg
+2025-10-18 11:57:16,255 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 11:57:16,255 - spark_youtube.processor - INFO - 📹 Video ID: xfBzgMgQAVg
+2025-10-18 11:57:16,260 - spark_youtube.processor - INFO - 📝 Extracting transcript...
+2025-10-18 11:57:16,260 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 11:57:16,260 - spark_youtube.core.transcript.extractor - INFO - Extracting transcript for video ID: xfBzgMgQAVg
+2025-10-18 11:57:16,260 - spark_youtube.core.transcript.extractor - WARNING - Error extracting official subtitles: type object 'YouTubeTranscriptApi' has no attribute 'get_transcripts'
+2025-10-18 11:57:16,260 - spark_youtube.core.transcript.extractor - INFO - Attempting audio transcription...
+2025-10-18 11:57:16,260 - spark_youtube.core.transcript.extractor - WARNING - Audio transcription not yet implemented
+2025-10-18 11:57:16,260 - spark_youtube.processor - ERROR - Failed to process video https://www.youtube.com/watch?v=xfBzgMgQAVg: No transcript available for video xfBzgMgQAVg. Video may have disabled subtitles and audio extraction failed.
+2025-10-18 11:59:21,896 - spark_youtube.processor - INFO - 🚀 SparkYouTube Processor initialized
+2025-10-18 11:59:21,896 - spark_youtube.processor - INFO - 🎬 Processing video: https://www.youtube.com/watch?v=xfBzgMgQAVg
+2025-10-18 11:59:21,896 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 11:59:21,896 - spark_youtube.processor - INFO - 📹 Video ID: xfBzgMgQAVg
+2025-10-18 11:59:21,902 - spark_youtube.processor - INFO - 📝 Extracting transcript...
+2025-10-18 11:59:21,902 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 11:59:21,902 - spark_youtube.core.transcript.extractor - INFO - Extracting transcript for video ID: xfBzgMgQAVg
+2025-10-18 11:59:21,902 - spark_youtube.core.transcript.extractor - WARNING - Error extracting official subtitles: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'
+2025-10-18 11:59:21,902 - spark_youtube.core.transcript.extractor - INFO - Attempting audio transcription...
+2025-10-18 11:59:21,902 - spark_youtube.core.transcript.extractor - WARNING - Audio transcription not yet implemented
+2025-10-18 11:59:21,902 - spark_youtube.processor - ERROR - Failed to process video https://www.youtube.com/watch?v=xfBzgMgQAVg: No transcript available for video xfBzgMgQAVg. Video may have disabled subtitles and audio extraction failed.
+2025-10-18 12:00:32,111 - spark_youtube.processor - INFO - 🚀 SparkYouTube Processor initialized
+2025-10-18 12:00:32,111 - spark_youtube.processor - INFO - 🎬 Processing video: https://www.youtube.com/watch?v=xfBzgMgQAVg
+2025-10-18 12:00:32,111 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:00:32,111 - spark_youtube.processor - INFO - 📹 Video ID: xfBzgMgQAVg
+2025-10-18 12:00:32,116 - spark_youtube.processor - INFO - 📝 Extracting transcript...
+2025-10-18 12:00:32,116 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:00:32,116 - spark_youtube.core.transcript.extractor - INFO - Extracting transcript for video ID: xfBzgMgQAVg
+2025-10-18 12:00:32,117 - spark_youtube.core.transcript.extractor - WARNING - Unhandled error in transcript fetching thread: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-18 12:00:32,117 - spark_youtube.core.transcript.extractor - INFO - Attempting audio transcription...
+2025-10-18 12:00:32,117 - spark_youtube.core.transcript.extractor - WARNING - Audio transcription not yet implemented
+2025-10-18 12:00:32,117 - spark_youtube.processor - ERROR - Failed to process video https://www.youtube.com/watch?v=xfBzgMgQAVg: No transcript available for video xfBzgMgQAVg. Video may have disabled subtitles and audio extraction failed.
+2025-10-18 12:02:15,999 - spark_youtube.processor - INFO - 🚀 SparkYouTube Processor initialized
+2025-10-18 12:02:16,000 - spark_youtube.processor - INFO - 🎬 Processing video: https://www.youtube.com/watch?v=xfBzgMgQAVg
+2025-10-18 12:02:16,000 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:02:16,000 - spark_youtube.processor - INFO - 📹 Video ID: xfBzgMgQAVg
+2025-10-18 12:02:16,006 - spark_youtube.processor - INFO - 📝 Extracting transcript...
+2025-10-18 12:02:16,006 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:02:16,006 - spark_youtube.core.transcript.extractor - INFO - Extracting transcript for video ID: xfBzgMgQAVg
+2025-10-18 12:02:16,007 - spark_youtube.core.transcript.extractor - WARNING - Unhandled error in transcript fetching thread: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'
+2025-10-18 12:02:16,007 - spark_youtube.core.transcript.extractor - INFO - Attempting audio transcription...
+2025-10-18 12:02:16,007 - spark_youtube.core.transcript.extractor - WARNING - Audio transcription not yet implemented
+2025-10-18 12:02:16,007 - spark_youtube.processor - ERROR - Failed to process video https://www.youtube.com/watch?v=xfBzgMgQAVg: No transcript available for video xfBzgMgQAVg. Video may have disabled subtitles and audio extraction failed.
+2025-10-18 12:06:22,088 - spark_youtube.processor - INFO - 🚀 SparkYouTube Processor initialized
+2025-10-18 12:06:22,089 - spark_youtube.processor - INFO - 🎬 Processing video: https://www.youtube.com/watch?v=xfBzgMgQAVg
+2025-10-18 12:06:22,089 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:06:22,089 - spark_youtube.processor - INFO - 📹 Video ID: xfBzgMgQAVg
+2025-10-18 12:06:22,096 - spark_youtube.processor - INFO - 📝 Extracting transcript...
+2025-10-18 12:06:22,096 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:06:22,096 - spark_youtube.core.transcript.extractor - INFO - Extracting transcript for video ID: xfBzgMgQAVg
+2025-10-18 12:06:23,283 - spark_youtube.core.transcript.extractor - WARNING - Error extracting official subtitles: 'FetchedTranscriptSnippet' object has no attribute 'get'
+2025-10-18 12:06:23,283 - spark_youtube.core.transcript.extractor - INFO - Attempting audio transcription...
+2025-10-18 12:06:23,283 - spark_youtube.core.transcript.extractor - WARNING - Audio transcription not yet implemented
+2025-10-18 12:06:23,283 - spark_youtube.processor - ERROR - Failed to process video https://www.youtube.com/watch?v=xfBzgMgQAVg: No transcript available for video xfBzgMgQAVg. Video may have disabled subtitles and audio extraction failed.
+2025-10-18 12:07:33,016 - spark_youtube.processor - INFO - 🚀 SparkYouTube Processor initialized
+2025-10-18 12:07:33,017 - spark_youtube.processor - INFO - 🎬 Processing video: https://www.youtube.com/watch?v=xfBzgMgQAVg
+2025-10-18 12:07:33,017 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:07:33,017 - spark_youtube.processor - INFO - 📹 Video ID: xfBzgMgQAVg
+2025-10-18 12:07:33,022 - spark_youtube.processor - INFO - 📝 Extracting transcript...
+2025-10-18 12:07:33,022 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:07:33,022 - spark_youtube.core.transcript.extractor - INFO - Extracting transcript for video ID: xfBzgMgQAVg
+2025-10-18 12:07:34,242 - spark_youtube.core.transcript.extractor - INFO - ✅ Extracted official transcript (1103 chars, language: zh-cn)
+2025-10-18 12:07:34,242 - spark_youtube.processor - INFO - ✅ Transcript extracted (1103 chars, language: zh-cn)
+2025-10-18 12:07:34,242 - spark_youtube.processor - INFO - 📷 Downloading thumbnail...
+2025-10-18 12:07:34,242 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:07:40,624 - spark_youtube.core.transcript.extractor - ERROR - yt_dlp thumbnail download failed: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>
+2025-10-18 12:07:40,624 - spark_youtube.processor - INFO - 🤖 Generating blog post with AI...
+2025-10-18 12:08:03,418 - spark_youtube.core.ai.generator - INFO - Generated title: Why Da Nang's Ultimate Smart Green City Matters for (51 chars)
+2025-10-18 12:08:09,053 - spark_youtube.core.ai.generator - ERROR - Gemini API call failed: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+2025-10-18 12:08:09,053 - spark_youtube.core.ai.generator - ERROR - Content generation failed: Invalid operation: The `response.text` quick accessor requires the response to contain a valid `Part`, but none were returned. The candidate's [finish_reason](https://ai.google.dev/api/generate-content#finishreason) is 2.
+2025-10-18 12:08:09,054 - spark_youtube.processor - INFO - ✅ Blog post generated: Why Da Nang's Ultimate Smart Green City Matters for
+2025-10-18 12:08:09,054 - spark_youtube.processor - INFO - 💾 Saving blog post...
+2025-10-18 12:08:09,054 - spark_youtube.core.integrator.pelican - INFO - ✅ Post data validation passed for: Why Da Nang's Ultimate Smart Green City Matters for
+2025-10-18 12:08:09,054 - spark_youtube.core.integrator.pelican - INFO - ✅ Post saved successfully: content/posts/2025-10-18-why-da-nangs-ultimate-smart-green-city-matters-for.md
+2025-10-18 12:08:09,054 - spark_youtube.processor - INFO - ✅ Post saved: content/posts/2025-10-18-why-da-nangs-ultimate-smart-green-city-matters-for.md
+2025-10-18 12:13:54,348 - spark_youtube.processor - INFO - 🚀 SparkYouTube Processor initialized
+2025-10-18 12:13:54,349 - spark_youtube.processor - INFO - 🎬 Processing video: https://www.youtube.com/watch?v=xfBzgMgQAVg
+2025-10-18 12:13:54,349 - spark_youtube.core.transcript.extractor - WARNING - langdetect not available, language detection may be limited
+2025-10-18 12:13:54,349 - spark_youtube.processor - INFO - 📹 Video ID: xfBzgMgQAVg
+2025-10-18 12:13:54,351 - spark_youtube.core.integrator.pelican - INFO - 📄 Found existing post for video xfBzgMgQAVg: content/posts/2025-10-18-why-da-nangs-ultimate-smart-green-city-matters-for.md
+2025-10-18 12:13:54,351 - spark_youtube.processor - INFO - 📄 Post already exists for video xfBzgMgQAVg

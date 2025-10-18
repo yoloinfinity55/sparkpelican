@@ -1,0 +1,33 @@
+🚀 Processing video: https://www.youtube.com/watch?v=MfPPQwc15HM
+[download]   0.0% of    6.97MiB at  740.13KiB/s ETA 00:09🔄 Processing YouTube video: https://www.youtube.com/watch?v=MfPPQwc15HM
+📹 Video ID: MfPPQwc15HM
+📝 Extracting transcript...
+ℹ️  No subtitles available: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=MfPPQwc15HM! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!
+⚠️  Falling back to audio transcription...
+🎵 Downloading audio...
+[download]   0.0% of    6.97MiB at    1.06MiB/s ETA 00:06[download]   0.1% of    6.97MiB at    1.95MiB/s ETA 00:03[download]   0.2% of    6.97MiB at    3.62MiB/s ETA 00:01[download]   0.4% of    6.97MiB at    6.64MiB/s ETA 00:01[download]   0.9% of    6.97MiB at    4.12MiB/s ETA 00:01[download]   1.8% of    6.97MiB at    4.11MiB/s ETA 00:01[download]   3.6% of    6.97MiB at    6.02MiB/s ETA 00:01[download]   7.2% of    6.97MiB at    7.91MiB/s ETA 00:00[download]  14.3% of    6.97MiB at   11.82MiB/s ETA 00:00[download]  28.7% of    6.97MiB at   18.69MiB/s ETA 00:00[download]  57.4% of    6.97MiB at   23.09MiB/s ETA 00:00[download] 100.0% of    6.97MiB at   17.73MiB/s ETA 00:00[download] 100% of    6.97MiB in 00:00:00 at 10.20MiB/s                                                         WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760824637.281955 32672101 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+E0000 00:00:1760824647.572576 32672101 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+E0000 00:00:1760824647.572946 32672852 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+✅ Audio downloaded (14.0 MB)
+🤖 Transcribing audio with Gemini AI...
+📤 Preparing audio for Gemini...
+🤖 Transcribing with Gemini 2.0 Flash...
+✅ Transcription complete (494 characters)
+✅ Transcript extracted from audio (494 characters)
+✅ Transcript extracted (494 characters)
+📷 Downloading thumbnail...
+📺 Video title: I Work 14 Hours a Day in Tokyo... Here's My Life 🇯🇵
+🖼️  Thumbnail saved to: images/MfPPQwc15HM_I_Work_14_Hours_a_Day_in_Tokyo..._Here_s_My_Life__.jpg
+🌐 Detecting language...
+🗣️  Detected language: zh-cn
+🤖 Generating blog post...
+✅ Blog post generated
+💾 Post saved to: 2025-10-18-tokyo-hidden-gems-anamori-inari-shrine-local-culture.md
+🎉 Video processing completed successfully!
+🎉 Finished processing https://www.youtube.com/watch?v=MfPPQwc15HM

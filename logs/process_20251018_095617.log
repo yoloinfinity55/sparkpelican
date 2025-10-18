@@ -1,0 +1,54 @@
+🚀 Processing video: https://www.youtube.com/watch?v=pyumiobyh6I
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760795779.269205 31885606 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+E0000 00:00:1760795779.269748 31885593 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+Gemini API call failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+Content generation failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+Gemini API call failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+Summary generation failed: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+🔄 Processing YouTube video: https://www.youtube.com/watch?v=pyumiobyh6I
+📹 Video ID: pyumiobyh6I
+📝 Extracting transcript...
+✅ Transcript extracted (7801 characters)
+📷 Downloading thumbnail...
+📺 Video title: 穴守稻荷 ｜羽田機場旁的古老漁師町｜祈求飛行平安 穴守稻荷神社、在地美味品牌豬排、老書店改建咖啡館、和平大鳥居｜日本旅遊、Satori日本生活
+🖼️  Thumbnail saved to: content/images/pyumiobyh6I_穴守稻荷__羽田機場旁的古老漁師町_祈求飛行平安_穴守稻荷神社_在地美味品牌豬排_老書店改建咖啡館_.jpg
+🌐 Detecting language...
+🗣️  Detected language: en
+🤖 Generating blog post...
+✅ Blog post generated
+💾 Post saved to: 2025-10-18-xue-shou-dao-he-yu-tian-ji-chang-pang-de-gu-lao-yu-shi-ting-qi-qiu-fei-xing-ping-an-xue-shou-dao-he-shen-she-zai-di-mei-wei-pin-pai-zhu-pai-lao-shu-dian-gai-jian-ka-pei-guan-he-ping-da-niao-ju-ri-ben-lu-you-satoriri-ben-sheng-huo.md
+🎉 Video processing completed successfully!
+🎉 Finished processing https://www.youtube.com/watch?v=pyumiobyh6I
