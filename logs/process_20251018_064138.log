@@ -1,0 +1,18 @@
+🚀 Processing video: https://www.youtube.com/watch?v=oSCcf-WhZb0
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1760784101.422971 31642649 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+E0000 00:00:1760784101.422974 31642619 alts_credentials.cc:93] ALTS creds ignored. Not running on GCP and untrusted ALTS is not enabled.
+🔄 Processing YouTube video: https://www.youtube.com/watch?v=oSCcf-WhZb0
+📹 Video ID: oSCcf-WhZb0
+📝 Extracting transcript...
+✅ Transcript extracted (3341 characters)
+📷 Downloading thumbnail...
+📺 Video title: ExJapTer, A New Way to Vlog Japan
+🖼️  Thumbnail saved to: content/images/oSCcf-WhZb0_ExJapTer__A_New_Way_to_Vlog_Japan.jpg
+🌐 Detecting language...
+🗣️  Detected language: en
+🤖 Generating blog post...
+✅ Blog post generated
+💾 Post saved to: 2025-10-18-exjapter-a-new-way-to-vlog-japan.md
+🎉 Video processing completed successfully!
+🎉 Finished processing https://www.youtube.com/watch?v=oSCcf-WhZb0
