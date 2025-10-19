@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Flux - Standard Operating Procedures (SOP) - sparkpelican</title>
+    <link rel="stylesheet" href="/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/project-flux-standard-operating-procedures-sop/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Project Flux - Standard Operating Procedures (SOP)</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-06T00:00:00+00:00">Mon 06 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <ul>
+<li>zola</li>
+<li>tailwind</li>
+<li>sop</li>
+<li>development</li>
+<li>flux
+description: &gt;-
+  The official SOP for the Flux project. A step-by-step guide to our development
+  workflow using Zola and Tailwind CSS v4, from initial setup to final
+  deployment.</li>
+</ul>
+<hr>
+<p><strong>Project Name:</strong> Flux<br>
+<strong>Document Type:</strong> Standard Operating Procedures<br>
+<strong>Version:</strong> 1.0.0<br>
+<strong>Last Updated:</strong> October 6, 2025<br>
+<strong>Status:</strong> Active</p>
+<p><em>Note: This SOP outlines procedures for the Flux project, built with Zola (v0.21.0) and Tailwind CSS v4. While this blog post itself is powered by Eleventy, the guidelines here focus on Flux's Zola-based workflow for consistency.</em></p>
+<hr>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#purpose--scope">Purpose &amp; Scope</a></li>
+<li><a href="#initial-project-setup">Initial Project Setup</a></li>
+<li><a href="#development-environment-setup">Development Environment Setup</a></li>
+<li><a href="#content-creation-workflow">Content Creation Workflow</a></li>
+<li><a href="#template-development">Template Development</a></li>
+<li><a href="#styling-with-tailwind-css-v4">Styling with Tailwind CSS v4</a></li>
+<li><a href="#testing-procedures">Testing Procedures</a></li>
+<li><a href="#build--deployment-process">Build &amp; Deployment Process</a></li>
+<li><a href="#maintenance--updates">Maintenance &amp; Updates</a></li>
+<li><a href="#troubleshooting-guide">Troubleshooting Guide</a></li>
+<li><a href="#quality-control-checklist">Quality Control Checklist</a></li>
+</ol>
+<hr>
+<h2>Purpose &amp; Scope</h2>
+<h3>Purpose</h3>
+<p>This SOP document provides step-by-step procedures for developing, maintaining, and deploying the Flux project, ensuring consistency and quality across all development activities.</p>
+<h3>Scope</h3>
+<p>These procedures apply to all team members working on the Flux project, including developers, content creators, and maintainers.</p>
+<h3>Definitions</h3>
+<ul>
+<li><strong>Zola</strong>: Static site generator written in Rust</li>
+<li><strong>Tailwind CSS v4</strong>: Utility-first CSS framework</li>
+<li><strong>Production Build</strong>: Optimized build for deployment</li>
+<li><strong>Development Build</strong>: Unoptimized build for local testing</li>
+</ul>
+<hr>
+<h2>Initial Project Setup</h2>
+<h3>SOP-001: Creating a New Flux Project</h3>
+<p><strong>Frequency:</strong> One-time (per new installation)<br>
+<strong>Responsible Role:</strong> Lead Developer<br>
+<strong>Estimated Time:</strong> 15-20 minutes</p>
+<h4>Prerequisites</h4>
+<ul>
+<li>Zola installed (v0.21.0 or later)</li>
+<li>Node.js (v18.x or later) and npm installed</li>
+<li>Git installed</li>
+<li>Text editor/IDE configured</li>
+</ul>
+<h4>Procedure</h4>
+<p><strong>Step 1: Install Zola</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># macOS (using Homebrew)</span>
+brew<span class="w"> </span>install<span class="w"> </span>zola
+
+<span class="c1"># Windows (using Chocolatey)</span>
+choco<span class="w"> </span>install<span class="w"> </span>zola
+
+<span class="c1"># Linux (using snap)</span>
+snap<span class="w"> </span>install<span class="w"> </span>zola<span class="w"> </span>--edge
+
+<span class="c1"># Verify installation</span>
+zola<span class="w"> </span>--version
+</code></pre></div>
+
+<p><strong>Step 2: Create Project Directory</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create new Zola site</span>
+zola<span class="w"> </span>init<span class="w"> </span>flux
+
+<span class="c1"># Navigate to project directory</span>
+<span class="nb">cd</span><span class="w"> </span>flux
+</code></pre></div>
+
+<p><strong>Step 3: Initialize Git Repository</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>init
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Initial commit: Zola project setup&quot;</span>
+</code></pre></div>
+
+<p><strong>Step 4: Create Project Structure</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create additional directories</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>styles
+mkdir<span class="w"> </span>-p<span class="w"> </span>templates/partials
+mkdir<span class="w"> </span>-p<span class="w"> </span>static/<span class="o">{</span>images,fonts,js<span class="o">}</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>content/<span class="o">{</span>blog,pages<span class="o">}</span>
+</code></pre></div>
+
+<p><strong>Step 5: Initialize Node.js Project</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y
+</code></pre></div>
+
+<p><strong>Step 6: Install Tailwind CSS v4</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-D<span class="w"> </span>tailwindcss@^4.0.0<span class="w"> </span>@tailwindcss/postcss@^4.0.0<span class="w"> </span>postcss<span class="w"> </span>autoprefixer
+</code></pre></div>
+
+<p><strong>Step 7: Create Configuration Files</strong></p>
+<p>Create <code>tailwind.config.js</code>:</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>tailwindcss<span class="w"> </span>init
+</code></pre></div>
+
+<p>Create <code>postcss.config.js</code>:</p>
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>postcss.config.js
+</code></pre></div>
+
+<p>Add the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s1">&#39;@tailwindcss/postcss&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nx">autoprefixer</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Step 8: Create Tailwind Entry File</strong></p>
+<p>Create <code>styles/main.css</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">import</span><span class="w"> </span><span class="s2">&quot;tailwindcss&quot;</span><span class="p">;</span>
+</code></pre></div>
+
+<p><strong>Step 9: Update package.json Scripts</strong></p>
+<p>Add to <code>package.json</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;dev:css&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tailwindcss -i ./styles/main.css -o ./static/css/style.css --watch&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;build:css&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tailwindcss -i ./styles/main.css -o ./static/css/style.css --minify&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npm run dev:css &amp; zola serve&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npm run build:css &amp;&amp; zola build&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Step 10: Create .gitignore</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create .gitignore file</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>.gitignore<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">public/</span>
+<span class="s">node_modules/</span>
+<span class="s">static/css/style.css</span>
+<span class="s">.DS_Store</span>
+<span class="s">*.log</span>
+<span class="s">EOF</span>
+</code></pre></div>
+
+<p><strong>Verification:</strong>
+- Run <code>zola --version</code> - confirms Zola installation
+- Run <code>npm list tailwindcss</code> - confirms Tailwind installation
+- Directory structure matches specification
+- Git repository initialized successfully</p>
+<hr>
+<h2>Development Environment Setup</h2>
+<h3>SOP-002: Setting Up Development Environment</h3>
+<p><strong>Frequency:</strong> Once per developer workstation<br>
+<strong>Responsible Role:</strong> Developer<br>
+<strong>Estimated Time:</strong> 10 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Clone Repository</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span><span class="o">[</span>repository-url<span class="o">]</span><span class="w"> </span>flux
+<span class="nb">cd</span><span class="w"> </span>flux
+</code></pre></div>
+
+<p><strong>Step 2: Install Node Dependencies</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install
+</code></pre></div>
+
+<p><strong>Step 3: Configure Zola</strong></p>
+<p>Edit <code>config.toml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">base_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:1111&quot;</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Flux&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;A modern static site built with Zola and Tailwind CSS&quot;</span>
+<span class="n">default_language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;en&quot;</span>
+<span class="n">compile_sass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">minify_html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">generate_feed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">build_search_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[markdown]</span>
+<span class="n">highlight_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">highlight_theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;base16-ocean-dark&quot;</span>
+<span class="n">smart_punctuation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">external_links_target_blank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">external_links_no_follow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="k">[link_checker]</span>
+<span class="n">skip_prefixes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+
+<span class="k">[extra]</span>
+<span class="n">site_logo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/images/logo.svg&quot;</span>
+</code></pre></div>
+
+<p><strong>Step 4: Start Development Servers</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1: Start Tailwind watcher</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev:css
+
+<span class="c1"># Terminal 2: Start Zola server</span>
+zola<span class="w"> </span>serve
+</code></pre></div>
+
+<p>Or use concurrent command:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+
+<p><strong>Step 5: Verify Setup</strong>
+- Open browser to <code>http://127.0.0.1:1111</code>
+- Verify hot-reloading works
+- Check CSS compiles correctly
+- Confirm no console errors</p>
+<p><strong>Verification Checklist:</strong>
+- [ ] Repository cloned successfully
+- [ ] Dependencies installed without errors
+- [ ] Zola server running on port 1111
+- [ ] Tailwind CSS compiling and watching
+- [ ] Changes reflect immediately in browser</p>
+<hr>
+<h2>Content Creation Workflow</h2>
+<h3>SOP-003: Creating a New Blog Post</h3>
+<p><strong>Frequency:</strong> As needed<br>
+<strong>Responsible Role:</strong> Content Creator<br>
+<strong>Estimated Time:</strong> 5 minutes (setup only)</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Create Content File</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create new blog post file</span>
+touch<span class="w"> </span>content/blog/YYYY-MM-DD-post-title.md
+</code></pre></div>
+
+<p><strong>Step 2: Add Front Matter</strong></p>
+<p>Use this template:</p>
+<div class="highlight"><pre><span></span><code>+++
+title = &quot;Your Post Title&quot;
+date = 2025-10-06
+description = &quot;A compelling description for SEO (150-160 characters)&quot;
+draft = false
+
+[taxonomies]
+tags = [&quot;tag1&quot;, &quot;tag2&quot;, &quot;tag3&quot;]
+categories = [&quot;category&quot;]
+
+[extra]
+author = &quot;Author Name&quot;
+featured_image = &quot;/images/posts/post-slug.jpg&quot;
+reading_time = 5
++++
+
+Your content starts here...
+</code></pre></div>
+
+<p><strong>Step 3: Write Content</strong></p>
+<p>Follow these guidelines:
+- Use semantic headings (## for H2, ### for H3, etc.)
+- Include alt text for images: <code>![Alt text](/path/to/image.jpg)</code>
+- Use code blocks with language: <code>```rust</code> 
+- Keep paragraphs concise (3-4 sentences)
+- Add internal links where relevant</p>
+<p><strong>Step 4: Add Images (if applicable)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Copy image to static directory</span>
+cp<span class="w"> </span>/path/to/image.jpg<span class="w"> </span>static/images/posts/
+
+<span class="c1"># Optimize image before committing</span>
+<span class="c1"># Use tools like ImageOptim, TinyPNG, or Squoosh</span>
+</code></pre></div>
+
+<p><strong>Step 5: Preview Post</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ensure dev server is running</span>
+zola<span class="w"> </span>serve
+
+<span class="c1"># Navigate to post in browser</span>
+<span class="c1"># URL: http://127.0.0.1:1111/blog/post-title/</span>
+</code></pre></div>
+
+<p><strong>Step 6: Review Checklist</strong>
+- [ ] Title is descriptive and SEO-friendly
+- [ ] Description is 150-160 characters
+- [ ] Date is correct
+- [ ] Tags and categories are appropriate
+- [ ] Images have alt text
+- [ ] Links work correctly
+- [ ] No spelling/grammar errors
+- [ ] Post renders correctly on mobile</p>
+<p><strong>Step 7: Set Draft Status</strong></p>
+<p>For work in progress:</p>
+<div class="highlight"><pre><span></span><code><span class="n">draft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+
+<p>For publishing:</p>
+<div class="highlight"><pre><span></span><code><span class="n">draft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+</code></pre></div>
+
+<p><strong>Step 8: Commit Changes</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>content/blog/YYYY-MM-DD-post-title.md
+git<span class="w"> </span>add<span class="w"> </span>static/images/posts/post-slug.jpg
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add blog post: Post Title&quot;</span>
+</code></pre></div>
+
+<hr>
+<h3>SOP-004: Creating a Static Page</h3>
+<p><strong>Frequency:</strong> As needed<br>
+<strong>Responsible Role:</strong> Content Creator/Developer<br>
+<strong>Estimated Time:</strong> 10 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Create Page File</strong></p>
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>content/pages/page-name.md
+</code></pre></div>
+
+<p><strong>Step 2: Add Front Matter</strong></p>
+<div class="highlight"><pre><span></span><code>+++
+title = &quot;Page Title&quot;
+description = &quot;Page description for SEO&quot;
+template = &quot;page.html&quot;
+date = 2025-10-06
+
+[extra]
+show_in_nav = true
+nav_order = 1
++++
+
+Page content here...
+</code></pre></div>
+
+<p><strong>Step 3: Create Custom Template (if needed)</strong></p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>templates/page.html<span class="w"> </span>templates/custom-page.html
+<span class="c1"># Edit custom-page.html as needed</span>
+</code></pre></div>
+
+<p><strong>Step 4: Preview and Commit</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Preview</span>
+zola<span class="w"> </span>serve
+
+<span class="c1"># Commit</span>
+git<span class="w"> </span>add<span class="w"> </span>content/pages/page-name.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add page: Page Name&quot;</span>
+</code></pre></div>
+
+<hr>
+<h2>Template Development</h2>
+<h3>SOP-005: Creating/Modifying Zola Templates</h3>
+<p><strong>Frequency:</strong> As needed<br>
+<strong>Responsible Role:</strong> Developer<br>
+<strong>Estimated Time:</strong> 30-60 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Understand Template Hierarchy</strong></p>
+<p>Zola uses this template lookup order:
+1. Page-specific template (<code>template = "custom.html"</code>)
+2. Section template (<code>section.html</code>)
+3. Default templates (<code>page.html</code>, <code>index.html</code>)</p>
+<p><strong>Step 2: Create Base Template</strong></p>
+<p _="%" raw>Create <code>templates/base.html</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;{{ lang }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;scroll-smooth&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{% block title %}{{ config.title }}{% endblock title %}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;{% block description %}{{ config.description }}{% endblock description %}&quot;</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- Tailwind CSS --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ get_url(path=&#39;css/style.css&#39;) }}&quot;</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- SEO Meta Tags --&gt;</span>
+    {% block seo %}{% endblock seo %}
+
+    <span class="cm">&lt;!-- RSS Feed --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;alternate&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/rss+xml&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;{{ config.title }}&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ get_url(path=&#39;rss.xml&#39;) }}&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100&quot;</span><span class="p">&gt;</span>
+    {% include &quot;partials/header.html&quot; %}
+
+    <span class="p">&lt;</span><span class="nt">main</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container mx-auto px-4 py-8&quot;</span><span class="p">&gt;</span>
+        {% block content %}{% endblock content %}
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+
+    {% include &quot;partials/footer.html&quot; %}
+
+    {% block extra_js %}{% endblock extra_js %}
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<p><strong>Step 3: Create Partial Templates</strong></p>
+<p _="%" raw>Header (<code>templates/partials/header.html</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">header</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-white dark:bg-gray-800 shadow-sm&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container mx-auto px-4 py-4&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex items-center justify-between&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ get_url(path=&#39;/&#39;) }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-2xl font-bold&quot;</span><span class="p">&gt;</span>
+                {{ config.title }}
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex space-x-6&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ get_url(path=&#39;/&#39;) }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hover:text-blue-600&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ get_url(path=&#39;/blog&#39;) }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hover:text-blue-600&quot;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ get_url(path=&#39;/about&#39;) }}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hover:text-blue-600&quot;</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<p _="%" raw>Footer (<code>templates/partials/footer.html</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-gray-100 dark:bg-gray-800 mt-12&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container mx-auto px-4 py-8&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-center text-gray-600 dark:text-gray-400&quot;</span><span class="p">&gt;</span>
+            © {{ now() | date(format=&quot;%Y&quot;) }} {{ config.title }}. All rights reserved.
+        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<p><strong>Step 4: Create Page Templates</strong></p>
+<p _="%" raw>Index (<code>templates/index.html</code>):</p>
+<div class="highlight"><pre><span></span><code>{% extends &quot;base.html&quot; %}
+
+{% block content %}
+<span class="p">&lt;</span><span class="nt">section</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;py-20&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-5xl font-bold text-center mb-8&quot;</span><span class="p">&gt;</span>
+        Welcome to {{ config.title }}
+    <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-xl text-center text-gray-600 dark:text-gray-400&quot;</span><span class="p">&gt;</span>
+        {{ config.description }}
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">section</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;py-12&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-3xl font-bold mb-8&quot;</span><span class="p">&gt;</span>Recent Posts<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;grid md:grid-cols-2 lg:grid-cols-3 gap-8&quot;</span><span class="p">&gt;</span>
+        {% set blog = get_section(path=&quot;blog/_index.md&quot;) %}
+        {% for page in blog.pages | slice(end=6) %}
+        <span class="p">&lt;</span><span class="nt">article</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ page.permalink }}&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-xl font-semibold p-6&quot;</span><span class="p">&gt;</span>{{ page.title }}<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;px-6 pb-6 text-gray-600 dark:text-gray-400&quot;</span><span class="p">&gt;</span>
+                    {{ page.description }}
+                <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+        {% endfor %}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+{% endblock content %}
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<p><strong>Step 5: Test Template</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start dev server</span>
+zola<span class="w"> </span>serve
+
+<span class="c1"># Check for errors in terminal</span>
+<span class="c1"># Verify rendering in browser</span>
+<span class="c1"># Test responsive design</span>
+<span class="c1"># Validate HTML</span>
+</code></pre></div>
+
+<p><strong>Step 6: Commit Changes</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>templates/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add/update template: [template-name]&quot;</span>
+</code></pre></div>
+
+<p><strong>Best Practices:</strong>
+- Use semantic HTML5 elements
+- Include ARIA labels for accessibility
+- Keep templates DRY (Don't Repeat Yourself)
+- Use Tailwind utility classes consistently
+- Comment complex template logic
+- Test on multiple screen sizes</p>
+<hr>
+<h2>Styling with Tailwind CSS v4</h2>
+<h3>SOP-006: Adding Custom Styles</h3>
+<p><strong>Frequency:</strong> As needed<br>
+<strong>Responsible Role:</strong> Developer/Designer<br>
+<strong>Estimated Time:</strong> 15-30 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Update Tailwind Configuration</strong></p>
+<p>Edit <code>tailwind.config.js</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/** @type {import(&#39;tailwindcss&#39;).Config} */</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">&#39;./templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;./content/**/*.md&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">darkMode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">extend</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">colors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">primary</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="mf">50</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#f0f9ff&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">100</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#e0f2fe&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">500</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#0ea5e9&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">600</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#0284c7&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">700</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#0369a1&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">secondary</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="mf">500</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#8b5cf6&#39;</span><span class="p">,</span>
+<span class="w">          </span><span class="mf">600</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#7c3aed&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">fontFamily</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">sans</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Inter&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;system-ui&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sans-serif&#39;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">mono</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Fira Code&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;monospace&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">typography</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">theme</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="nx">DEFAULT</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">css</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">theme</span><span class="p">(</span><span class="s1">&#39;colors.gray.700&#39;</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">theme</span><span class="p">(</span><span class="s1">&#39;colors.primary.600&#39;</span><span class="p">),</span>
+<span class="w">              </span><span class="s1">&#39;&amp;:hover&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">theme</span><span class="p">(</span><span class="s1">&#39;colors.primary.700&#39;</span><span class="p">),</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">dark</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">css</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">theme</span><span class="p">(</span><span class="s1">&#39;colors.gray.300&#39;</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">theme</span><span class="p">(</span><span class="s1">&#39;colors.primary.400&#39;</span><span class="p">),</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">      </span><span class="p">}),</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@tailwindcss/typography&#39;</span><span class="p">),</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Step 2: Add Custom CSS (if needed)</strong></p>
+<p>In <code>styles/main.css</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="k">import</span><span class="w"> </span><span class="s2">&quot;tailwindcss&quot;</span><span class="p">;</span>
+
+<span class="c">/* Custom base styles */</span>
+<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">base</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">@apply</span><span class="w"> </span><span class="err">font-sans</span><span class="w"> </span><span class="err">antialiased</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nt">h1</span><span class="o">,</span><span class="w"> </span><span class="nt">h2</span><span class="o">,</span><span class="w"> </span><span class="nt">h3</span><span class="o">,</span><span class="w"> </span><span class="nt">h4</span><span class="o">,</span><span class="w"> </span><span class="nt">h5</span><span class="o">,</span><span class="w"> </span><span class="nt">h6</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">@apply</span><span class="w"> </span><span class="err">font-bold</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">/* Custom components */</span>
+<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">components</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">btn-primary</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">@apply</span><span class="w"> </span><span class="err">px-6</span><span class="w"> </span><span class="err">py-3</span><span class="w"> </span><span class="err">bg-primary-600</span><span class="w"> </span><span class="err">text-white</span><span class="w"> </span><span class="err">rounded-lg</span><span class="w"> </span><span class="n">hover</span><span class="p">:</span><span class="n">bg-primary-700</span><span class="w"> </span><span class="k">transition</span><span class="o">-</span><span class="n">colors</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="p">.</span><span class="nc">card</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="err">@apply</span><span class="w"> </span><span class="err">bg-white</span><span class="w"> </span><span class="n">dark</span><span class="p">:</span><span class="n">bg-gray-800</span><span class="w"> </span><span class="n">rounded-lg</span><span class="w"> </span><span class="n">shadow-md</span><span class="w"> </span><span class="n">p-6</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">/* Custom utilities */</span>
+<span class="p">@</span><span class="k">layer</span><span class="w"> </span><span class="nt">utilities</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="nc">text-balance</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">text-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">balance</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>Step 3: Rebuild CSS</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build:css
+</code></pre></div>
+
+<p><strong>Step 4: Test Styles</strong>
+- Check all pages for visual consistency
+- Test dark mode toggle
+- Verify responsive breakpoints
+- Check hover states and transitions
+- Validate color contrast for accessibility</p>
+<p><strong>Step 5: Commit Changes</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>tailwind.config.js<span class="w"> </span>styles/main.css
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update Tailwind configuration and custom styles&quot;</span>
+</code></pre></div>
+
+<hr>
+<h3>SOP-007: Implementing Dark Mode</h3>
+<p><strong>Frequency:</strong> One-time setup<br>
+<strong>Responsible Role:</strong> Developer<br>
+<strong>Estimated Time:</strong> 30 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Configure Tailwind for Dark Mode</strong></p>
+<p>Already set in <code>tailwind.config.js</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">darkMode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;class&#39;</span><span class="p">,</span>
+</code></pre></div>
+
+<p><strong>Step 2: Create Dark Mode Toggle</strong></p>
+<p _="%" raw>Add to <code>templates/partials/header.html</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;theme-toggle&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;theme-toggle-dark-icon&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hidden w-5 h-5&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;currentColor&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 20 20&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">path</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">path</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;theme-toggle-light-icon&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hidden w-5 h-5&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;currentColor&quot;</span> <span class="na">viewBox</span><span class="o">=</span><span class="s">&quot;0 0 20 20&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">path</span> <span class="na">d</span><span class="o">=</span><span class="s">&quot;M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">path</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<p><strong>Step 3: Add JavaScript</strong></p>
+<p>Create <code>static/js/theme.js</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Theme toggle functionality</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">themeToggle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;theme-toggle&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">darkIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;theme-toggle-dark-icon&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">lightIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;theme-toggle-light-icon&#39;</span><span class="p">);</span>
+
+<span class="c1">// Check for saved theme preference or default to system</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>
+<span class="w">              </span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="p">(</span><span class="s1">&#39;(prefers-color-scheme: dark)&#39;</span><span class="p">).</span><span class="nx">matches</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;light&#39;</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">theme</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">lightIcon</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">darkIcon</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">themeToggle</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s1">&#39;dark&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dark&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">darkIcon</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">lightIcon</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;light&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">lightIcon</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">darkIcon</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;hidden&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p><strong>Step 4: Include Script in Base Template</strong></p>
+<p _="%" raw>In <code>templates/base.html</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ get_url(path=&#39;js/theme.js&#39;) }}&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<p><strong>Step 5: Test Dark Mode</strong>
+- [ ] Toggle switches between light/dark
+- [ ] Preference persists on page reload
+- [ ] All text remains readable
+- [ ] Images/logos work in both modes
+- [ ] Syntax highlighting works in both modes</p>
+<hr>
+<h2>Testing Procedures</h2>
+<h3>SOP-008: Pre-Deployment Testing</h3>
+<p><strong>Frequency:</strong> Before every deployment<br>
+<strong>Responsible Role:</strong> QA/Developer<br>
+<strong>Estimated Time:</strong> 30-45 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Build Production Version</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build
+</code></pre></div>
+
+<p><strong>Step 2: Visual Testing</strong>
+- [ ] Test all pages on desktop (1920x1080)
+- [ ] Test all pages on tablet (768x1024)
+- [ ] Test all pages on mobile (375x667)
+- [ ] Verify all images load correctly
+- [ ] Check for broken layouts
+- [ ] Test dark mode on all pages</p>
+<p><strong>Step 3: Functionality Testing</strong>
+- [ ] Click all navigation links
+- [ ] Test search functionality
+- [ ] Verify RSS feed generates
+- [ ] Check sitemap.xml exists
+- [ ] Test 404 error page
+- [ ] Verify external links open in new tab</p>
+<p><strong>Step 4: Performance Testing</strong></p>
+<p>Using Lighthouse (Chrome DevTools):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Or use CLI</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>lighthouse
+lighthouse<span class="w"> </span>http://127.0.0.1:1111<span class="w"> </span>--view
+</code></pre></div>
+
+<p>Target scores:
+- Performance: 95+
+- Accessibility: 95+
+- Best Practices: 95+
+- SEO: 95+</p>
+<p><strong>Step 5: Accessibility Testing</strong>
+- [ ] Run axe DevTools scan
+- [ ] Test keyboard navigation
+- [ ] Verify proper heading hierarchy
+- [ ] Check color contrast ratios
+- [ ] Test with screen reader (if available)</p>
+<p><strong>Step 6: SEO Testing</strong>
+- [ ] Verify meta descriptions on all pages
+- [ ] Check Open Graph tags
+- [ ] Verify Twitter Card tags
+- [ ] Test structured data with Google Rich Results Test
+- [ ] Verify canonical URLs</p>
+<p><strong>Step 7: Cross-Browser Testing</strong></p>
+<p>Test on:
+- [ ] Chrome (latest)
+- [ ] Firefox (latest)
+- [ ] Safari (latest)
+- [ ] Edge (latest)</p>
+<p><strong>Step 8: Link Validation</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Build site first</span>
+zola<span class="w"> </span>build
+
+<span class="c1"># Check for broken links</span>
+zola<span class="w"> </span>check
+</code></pre></div>
+
+<p><strong>Step 9: HTML Validation</strong></p>
+<p>Use W3C Validator:
+- Visit https://validator.w3.org/
+- Upload HTML files from <code>public/</code> directory
+- Fix any errors or warnings</p>
+<p><strong>Step 10: Document Test Results</strong></p>
+<p>Create test report:</p>
+<div class="highlight"><pre><span></span><code><span class="gu">## Test Report - [Date]</span>
+
+<span class="gu">### Build Information</span>
+<span class="k">-</span><span class="w"> </span>Zola Version: [version]
+<span class="k">-</span><span class="w"> </span>Tailwind CSS Version: [version]
+<span class="k">-</span><span class="w"> </span>Commit Hash: [hash]
+
+<span class="gu">### Test Results</span>
+<span class="k">-</span><span class="w"> </span>Visual Testing: PASS/FAIL
+<span class="k">-</span><span class="w"> </span>Functionality: PASS/FAIL
+<span class="k">-</span><span class="w"> </span>Performance: [scores]
+<span class="k">-</span><span class="w"> </span>Accessibility: PASS/FAIL
+<span class="k">-</span><span class="w"> </span>SEO: PASS/FAIL
+<span class="k">-</span><span class="w"> </span>Cross-Browser: PASS/FAIL
+
+<span class="gu">### Issues Found</span>
+<span class="k">1.</span> [Issue description]
+<span class="k">2.</span> [Issue description]
+
+<span class="gu">### Sign-off</span>
+Tested by: [Name]
+Date: [Date]
+</code></pre></div>
+
+<hr>
+<h2>Build &amp; Deployment Process</h2>
+<h3>SOP-009: Production Build</h3>
+<p><strong>Frequency:</strong> Before every deployment<br>
+<strong>Responsible Role:</strong> Developer<br>
+<strong>Estimated Time:</strong> 5 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Pre-Build Checklist</strong>
+- [ ] All changes committed to Git
+- [ ] Tests passed (SOP-008)
+- [ ] Content reviewed and approved
+- [ ] Version number updated (if applicable)</p>
+<p><strong>Step 2: Update Configuration</strong></p>
+<p>Edit <code>config.toml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">base_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://yourdomain.com&quot;</span>
+<span class="n">minify_html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+
+<p><strong>Step 3: Build CSS</strong></p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build:css
+</code></pre></div>
+
+<p>Verify output:
+- Check <code>static/css/style.css</code> exists
+- File should be minified
+- Check file size is reasonable</p>
+<p><strong>Step 4: Build Site</strong></p>
+<div class="highlight"><pre><span></span><code>zola<span class="w"> </span>build
+</code></pre></div>
+
+<p><strong>Step 5: Verify Build</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check build completed successfully</span>
+ls<span class="w"> </span>public/
+
+<span class="c1"># Verify key files exist</span>
+ls<span class="w"> </span>public/index.html
+ls<span class="w"> </span>public/css/style.css
+ls<span class="w"> </span>public/sitemap.xml
+ls<span class="w"> </span>public/rss.xml
+</code></pre></div>
+
+<p><strong>Step 6: Test Built Site Locally</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Serve the built site</span>
+<span class="nb">cd</span><span class="w"> </span>public
+python3<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8000</span>
+
+<span class="c1"># Test in browser: http://localhost:8000</span>
+</code></pre></div>
+
+<p><strong>Step 7: Check Build Size</strong></p>
+<div class="highlight"><pre><span></span><code>du<span class="w"> </span>-sh<span class="w"> </span>public/
+</code></pre></div>
+
+<p>Target: &lt; 10MB (excluding large media)</p>
+<p><strong>Step 8: Create Build Tag</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Release version 1.0.0&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v1.0.0
+</code></pre></div>
+
+<hr>
+<h3>SOP-010: Deploying to Netlify</h3>
+<p><strong>Frequency:</strong> As needed<br>
+<strong>Responsible Role:</strong> Developer/DevOps<br>
+<strong>Estimated Time:</strong> 10 minutes (initial), 2 minutes (subsequent)</p>
+<h4>Initial Setup</h4>
+<p><strong>Step 1: Create netlify.toml</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">[build]</span>
+<span class="w">  </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;npm run build&quot;</span>
+<span class="w">  </span><span class="n">publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;public&quot;</span>
+
+<span class="k">[build.environment]</span>
+<span class="w">  </span><span class="n">ZOLA_VERSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.21.0&quot;</span>
+<span class="w">  </span><span class="n">NODE_VERSION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;18&quot;</span>
+
+<span class="k">[[headers]]</span>
+<span class="w">  </span><span class="n">for</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/*&quot;</span>
+<span class="w">  </span><span class="k">[headers.values]</span>
+<span class="w">    </span><span class="n">X-Frame-Options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DENY&quot;</span>
+<span class="w">    </span><span class="n">X-Content-Type-Options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;nosniff&quot;</span>
+<span class="w">    </span><span class="n">Referrer-Policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;strict-origin-when-cross-origin&quot;</span>
+
+<span class="k">[[headers]]</span>
+<span class="w">  </span><span class="n">for</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/css/*&quot;</span>
+<span class="w">  </span><span class="k">[headers.values]</span>
+<span class="w">    </span><span class="n">Cache-Control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;public, max-age=31536000, immutable&quot;</span>
+
+<span class="k">[[headers]]</span>
+<span class="w">  </span><span class="n">for</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/images/*&quot;</span>
+<span class="w">  </span><span class="k">[headers.values]</span>
+<span class="w">    </span><span class="n">Cache-Control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;public, max-age=31536000, immutable&quot;</span>
+
+<span class="k">[[redirects]]</span>
+<span class="w">  </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/old-page&quot;</span>
+<span class="w">  </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/new-page&quot;</span>
+<span class="w">  </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">301</span>
+</code></pre></div>
+
+<p><strong>Step 2: Connect Repository</strong>
+1. Log in to Netlify
+2. Click "Add new site" &gt; "Import an existing project"
+3. Connect to Git provider
+4. Select repository
+5. Configure build settings (should auto-detect from netlify.toml)</p>
+<p><strong>Step 3: Configure Environment</strong>
+- Build command: <code>npm run build</code>
+- Publish directory: <code>public</code></p>
+<p><strong>Step 4: Deploy</strong>
+- Click "Deploy site"
+- Wait for build to complete
+- Verify deployment</p>
+<h4>Subsequent Deployments</h4>
+<p><strong>Automatic Deployment:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Push to main branch</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># Netlify automatically builds and deploys</span>
+</code></pre></div>
+
+<p><strong>Manual Deployment:</strong>
+1. Navigate to Netlify dashboard
+2. Click "Trigger deploy" &gt; "Deploy site"</p>
+<p><strong>Step 5: Verify Deployment</strong>
+- [ ] Visit production URL
+- [ ] Check homepage loads
+- [ ] Test navigation
+- [ ] Verify images load
+- [ ] Check mobile responsive
+- [ ] Test search functionality</p>
+<p><strong>Step 6: Post-Deployment Monitoring</strong>
+- Check Netlify deploy logs for errors
+- Monitor Google Search Console
+- Check analytics for traffic
+- Monitor performance metrics</p>
+<hr>
+<h3>SOP-011: Deploying to Cloudflare Pages</h3>
+<p><strong>Frequency:</strong> As needed<br>
+<strong>Responsible Role:</strong> Developer/DevOps<br>
+<strong>Estimated Time:</strong> 10 minutes (initial)</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Connect Repository</strong>
+1. Log in to Cloudflare Dashboard
+2. Navigate to Pages
+3. Click "Create a project"
+4. Connect Git repository</p>
+<p><strong>Step 2: Configure Build</strong>
+- Framework preset: None
+- Build command: <code>npm run build &amp;&amp; zola build</code>
+- Build output directory: <code>public</code>
+- Root directory: (leave empty)</p>
+<p><strong>Step 3: Set Environment Variables</strong></p>
+<div class="highlight"><pre><span></span><code>ZOLA_VERSION=0.21.0
+NODE_VERSION=18
+</code></pre></div>
+
+<p><strong>Step 4: Deploy</strong>
+- Click "Save and Deploy"
+- Monitor build progress
+- Verify deployment</p>
+<p><strong>Step 5: Configure Custom Domain (Optional)</strong>
+1. Go to Custom domains
+2. Add your domain
+3. Update DNS records
+4. Wait for SSL certificate</p>
+<hr>
+<h2>Maintenance &amp; Updates</h2>
+<h3>SOP-012: Regular Maintenance Tasks</h3>
+<p><strong>Frequency:</strong> Monthly<br>
+<strong>Responsible Role:</strong> Maintainer<br>
+<strong>Estimated Time:</strong> 1-2 hours</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Update Dependencies</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check for outdated packages</span>
+npm<span class="w"> </span>outdated
+
+<span class="c1"># Update Tailwind CSS</span>
+npm<span class="w"> </span>update<span class="w"> </span>tailwindcss<span class="w"> </span>@tailwindcss/postcss
+
+<span class="c1"># Update other dependencies</span>
+npm<span class="w"> </span>update
+
+<span class="c1"># Check Zola version</span>
+zola<span class="w"> </span>--version
+
+<span class="c1"># Update Zola if needed (follow official docs)</span>
+</code></pre></div>
+
+<p><strong>Step 2: Review and Update Content</strong>
+- [ ] Check for outdated information
+- [ ] Update copyright year in footer
+- [ ] Review and respond to comments
+- [ ] Check for broken external links
+- [ ] Update team/about pages</p>
+<p><strong>Step 3: Performance Audit</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run Lighthouse audit</span>
+lighthouse<span class="w"> </span>https://yourdomain.com<span class="w"> </span>--view
+
+<span class="c1"># Check Core Web Vitals in Google Search Console</span>
+</code></pre></div>
+
+<p><strong>Step 4: Security Review</strong>
+- [ ] Review Netlify/Cloudflare security settings
+- [ ] Check SSL certificate validity
+- [ ] Review Content Security Policy
+- [ ] Audit third-party scripts</p>
+<p><strong>Step 5: Backup</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create backup branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>backup-<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>backup-<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>
+
+<span class="c1"># Export content</span>
+cp<span class="w"> </span>-r<span class="w"> </span>content/<span class="w"> </span>backups/content-<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>/
+</code></pre></div>
+
+<p><strong>Step 6: Analytics Review</strong>
+- Review traffic patterns
+- Identify popular content
+- Check bounce rates
+- Monitor search rankings
+- Review conversion goals</p>
+<p><strong>Step 7: Update Documentation</strong>
+- Update README if needed
+- Document any new procedures
+- Update changelog
+- Review and update SOP document</p>
+<hr>
+<h3>SOP-013: Dependency Updates</h3>
+<p><strong>Frequency:</strong> Quarterly or when security updates available<br>
+<strong>Responsible Role:</strong> Developer<br>
+<strong>Estimated Time:</strong> 30 minutes</p>
+<h4>Procedure</h4>
+<p><strong>Step 1: Check Current Versions</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check npm packages</span>
+npm<span class="w"> </span>outdated
+
+<span class="c1"># Check Zola version</span>
+zola<span class="w"> </span>--version
+
+<span class="c1"># Check latest Zola release</span>
+<span class="c1"># Visit: https://github.com/getzola/zola/releases</span>
+</code></pre></div>
+
+<p><strong>Step 2: Review Changelogs</strong>
+- Read Tailwind CSS v4 changelog
+- Review Zola release notes
+- Check for breaking changes
+- Identify new features</p>
+<p><strong>Step 3: Update Node Packages</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update package.json</span>
+npm<span class="w"> </span>update
+
+<span class="c1"># Or update specific package</span>
+npm<span class="w"> </span>install<span class="w"> </span>tailwindcss@latest
+
+<span class="c1"># Audit for vulnerabilities</span>
+npm<span class="w"> </span>audit
+
+<span class="c1"># Fix vulnerabilities</span>
+npm<span class="w"> </span>audit<span class="w"> </span>fix
+</code></pre></div>
+
+<p><strong>Step 4: Update Zola</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># macOS</span>
+brew<span class="w"> </span>upgrade<span class="w"> </span>zola
+
+<span class="c1"># Windows</span>
+choco<span class="w"> </span>upgrade<span class="w"> </span>zola
+
+<span class="c1"># Linux</span>
+snap<span class="w"> </span>refresh<span class="w"> </span>zola
+</code></pre></div>
+
+<p><strong>Step 5: Test After Updates</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clean build</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>public/
+npm<span class="w"> </span>run<span class="w"> </span>build
+
+<span class="c1"># Test locally</span>
+zola<span class="w"> </span>serve
+</code></pre></div>
+
+<p><strong>Step 6: Run Full Test Suite</strong>
+- Follow SOP-008 (Pre-Deployment Testing)
+- Check for visual regressions
+- Verify all functionality works
+- Test on multiple browsers</p>
+<p><strong>Step 7: Update Documentation</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update version numbers in README</span>
+<span class="c1"># Update package.json version</span>
+<span class="c1"># Update config.toml if needed</span>
+</code></pre></div>
+
+<p><strong>Step 8: Commit and Deploy</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>package.json<span class="w"> </span>package-lock.json
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: update dependencies to latest versions&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<p><strong>Rollback Procedure (if issues occur):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Revert to previous commit</span>
+git<span class="w"> </span>revert<span class="w"> </span>HEAD
+
+<span class="c1"># Or checkout previous version</span>
+git<span class="w"> </span>checkout<span class="w"> </span><span class="o">[</span>previous-commit-hash<span class="o">]</span><span class="w"> </span>package.json<span class="w"> </span>package-lock.json
+npm<span class="w"> </span>install
+</code></pre></div>
+
+<hr>
+<h2>Troubleshooting Guide</h2>
+<h3>SOP-014: Common Issues and Solutions</h3>
+<p><strong>Frequency:</strong> As needed<br>
+<strong>Responsible Role:</strong> Developer</p>
+<h4>Issue 1: Tailwind CSS Not Compiling</h4>
+<p><strong>Symptoms:</strong>
+- CSS file not generated
+- Styles not applying
+- Build errors</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Check if Tailwind is installed</span>
+npm<span class="w"> </span>list<span class="w"> </span>tailwindcss
+
+<span class="c1"># Step 2: Reinstall if needed</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>node_modules<span class="w"> </span>package-lock.json
+npm<span class="w"> </span>install
+
+<span class="c1"># Step 3: Verify configuration files exist</span>
+ls<span class="w"> </span>tailwind.config.js<span class="w"> </span>postcss.config.js<span class="w"> </span>styles/main.css
+
+<span class="c1"># Step 4: Check npm scripts in package.json</span>
+cat<span class="w"> </span>package.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;build:css&quot;</span>
+
+<span class="c1"># Step 5: Try manual build</span>
+npx<span class="w"> </span>tailwindcss<span class="w"> </span>-i<span class="w"> </span>./styles/main.css<span class="w"> </span>-o<span class="w"> </span>./static/css/style.css
+
+<span class="c1"># Step 6: Check for syntax errors in config</span>
+node<span class="w"> </span>-c<span class="w"> </span>tailwind.config.js
+</code></pre></div>
+
+<p><strong>Prevention:</strong>
+- Always commit <code>package-lock.json</code>
+- Document custom configuration
+- Use version control for config files</p>
+<hr>
+<h4>Issue 2: Zola Build Fails</h4>
+<p><strong>Symptoms:</strong>
+- <code>zola build</code> command fails
+- Template errors
+- Content parsing errors</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Check Zola version</span>
+zola<span class="w"> </span>--version
+
+<span class="c1"># Step 2: Run with verbose output</span>
+zola<span class="w"> </span>build<span class="w"> </span>--verbose
+
+<span class="c1"># Step 3: Check for template syntax errors</span>
+<span class="c1"># Look for unclosed tags, missing variables</span>
+
+<span class="c1"># Step 4: Validate content front matter</span>
+<span class="c1"># Check all +++ sections are properly closed</span>
+
+<span class="c1"># Step 5: Test individual templates</span>
+<span class="c1"># Comment out sections to isolate issue</span>
+
+<span class="c1"># Step 6: Clear cache and rebuild</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>public/<span class="w"> </span>static/processed_images/
+zola<span class="w"> </span>build
+</code></pre></div>
+
+<p><strong>Common Causes:</strong>
+- Unclosed Tera template tags
+- Invalid TOML in front matter
+- Missing required variables
+- Incorrect file paths</p>
+<hr>
+<h4>Issue 3: Images Not Loading</h4>
+<p><strong>Symptoms:</strong>
+- Broken image icons
+- 404 errors for images
+- Images work locally but not in production</p>
+<p>{% raw %}</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Check file path</span>
+<span class="c1"># Paths should be relative to static/ folder</span>
+<span class="c1"># Example: /images/photo.jpg (not /static/images/photo.jpg)</span>
+
+<span class="c1"># Step 2: Verify file exists</span>
+ls<span class="w"> </span>static/images/
+
+<span class="c1"># Step 3: Check file permissions</span>
+chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>static/images/*
+
+<span class="c1"># Step 4: Verify image referenced correctly in template</span>
+<span class="c1"># Use: {{ get_url(path=&quot;images/photo.jpg&quot;) }}</span>
+<span class="c1"># Or: /images/photo.jpg</span>
+
+<span class="c1"># Step 5: Check base_url in config.toml</span>
+<span class="c1"># Should match production domain</span>
+
+<span class="c1"># Step 6: Clear browser cache</span>
+<span class="c1"># Hard refresh: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)</span>
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<hr>
+<h4>Issue 4: Dark Mode Not Working</h4>
+<p><strong>Symptoms:</strong>
+- Toggle button doesn't work
+- Theme doesn't persist
+- Styles not applying</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Check JavaScript file loaded</span>
+<span class="c1"># Open DevTools Console, look for errors</span>
+
+<span class="c1"># Step 2: Verify script tag in base.html</span>
+<span class="c1"># Should be: &lt;script src=&quot;/js/theme.js&quot; defer&gt;&lt;/script&gt;</span>
+
+<span class="c1"># Step 3: Check localStorage functionality</span>
+<span class="c1"># Open DevTools &gt; Application &gt; Local Storage</span>
+<span class="c1"># Look for &#39;theme&#39; key</span>
+
+<span class="c1"># Step 4: Verify Tailwind config</span>
+<span class="c1"># darkMode should be set to &#39;class&#39;</span>
+
+<span class="c1"># Step 5: Check dark: classes in templates</span>
+<span class="c1"># Example: class=&quot;bg-white dark:bg-gray-900&quot;</span>
+
+<span class="c1"># Step 6: Test in incognito mode</span>
+<span class="c1"># Rules out localStorage issues</span>
+</code></pre></div>
+
+<hr>
+<h4>Issue 5: Search Not Working</h4>
+<p><strong>Symptoms:</strong>
+- Search returns no results
+- Search index not generated
+- JavaScript errors</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Enable search in config.toml</span>
+<span class="c1"># build_search_index = true</span>
+
+<span class="c1"># Step 2: Rebuild site</span>
+zola<span class="w"> </span>build
+
+<span class="c1"># Step 3: Check search index exists</span>
+ls<span class="w"> </span>public/search_index.en.json
+
+<span class="c1"># Step 4: Verify search implementation</span>
+<span class="c1"># Check JavaScript console for errors</span>
+
+<span class="c1"># Step 5: Test search index manually</span>
+<span class="c1"># Visit: http://yourdomain.com/search_index.en.json</span>
+
+<span class="c1"># Step 6: Check content has searchable text</span>
+<span class="c1"># Ensure posts have content, not just front matter</span>
+</code></pre></div>
+
+<hr>
+<h4>Issue 6: Slow Build Times</h4>
+<p><strong>Symptoms:</strong>
+- <code>zola build</code> takes too long
+- Development server slow to reload</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Identify bottlenecks</span>
+<span class="nb">time</span><span class="w"> </span>zola<span class="w"> </span>build
+
+<span class="c1"># Step 2: Optimize images</span>
+<span class="c1"># Use WebP format</span>
+<span class="c1"># Compress images before adding</span>
+
+<span class="c1"># Step 3: Reduce Tailwind CSS size</span>
+<span class="c1"># Ensure content paths are specific in tailwind.config.js</span>
+<span class="c1"># Remove unused plugins</span>
+
+<span class="c1"># Step 4: Enable caching</span>
+<span class="c1"># Add to netlify.toml or CI config</span>
+
+<span class="c1"># Step 5: Limit search index</span>
+<span class="c1"># Exclude large content from search</span>
+
+<span class="c1"># Step 6: Profile Zola build</span>
+zola<span class="w"> </span>build<span class="w"> </span>--verbose
+</code></pre></div>
+
+<hr>
+<h4>Issue 7: Deployment Fails</h4>
+<p><strong>Symptoms:</strong>
+- Build succeeds locally but fails on platform
+- Deployment logs show errors
+- Site not updating after push</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Check deployment logs</span>
+<span class="c1"># View full logs in Netlify/Cloudflare dashboard</span>
+
+<span class="c1"># Step 2: Verify environment variables</span>
+<span class="c1"># Check Zola version, Node version set correctly</span>
+
+<span class="c1"># Step 3: Test build command locally</span>
+npm<span class="w"> </span>run<span class="w"> </span>build
+
+<span class="c1"># Step 4: Check for platform-specific issues</span>
+<span class="c1"># File path case sensitivity (Mac/Linux vs production)</span>
+<span class="c1"># Line endings (CRLF vs LF)</span>
+
+<span class="c1"># Step 5: Verify netlify.toml or build config</span>
+<span class="c1"># Ensure paths are correct</span>
+<span class="c1"># Check publish directory set to &#39;public&#39;</span>
+
+<span class="c1"># Step 6: Clear build cache</span>
+<span class="c1"># Most platforms have &quot;Clear cache and retry&quot; option</span>
+
+<span class="c1"># Step 7: Check for large files</span>
+<span class="c1"># Deployments may fail if repo too large</span>
+<span class="c1"># Add large files to .gitignore</span>
+</code></pre></div>
+
+<hr>
+<h4>Issue 8: RSS Feed Not Updating</h4>
+<p><strong>Symptoms:</strong>
+- RSS feed shows old content
+- Feed not generated
+- Invalid feed format</p>
+<p _="%" raw><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1: Enable RSS in config.toml</span>
+<span class="c1"># generate_feed = true</span>
+
+<span class="c1"># Step 2: Check feed template exists</span>
+<span class="c1"># Should have: templates/rss.xml (if custom)</span>
+
+<span class="c1"># Step 3: Rebuild site</span>
+zola<span class="w"> </span>build
+
+<span class="c1"># Step 4: Verify feed exists</span>
+ls<span class="w"> </span>public/rss.xml
+
+<span class="c1"># Step 5: Validate RSS feed</span>
+<span class="c1"># Use: https://validator.w3.org/feed/</span>
+
+<span class="c1"># Step 6: Check feed URL in templates</span>
+<span class="c1"># Should be: {{ get_url(path=&quot;rss.xml&quot;, trailing_slash=false) }}</span>
+
+<span class="c1"># Step 7: Clear CDN cache</span>
+<span class="c1"># If using CDN, purge cache for rss.xml</span>
+</code></pre></div>
+
+<p>{% endraw %}</p>
+<hr>
+<h2>Quality Control Checklist</h2>
+<h3>SOP-015: Pre-Deployment Quality Checklist</h3>
+<p><strong>Frequency:</strong> Before every production deployment<br>
+<strong>Responsible Role:</strong> QA/Developer<br>
+<strong>Estimated Time:</strong> 20 minutes</p>
+<h4>Content Quality</h4>
+<p><strong>General Content:</strong>
+- [ ] All page titles are descriptive and unique
+- [ ] All meta descriptions are 150-160 characters
+- [ ] No spelling or grammar errors
+- [ ] All links work (internal and external)
+- [ ] All images have alt text
+- [ ] Content is up-to-date and accurate
+- [ ] Copyright year is current</p>
+<p><strong>Blog Posts:</strong>
+- [ ] Post has proper front matter
+- [ ] Date is correct
+- [ ] Tags and categories assigned
+- [ ] Reading time estimated (if used)
+- [ ] Featured image set (if applicable)
+- [ ] Author attribution correct
+- [ ] Code blocks have language specified
+- [ ] Internal links use proper syntax</p>
+<hr>
+<h4>Technical Quality</h4>
+<p><strong>Build &amp; Configuration:</strong>
+- [ ] <code>zola build</code> completes without errors
+- [ ] <code>npm run build:css</code> completes successfully
+- [ ] No broken links (run <code>zola check</code>)
+- [ ] <code>config.toml</code> base_url is correct for environment
+- [ ] All static assets exist in correct directories
+- [ ] Generated files are in <code>public/</code> directory</p>
+<p><strong>Performance:</strong>
+- [ ] Lighthouse Performance score: 95+
+- [ ] First Contentful Paint: &lt; 1.0s
+- [ ] Largest Contentful Paint: &lt; 2.5s
+- [ ] Cumulative Layout Shift: &lt; 0.1
+- [ ] Total page size: &lt; 500KB (excluding images)
+- [ ] Images optimized (WebP, compressed)
+- [ ] CSS file minified
+- [ ] HTML minified (if enabled)</p>
+<p><strong>Accessibility:</strong>
+- [ ] Lighthouse Accessibility score: 95+
+- [ ] Proper heading hierarchy (only one h1 per page)
+- [ ] All interactive elements keyboard accessible
+- [ ] Color contrast ratios meet WCAG AA standards
+- [ ] Forms have proper labels (if applicable)
+- [ ] Focus indicators visible
+- [ ] ARIA labels used appropriately
+- [ ] Screen reader tested (if available)</p>
+<p><strong>SEO:</strong>
+- [ ] Lighthouse SEO score: 95+
+- [ ] All pages have unique titles
+- [ ] All pages have meta descriptions
+- [ ] Open Graph tags present
+- [ ] Twitter Card tags present
+- [ ] Canonical URLs set correctly
+- [ ] Sitemap generated (sitemap.xml exists)
+- [ ] Robots.txt configured properly
+- [ ] RSS feed generated
+- [ ] Structured data added (if applicable)</p>
+<hr>
+<h4>Visual Quality</h4>
+<p><strong>Layout &amp; Design:</strong>
+- [ ] Layout consistent across all pages
+- [ ] Navigation works on all pages
+- [ ] Footer appears on all pages
+- [ ] No broken layouts at any screen size
+- [ ] Consistent spacing and alignment
+- [ ] Typography hierarchy clear
+- [ ] Brand colors used consistently</p>
+<p><strong>Responsive Design:</strong>
+- [ ] Mobile (375px): All content readable and accessible
+- [ ] Tablet (768px): Layout adjusts appropriately
+- [ ] Desktop (1920px): Content not too wide, well-centered
+- [ ] Navigation works on mobile (hamburger menu if used)
+- [ ] Images scale properly at all sizes
+- [ ] Touch targets at least 44x44px on mobile
+- [ ] No horizontal scrolling (unless intentional)</p>
+<p><strong>Dark Mode:</strong>
+- [ ] Dark mode toggle works
+- [ ] All text readable in dark mode
+- [ ] All images visible in dark mode
+- [ ] Proper contrast in dark mode
+- [ ] Syntax highlighting works in dark mode
+- [ ] Theme preference persists</p>
+<hr>
+<h4>Browser Compatibility</h4>
+<p><strong>Desktop Browsers:</strong>
+- [ ] Chrome (latest): Full functionality
+- [ ] Firefox (latest): Full functionality
+- [ ] Safari (latest): Full functionality
+- [ ] Edge (latest): Full functionality</p>
+<p><strong>Mobile Browsers:</strong>
+- [ ] Safari iOS (latest): Full functionality
+- [ ] Chrome Android (latest): Full functionality</p>
+<hr>
+<h4>Functionality Testing</h4>
+<p><strong>Navigation:</strong>
+- [ ] All nav links work
+- [ ] Breadcrumbs correct (if used)
+- [ ] Pagination works on blog index
+- [ ] Category/tag pages load correctly
+- [ ] 404 page displays for invalid URLs</p>
+<p><strong>Search:</strong>
+- [ ] Search functionality works
+- [ ] Search returns relevant results
+- [ ] Search handles no results gracefully
+- [ ] Search index up-to-date</p>
+<p><strong>Forms (if applicable):</strong>
+- [ ] All form fields validate correctly
+- [ ] Form submissions work
+- [ ] Error messages display properly
+- [ ] Success messages display properly</p>
+<hr>
+<h4>Security Checklist</h4>
+<p><strong>Headers:</strong>
+- [ ] Security headers configured (CSP, X-Frame-Options)
+- [ ] HTTPS enforced
+- [ ] HSTS enabled
+- [ ] No mixed content warnings</p>
+<p><strong>Privacy:</strong>
+- [ ] Privacy policy page exists (if collecting data)
+- [ ] Cookie notice (if using cookies)
+- [ ] Analytics configured properly
+- [ ] External scripts from trusted sources only</p>
+<hr>
+<h4>Deployment Checklist</h4>
+<p><strong>Pre-Deployment:</strong>
+- [ ] All changes committed to Git
+- [ ] Version number updated (if applicable)
+- [ ] Changelog updated
+- [ ] Team notified of deployment</p>
+<p><strong>Deployment:</strong>
+- [ ] Production build created successfully
+- [ ] Deployment completed without errors
+- [ ] DNS records correct (if domain change)
+- [ ] SSL certificate valid</p>
+<p><strong>Post-Deployment:</strong>
+- [ ] Homepage loads correctly
+- [ ] Sample blog post loads correctly
+- [ ] Static page loads correctly
+- [ ] Search works on production
+- [ ] RSS feed accessible
+- [ ] Sitemap accessible
+- [ ] Analytics tracking (if used)</p>
+<hr>
+<h4>Sign-Off</h4>
+<p><strong>Tested by:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em>_<br>
+<strong>Date:</strong> </strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>____<br>
+<strong>Environment:</strong> [ ] Staging [ ] Production<br>
+<strong>Status:</strong> [ ] PASS [ ] FAIL [ ] PASS WITH NOTES</p>
+<p><strong>Notes:</strong></p>
+<div class="highlight"><pre><span></span><code>[Any issues found or notes about the deployment]
+</code></pre></div>
+
+<hr>
+<h2>Appendix</h2>
+<h3>A. Useful Commands Reference</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Zola Commands</span>
+zola<span class="w"> </span>init<span class="w"> </span><span class="o">[</span>project-name<span class="o">]</span><span class="w">          </span><span class="c1"># Create new Zola site</span>
+zola<span class="w"> </span>serve<span class="w">                        </span><span class="c1"># Start development server</span>
+zola<span class="w"> </span>serve<span class="w"> </span>--interface<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w">    </span><span class="c1"># Serve on all interfaces</span>
+zola<span class="w"> </span>serve<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span><span class="w">            </span><span class="c1"># Serve on custom port</span>
+zola<span class="w"> </span>build<span class="w">                        </span><span class="c1"># Build production site</span>
+zola<span class="w"> </span>build<span class="w"> </span>--base-url<span class="w"> </span><span class="o">[</span>url<span class="o">]</span><span class="w">       </span><span class="c1"># Build with custom base URL</span>
+zola<span class="w"> </span>check<span class="w">                        </span><span class="c1"># Check for broken links</span>
+zola<span class="w"> </span>--version<span class="w">                    </span><span class="c1"># Show Zola version</span>
+
+<span class="c1"># npm Commands</span>
+npm<span class="w"> </span>install<span class="w">                       </span><span class="c1"># Install dependencies</span>
+npm<span class="w"> </span>update<span class="w">                        </span><span class="c1"># Update dependencies</span>
+npm<span class="w"> </span>outdated<span class="w">                      </span><span class="c1"># Check for outdated packages</span>
+npm<span class="w"> </span>audit<span class="w">                         </span><span class="c1"># Check for vulnerabilities</span>
+npm<span class="w"> </span>audit<span class="w"> </span>fix<span class="w">                     </span><span class="c1"># Fix vulnerabilities</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev:css<span class="w">                   </span><span class="c1"># Build Tailwind (watch mode)</span>
+npm<span class="w"> </span>run<span class="w"> </span>build:css<span class="w">                 </span><span class="c1"># Build Tailwind (production)</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">                       </span><span class="c1"># Run both dev servers</span>
+npm<span class="w"> </span>run<span class="w"> </span>build<span class="w">                     </span><span class="c1"># Full production build</span>
+
+<span class="c1"># Git Commands</span>
+git<span class="w"> </span>status<span class="w">                        </span><span class="c1"># Check status</span>
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w">                         </span><span class="c1"># Stage all changes</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="w">           </span><span class="c1"># Commit with message</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main<span class="w">              </span><span class="c1"># Push to main branch</span>
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main<span class="w">              </span><span class="c1"># Pull latest changes</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w">                 </span><span class="c1"># View commit history</span>
+git<span class="w"> </span>diff<span class="w">                          </span><span class="c1"># View changes</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span><span class="o">[</span>branch-name<span class="o">]</span><span class="w">     </span><span class="c1"># Create new branch</span>
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="w">    </span><span class="c1"># Create tag</span>
+
+<span class="c1"># File Operations</span>
+du<span class="w"> </span>-sh<span class="w"> </span>public/<span class="w">                    </span><span class="c1"># Check build size</span>
+ls<span class="w"> </span>-lh<span class="w"> </span>static/css/<span class="w">                </span><span class="c1"># List CSS files with sizes</span>
+find<span class="w"> </span>.<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w">       </span><span class="c1"># Count markdown files</span>
+grep<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;search-term&quot;</span><span class="w"> </span>content/<span class="w">    </span><span class="c1"># Search in content</span>
+</code></pre></div>
+
+<hr>
+<h3>B. File Templates</h3>
+<p><strong>Blog Post Template:</strong></p>
+<div class="highlight"><pre><span></span><code>+++
+title = &quot;&quot;
+date = 2025-10-06
+description = &quot;&quot;
+draft = true
+
+[taxonomies]
+tags = []
+categories = []
+
+[extra]
+author = &quot;&quot;
+featured_image = &quot;&quot;
++++
+
+Write your content here...
+</code></pre></div>
+
+<p><strong>Static Page Template:</strong></p>
+<div class="highlight"><pre><span></span><code>+++
+title = &quot;&quot;
+description = &quot;&quot;
+template = &quot;page.html&quot;
+date = 2025-10-06
+
+[extra]
+show_in_nav = true
+nav_order = 1
++++
+
+Page content...
+</code></pre></div>
+
+<hr>
+<h3>C. Resources &amp; Links</h3>
+<p><strong>Official Documentation:</strong>
+- Zola: https://www.getzola.org/documentation/
+- Tailwind CSS v4: https://tailwindcss.com/docs
+- Tera (Template Engine): https://keats.github.io/tera/</p>
+<p><strong>Tools:</strong>
+- Lighthouse: https://developers.google.com/web/tools/lighthouse
+- W3C Validator: https://validator.w3.org/
+- Image Optimization: https://squoosh.app/
+- RSS Validator: https://validator.w3.org/feed/</p>
+<p><strong>Communities:</strong>
+- Zola Forum: https://zola.discourse.group/
+- Tailwind Discord: https://discord.gg/tailwindcss</p>
+<hr>
+<h3>D. Contact &amp; Support</h3>
+<p><strong>Project Lead:</strong> [Name]<br>
+<strong>Email:</strong> [email]<br>
+<strong>GitHub:</strong> [repository URL]<br>
+<strong>Documentation:</strong> [wiki/docs URL]</p>
+<hr>
+<h3>E. Version History</h3>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+<th>Author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0</td>
+<td>2025-10-06</td>
+<td>Initial SOP document</td>
+<td>[Author]</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>F. Approval</h3>
+<p><strong>Reviewed by:</strong> <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em>_<br>
+<strong>Approved by:</strong> </strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_<br>
+<strong>Date:</strong> </em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>___</p>
+<hr>
+<p><strong>End of Document</strong></p>
+<p><em>This SOP should be reviewed and updated quarterly or when significant changes are made to the project structure, tools, or processes.</em>
+```</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

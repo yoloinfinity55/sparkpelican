@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Understanding the Diagnostics - sparkpelican</title>
+    <link rel="stylesheet" href="/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/understanding-the-diagnostics/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Understanding the Diagnostics</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-07T00:00:00-04:00">Tue 07 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>Fix 'no-inline-styles' warnings with this step-by-step guide. Move inline CSS
+  to an external file to easily boost your site's performance, caching, and
+  maintainability.
+date: 2025-10-07T00:00:00.000Z
+author: "Infinity Spark"
+readingTime: "3 min read"</p>
+<hr>
+<h3>Understanding the Diagnostics</h3>
+<p>These are warnings from the <strong>webhint</strong> tool (integrated via Microsoft Edge Tools in your IDE, likely VS Code), flagging the use of inline CSS styles in your HTML file (<code>_site/about/index.html</code>). The rule "no-inline-styles" promotes best practices for web performance and maintainability by discouraging embedded <code>&lt;style&gt;</code> tags or <code>style</code> attributes directly in HTML. Inline styles make code harder to reuse, cache, and manage across pages.</p>
+<p>All four warnings point to <code>&lt;style&gt;</code> tags (based on the column spans, which typically cover the opening <code>&lt;sty</code> or similar). Here's a breakdown:</p>
+<table>
+<thead>
+<tr>
+<th>Warning #</th>
+<th>Line</th>
+<th>Columns</th>
+<th>Likely Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>42</td>
+<td>4-7</td>
+<td>Opening <code>&lt;style&gt;</code> tag with inline CSS rules.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>67</td>
+<td>6-9</td>
+<td>Another <code>&lt;style&gt;</code> tag (possibly nested or additional rules).</td>
+</tr>
+<tr>
+<td>3</td>
+<td>76</td>
+<td>6-9</td>
+<td>Similar to above—likely a continuation or separate block.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>101</td>
+<td>4-7</td>
+<td>Closing or another opening <code>&lt;style&gt;</code> tag.</td>
+</tr>
+</tbody>
+</table>
+<p>These are <strong>severity 4</strong> (warnings, not errors), so your site will build and run fine, but addressing them improves code quality.</p>
+<h3>Step-by-Step Fix</h3>
+<p>To resolve this, extract all inline CSS into an external file. Since this is in a <code>_site</code> directory (suggesting a static site generator like Jekyll), apply changes to your source files (e.g., in the root or <code>assets</code> folder) and regenerate the site.</p>
+<ol>
+<li><strong>Open the file and locate the styles</strong>:</li>
+<li>Navigate to <code>/Users/minijohn/Documents/github-repo/spark/_site/about/index.html</code> in your editor.</li>
+<li>Go to lines 42, 67, 76, and 101. You'll see <code>&lt;style&gt;</code> blocks like:
+     <code>html
+     &lt;style&gt;
+       /* Some CSS rules here */
+     &lt;/style&gt;</code></li>
+<li>
+<p>Copy <strong>all</strong> the CSS content from these blocks (e.g., rules for fonts, layouts, colors).</p>
+</li>
+<li>
+<p><strong>Create an external CSS file</strong>:</p>
+</li>
+<li>In your project's source directory (likely <code>spark/assets/css/</code> or similar), create a new file like <code>about.css</code> (or append to an existing <code>main.css</code> if it fits).</li>
+<li>
+<p>Paste the extracted CSS into it. Example:
+     <code>css
+     /* about.css */
+     body {
+       font-family: Arial, sans-serif; /* Example rule—replace with your actual styles */
+     }
+     .hero-section {
+       background-color: #f0f0f0;
+     }
+     /* Add all rules from the inline &lt;style&gt; tags here */</code></p>
+</li>
+<li>
+<p><strong>Remove inline styles from HTML</strong>:</p>
+</li>
+<li>Delete the entire <code>&lt;style&gt;...&lt;/style&gt;</code> blocks from the HTML file (lines 42–101 span).</li>
+<li>
+<p>Your HTML should now look cleaner, without embedded CSS.</p>
+</li>
+<li>
+<p><strong>Link the external CSS</strong>:</p>
+</li>
+<li>
+<p>In the <code>&lt;head&gt;</code> section of <code>index.html</code> (or your layout template if using Jekyll), add:
+     <code>html
+     &lt;link rel="stylesheet" href="/assets/css/about.css"&gt;</code></p>
+<ul>
+<li>Adjust the <code>href</code> path based on your site structure (e.g., if it's in <code>_site/assets</code>, use relative paths like <code>../assets/css/about.css</code>).</li>
+<li>If this is a Jekyll site, add the link to <code>_layouts/default.html</code> or similar for global reuse.</li>
+</ul>
+</li>
+<li>
+<p><strong>Regenerate and test</strong>:</p>
+</li>
+<li>Run your build command (e.g., <code>jekyll build</code> or <code>npm run build</code> for Spark-related projects).</li>
+<li>Reload the page in a browser and inspect (F12) to confirm styles load from the external file.</li>
+<li>Re-run your linter (e.g., via VS Code's Problems panel) to verify warnings are gone.</li>
+</ol>
+<h3>Additional Tips</h3>
+<ul>
+<li><strong>If styles are duplicated</strong>: Check if these inline styles overlap with existing external CSS—consolidate to avoid bloat.</li>
+<li><strong>Performance bonus</strong>: External CSS enables browser caching, reducing load times for users revisiting your site.</li>
+<li><strong>Suppress if needed</strong>: If inline is intentional (e.g., for one-off testing), add <code>data-hint-ignore="no-inline-styles"</code> to the <code>&lt;style&gt;</code> tag, but this isn't recommended for production.</li>
+<li><strong>Project context</strong>: If "spark" refers to a specific repo (e.g., Apache Spark docs or a custom site), search your codebase for a global CSS include to centralize this.</li>
+</ul>
+<p>If you paste the relevant HTML snippet (lines 30–110) or more context, I can provide exact code diffs!</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

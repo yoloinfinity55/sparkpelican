@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Flux - Specification Document - sparkpelican</title>
+    <link rel="stylesheet" href="/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/project-flux-specification-document/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Project Flux - Specification Document</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-06T00:00:00+00:00">Mon 06 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>A technical blueprint for Project Flux: a modern, blazing-fast static site
+  built with the powerful combination of Zola (Rust) and Tailwind CSS v4.
+author: "Infinity Spark"
+readingTime: "7 min read"</p>
+<hr>
+<h1>Project Flux - Specification Document</h1>
+<h2>Project Overview</h2>
+<p><strong>Project Name:</strong> Flux</p>
+<p><strong>Description:</strong> A modern static website built using Zola (Rust-based static site generator) combined with Tailwind CSS v4 for styling. This project leverages the speed and efficiency of Zola with the utility-first approach of Tailwind CSS v4 to create a fast, maintainable, and highly customizable website.</p>
+<p><strong>Version:</strong> 1.0.0</p>
+<p><strong>Last Updated:</strong> October 6, 2025</p>
+<hr>
+<h2>Technology Stack</h2>
+<h3>Core Technologies</h3>
+<ul>
+<li><strong>Zola</strong> (v0.19.x or latest) - Static site generator written in Rust</li>
+<li><strong>Tailwind CSS v4</strong> - Utility-first CSS framework (latest v4 release)</li>
+<li><strong>HTML5</strong> - Markup language</li>
+<li><strong>JavaScript</strong> (optional) - For enhanced interactivity</li>
+</ul>
+<h3>Development Tools</h3>
+<ul>
+<li><strong>Node.js &amp; npm</strong> - For Tailwind CSS v4 installation and build process</li>
+<li><strong>Git</strong> - Version control</li>
+<li><strong>Text Editor/IDE</strong> - VS Code, Sublime Text, or similar</li>
+</ul>
+<hr>
+<h2>Project Goals</h2>
+<ol>
+<li><strong>Performance</strong> - Achieve sub-second page load times with optimized assets</li>
+<li><strong>Developer Experience</strong> - Provide a smooth workflow with hot-reloading and fast builds</li>
+<li><strong>Maintainability</strong> - Use component-based templates and utility classes for easy updates</li>
+<li><strong>Customization</strong> - Leverage Tailwind's utility classes for flexible design</li>
+<li><strong>SEO Optimization</strong> - Implement proper meta tags, semantic HTML, and sitemap generation</li>
+</ol>
+<hr>
+<h2>Project Structure</h2>
+<div class="highlight"><pre><span></span><code><span class="nx">flux</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">content</span><span class="o">/</span><span class="w">              </span><span class="err">#</span><span class="w"> </span><span class="nx">Markdown</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="nx">files</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">_index</span><span class="p">.</span><span class="nx">md</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">blog</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">posts</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">pages</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">static</span><span class="o">/</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="nx">Static</span><span class="w"> </span><span class="nx">assets</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">images</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">fonts</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">js</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">styles</span><span class="o">/</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="nx">CSS</span><span class="w"> </span><span class="nx">source</span><span class="w"> </span><span class="nx">files</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">main</span><span class="p">.</span><span class="nx">css</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="nx">Tailwind</span><span class="w"> </span><span class="nx">CSS</span><span class="w"> </span><span class="nx">entry</span><span class="w"> </span><span class="nx">point</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">templates</span><span class="o">/</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Zola</span><span class="w"> </span><span class="nx">templates</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="kd">base</span><span class="p">.</span><span class="nx">html</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nx">Base</span><span class="w"> </span><span class="nx">template</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">index</span><span class="p">.</span><span class="nx">html</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="nx">Homepage</span><span class="w"> </span><span class="nx">template</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">html</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nx">Single</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="nx">template</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">section</span><span class="p">.</span><span class="nx">html</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">Section</span><span class="w"> </span><span class="nx">template</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">partials</span><span class="o">/</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="nx">Reusable</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="nx">components</span>
+<span class="err">│</span><span class="w">       </span><span class="err">├──</span><span class="w"> </span><span class="nx">header</span><span class="p">.</span><span class="nx">html</span>
+<span class="err">│</span><span class="w">       </span><span class="err">├──</span><span class="w"> </span><span class="nx">footer</span><span class="p">.</span><span class="nx">html</span>
+<span class="err">│</span><span class="w">       </span><span class="err">└──</span><span class="w"> </span><span class="nx">nav</span><span class="p">.</span><span class="nx">html</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">sass</span><span class="o">/</span><span class="w">                 </span><span class="err">#</span><span class="w"> </span><span class="nx">Additional</span><span class="w"> </span><span class="nx">SCSS</span><span class="w"> </span><span class="p">(</span><span class="nx">optional</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">public</span><span class="o">/</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="nx">Generated</span><span class="w"> </span><span class="nx">site</span><span class="w"> </span><span class="p">(</span><span class="nx">git</span><span class="o">-</span><span class="nx">ignored</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">toml</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="nx">Zola</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="err">├──</span><span class="w"> </span><span class="kn">package</span><span class="p">.</span><span class="nx">json</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="nx">Node</span><span class="p">.</span><span class="nx">js</span><span class="w"> </span><span class="nx">dependencies</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">tailwind</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">Tailwind</span><span class="w"> </span><span class="nx">CSS</span><span class="w"> </span><span class="nx">v4</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="err">└──</span><span class="w"> </span><span class="nx">postcss</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">js</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">PostCSS</span><span class="w"> </span><span class="nx">configuration</span>
+</code></pre></div>
+
+<hr>
+<h2>Features &amp; Functionality</h2>
+<h3>Core Features</h3>
+<ul>
+<li><strong>Responsive Design</strong> - Mobile-first approach using Tailwind's responsive utilities</li>
+<li><strong>Dark Mode Support</strong> - Toggle between light and dark themes</li>
+<li><strong>Blog System</strong> - Markdown-based blog with tags and categories</li>
+<li><strong>Syntax Highlighting</strong> - Code blocks with syntax highlighting</li>
+<li><strong>Search Functionality</strong> - Client-side search using Zola's built-in search</li>
+<li><strong>RSS Feed</strong> - Automatic RSS feed generation</li>
+<li><strong>Sitemap</strong> - XML sitemap for SEO</li>
+</ul>
+<h3>Page Types</h3>
+<ol>
+<li><strong>Homepage</strong> - Hero section, featured content, recent posts</li>
+<li><strong>Blog Posts</strong> - Individual blog entries with metadata</li>
+<li><strong>Blog Index</strong> - Paginated list of all blog posts</li>
+<li><strong>Static Pages</strong> - About, Contact, Portfolio, etc.</li>
+<li><strong>404 Error Page</strong> - Custom error page</li>
+</ol>
+<hr>
+<h2>Tailwind CSS v4 Integration</h2>
+<h3>Setup Process</h3>
+<ol>
+<li>Install Tailwind CSS v4 via npm</li>
+<li>Configure <code>tailwind.config.js</code> with custom theme settings</li>
+<li>Set up PostCSS processing pipeline</li>
+<li>Create <code>styles/main.css</code> with Tailwind directives</li>
+<li>Configure Zola to process CSS during build</li>
+</ol>
+<h3>Tailwind Configuration</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Example tailwind.config.js structure</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">&#39;./templates/**/*.html&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;./content/**/*.md&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">extend</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">colors</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Custom color palette</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">typography</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Custom typography settings</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="c1">// Typography plugin for prose content</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Build Process</h3>
+<ul>
+<li>Use npm scripts to compile Tailwind CSS</li>
+<li>Integrate with Zola's build process</li>
+<li>Implement CSS purging for production builds</li>
+<li>Minify final CSS output</li>
+</ul>
+<hr>
+<h2>Zola Configuration</h2>
+<h3>config.toml Settings</h3>
+<div class="highlight"><pre><span></span><code><span class="n">base_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Flux&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;A modern static site&quot;</span>
+<span class="n">default_language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;en&quot;</span>
+<span class="n">theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="n">generate_feed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">compile_sass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">minify_html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">build_search_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[markdown]</span>
+<span class="n">highlight_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">highlight_theme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;base16-ocean-dark&quot;</span>
+<span class="n">smart_punctuation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[extra]</span>
+<span class="c1"># Custom variables</span>
+</code></pre></div>
+
+<h3>Taxonomies</h3>
+<ul>
+<li>Tags</li>
+<li>Categories</li>
+<li>Authors (optional)</li>
+</ul>
+<hr>
+<h2>Content Management</h2>
+<h3>Markdown Front Matter</h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">+++</span>
+<span class="l l-Scalar l-Scalar-Plain">title = &quot;Post Title&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">date = 2025-10-06</span>
+<span class="l l-Scalar l-Scalar-Plain">description = &quot;Post description&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">[taxonomies]</span>
+<span class="l l-Scalar l-Scalar-Plain">tags = [&quot;tag1&quot;, &quot;tag2&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">categories = [&quot;category&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">[extra]</span>
+<span class="l l-Scalar l-Scalar-Plain">author = &quot;Author Name&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">featured_image = &quot;/images/post.jpg&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">+++</span>
+</code></pre></div>
+
+<h3>Content Guidelines</h3>
+<ul>
+<li>Use semantic headings (H1-H6)</li>
+<li>Include alt text for all images</li>
+<li>Keep paragraphs concise</li>
+<li>Use code blocks with language specification</li>
+<li>Add meta descriptions for all pages</li>
+</ul>
+<hr>
+<h2>Development Workflow</h2>
+<h3>Initial Setup</h3>
+<ol>
+<li>Install Zola binary</li>
+<li>Clone/create project repository</li>
+<li>Run <code>npm install</code> to install Tailwind CSS v4 and dependencies</li>
+<li>Build Tailwind CSS: <code>npm run build:css</code></li>
+<li>Start Zola development server: <code>zola serve</code></li>
+</ol>
+<h3>Development Commands</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start Zola dev server (with auto-reload)</span>
+zola<span class="w"> </span>serve
+
+<span class="c1"># Build Tailwind CSS for development</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev:css
+
+<span class="c1"># Build Tailwind CSS for production</span>
+npm<span class="w"> </span>run<span class="w"> </span>build:css
+
+<span class="c1"># Build complete site</span>
+zola<span class="w"> </span>build
+
+<span class="c1"># Run concurrent dev servers (Tailwind watch + Zola)</span>
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+
+<h3>Production Build</h3>
+<ol>
+<li>Build optimized Tailwind CSS</li>
+<li>Run <code>zola build</code> with minification enabled</li>
+<li>Test generated site in <code>public/</code> directory</li>
+<li>Deploy to hosting provider</li>
+</ol>
+<hr>
+<h2>Performance Optimization</h2>
+<h3>Strategies</h3>
+<ul>
+<li><strong>CSS Purging</strong> - Remove unused Tailwind classes in production</li>
+<li><strong>Image Optimization</strong> - Use WebP format, lazy loading</li>
+<li><strong>Asset Minification</strong> - Minify HTML, CSS, and JS</li>
+<li><strong>Caching</strong> - Implement proper cache headers</li>
+<li><strong>CDN Integration</strong> - Serve static assets via CDN</li>
+</ul>
+<h3>Performance Targets</h3>
+<ul>
+<li>Lighthouse Score: 95+ across all metrics</li>
+<li>First Contentful Paint: &lt; 1.0s</li>
+<li>Time to Interactive: &lt; 2.0s</li>
+<li>Total Page Size: &lt; 500KB (excluding images)</li>
+</ul>
+<hr>
+<h2>SEO Strategy</h2>
+<h3>Implementation</h3>
+<ul>
+<li>Semantic HTML5 structure</li>
+<li>Open Graph meta tags</li>
+<li>Twitter Card meta tags</li>
+<li>Structured data (JSON-LD)</li>
+<li>Descriptive URLs and permalinks</li>
+<li>XML sitemap</li>
+<li>RSS feed</li>
+<li>Robots.txt configuration</li>
+</ul>
+<hr>
+<h2>Accessibility</h2>
+<h3>Requirements</h3>
+<ul>
+<li>WCAG 2.1 Level AA compliance</li>
+<li>Proper heading hierarchy</li>
+<li>ARIA labels where appropriate</li>
+<li>Keyboard navigation support</li>
+<li>Sufficient color contrast ratios</li>
+<li>Alt text for all images</li>
+<li>Focus indicators for interactive elements</li>
+</ul>
+<hr>
+<h2>Browser Support</h2>
+<h3>Target Browsers</h3>
+<ul>
+<li>Chrome (last 2 versions)</li>
+<li>Firefox (last 2 versions)</li>
+<li>Safari (last 2 versions)</li>
+<li>Edge (last 2 versions)</li>
+<li>Mobile Safari (iOS 14+)</li>
+<li>Chrome Mobile (Android 10+)</li>
+</ul>
+<hr>
+<h2>Deployment</h2>
+<h3>Hosting Options</h3>
+<ol>
+<li><strong>Netlify</strong> - Automatic builds from Git</li>
+<li><strong>Vercel</strong> - Zero-config deployment</li>
+<li><strong>Cloudflare Pages</strong> - Fast global CDN</li>
+<li><strong>GitHub Pages</strong> - Free hosting for static sites</li>
+<li><strong>Custom VPS</strong> - Full control</li>
+</ol>
+<h3>Deployment Process</h3>
+<ol>
+<li>Push changes to Git repository</li>
+<li>Trigger automated build</li>
+<li>Deploy to production</li>
+<li>Verify deployment</li>
+<li>Monitor performance</li>
+</ol>
+<hr>
+<h2>Testing Checklist</h2>
+<h3>Pre-Launch Testing</h3>
+<ul>
+<li>[ ] Cross-browser compatibility</li>
+<li>[ ] Mobile responsiveness</li>
+<li>[ ] Performance benchmarks</li>
+<li>[ ] SEO meta tags validation</li>
+<li>[ ] Accessibility audit</li>
+<li>[ ] Link validation</li>
+<li>[ ] Form functionality (if applicable)</li>
+<li>[ ] Search functionality</li>
+<li>[ ] RSS feed validation</li>
+<li>[ ] 404 error page</li>
+</ul>
+<hr>
+<h2>Future Enhancements</h2>
+<h3>Potential Features</h3>
+<ul>
+<li>Newsletter subscription integration</li>
+<li>Comment system (Disqus, utterances, etc.)</li>
+<li>Progressive Web App (PWA) capabilities</li>
+<li>Multi-language support</li>
+<li>Advanced search filters</li>
+<li>Related posts recommendations</li>
+<li>Social sharing buttons</li>
+<li>Reading time estimates</li>
+<li>Table of contents for long posts</li>
+</ul>
+<hr>
+<h2>Resources &amp; Documentation</h2>
+<h3>Official Documentation</h3>
+<ul>
+<li>Zola Docs: https://www.getzola.org/documentation/</li>
+<li>Tailwind CSS v4 Docs: https://tailwindcss.com/docs</li>
+<li>Markdown Guide: https://www.markdownguide.org/</li>
+</ul>
+<h3>Community Resources</h3>
+<ul>
+<li>Zola Forum</li>
+<li>Tailwind CSS Discord</li>
+<li>GitHub Discussions</li>
+</ul>
+<hr>
+<h2>License</h2>
+<p>[Specify project license - MIT, Apache 2.0, etc.]</p>
+<hr>
+<h2>Contributors</h2>
+<p>[List project contributors and maintainers]</p>
+<hr>
+<h2>Contact</h2>
+<p><strong>Project Maintainer:</strong> [Your Name]<br>
+<strong>Email:</strong> [your.email@example.com]<br>
+<strong>Repository:</strong> [GitHub repository URL]</p>
+<hr>
+<p><strong>Document Version:</strong> 1.0<br>
+<strong>Status:</strong> Draft / In Progress / Active Development</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

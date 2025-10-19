@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project SparkPelican: A Deep Dive into This Pelican Blog - sparkpelican</title>
+    <link rel="stylesheet" href="/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/project-sparkpelican-a-deep-dive-into-this-pelican-blog/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Project SparkPelican: A Deep Dive into This Pelican Blog</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-08T00:00:00+00:00">Wed 08 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <ul>
+<li>Pelican</li>
+<li>TailwindCSS</li>
+<li>Project Overview</li>
+<li>Static Site Generator</li>
+</ul>
+<hr>
+<h1>Project SparkPelican: A Deep Dive into This Pelican Blog</h1>
+<p>Welcome to a comprehensive behind-the-scenes look at the SparkPelican project. This post serves as a detailed summary of the architecture, technologies, and features that power this static site generator blog.</p>
+<h2>The Technology Stack</h2>
+<p>At its core, SparkPelican is a modern static site built with a focus on performance, developer experience, and clean aesthetics. The key technologies used are:</p>
+<ul>
+<li><strong>Pelican:</strong> A powerful static site generator written in Python that transforms content and templates into a fast, pre-rendered website.</li>
+<li><strong>Tailwind CSS v4:</strong> A utility-first CSS framework that allows for rapid UI development and a highly customizable design system.</li>
+<li><strong>Python:</strong> The core language powering Pelican and the build system.</li>
+<li><strong>Nunjucks (via Pelican):</strong> Rich templating language used to create reusable layouts and components.</li>
+<li><strong>Markdown:</strong> All blog content is written in Markdown format for easy content management.</li>
+</ul>
+<h2>Project Structure</h2>
+<p>The project follows a well-organized structure typical of Pelican sites:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">sparkpelican</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">content</span><span class="o">/</span><span class="w">                    </span><span class="err">#</span><span class="w"> </span><span class="nx">Markdown</span><span class="w"> </span><span class="nx">content</span><span class="w"> </span><span class="nx">files</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="nx">md</span><span class="w">                    </span><span class="err">#</span><span class="w"> </span><span class="nx">Blog</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">pages</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">themes</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">mytheme</span><span class="o">/</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="nx">Custom</span><span class="w"> </span><span class="nx">theme</span>
+<span class="err">│</span><span class="w">       </span><span class="err">├──</span><span class="w"> </span><span class="nx">static</span><span class="o">/</span>
+<span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">css</span><span class="o">/</span>
+<span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">├──</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">css</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Tailwind</span><span class="w"> </span><span class="nx">source</span>
+<span class="err">│</span><span class="w">       </span><span class="err">│</span><span class="w">       </span><span class="err">└──</span><span class="w"> </span><span class="nx">output</span><span class="p">.</span><span class="nx">css</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">Generated</span><span class="w"> </span><span class="nx">CSS</span>
+<span class="err">│</span><span class="w">       </span><span class="err">└──</span><span class="w"> </span><span class="nx">templates</span><span class="o">/</span>
+<span class="err">│</span><span class="w">           </span><span class="err">├──</span><span class="w"> </span><span class="kd">base</span><span class="p">.</span><span class="nx">html</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="nx">Base</span><span class="w"> </span><span class="nx">template</span>
+<span class="err">│</span><span class="w">           </span><span class="err">├──</span><span class="w"> </span><span class="nx">index</span><span class="p">.</span><span class="nx">html</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="nx">Home</span><span class="w"> </span><span class="nx">page</span>
+<span class="err">│</span><span class="w">           </span><span class="err">├──</span><span class="w"> </span><span class="nx">article</span><span class="p">.</span><span class="nx">html</span><span class="w">   </span><span class="err">#</span><span class="w"> </span><span class="nx">Individual</span><span class="w"> </span><span class="nx">posts</span>
+<span class="err">│</span><span class="w">           </span><span class="err">└──</span><span class="w"> </span><span class="nx">archives</span><span class="p">.</span><span class="nx">html</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Archives</span><span class="w"> </span><span class="nx">page</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">output</span><span class="o">/</span><span class="w">                    </span><span class="err">#</span><span class="w"> </span><span class="nx">Generated</span><span class="w"> </span><span class="nx">site</span><span class="w"> </span><span class="p">(</span><span class="nx">build</span><span class="w"> </span><span class="nx">output</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">pelicanconf</span><span class="p">.</span><span class="nx">py</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Main</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">publishconf</span><span class="p">.</span><span class="nx">py</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Production</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">Makefile</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="nx">Build</span><span class="w"> </span><span class="nx">automation</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">tasks</span><span class="p">.</span><span class="nx">py</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="nx">Advanced</span><span class="w"> </span><span class="nx">build</span><span class="w"> </span><span class="nx">tasks</span><span class="w"> </span><span class="p">(</span><span class="nx">Invoke</span><span class="p">)</span>
+<span class="err">└──</span><span class="w"> </span><span class="kn">package</span><span class="p">.</span><span class="nx">json</span><span class="w">              </span><span class="err">#</span><span class="w"> </span><span class="nx">CSS</span><span class="w"> </span><span class="nx">build</span><span class="w"> </span><span class="nx">scripts</span>
+</code></pre></div>
+
+<h2>Core Features</h2>
+<p>This project comes with several built-in features:</p>
+<ul>
+<li><strong>Responsive Design:</strong> Clean, modern layout that works across all device sizes using Tailwind CSS utilities.</li>
+<li><strong>Dynamic Blog Content:</strong> All posts are managed as Markdown files in the <code>content</code> directory, making content creation straightforward.</li>
+<li><strong>Pagination Support:</strong> Built-in pagination for handling multiple posts across pages.</li>
+<li><strong>Archive Pages:</strong> Automatic generation of archive pages for browsing historical content.</li>
+<li><strong>SEO-Friendly:</strong> Proper meta tags, semantic HTML structure, and clean URLs.</li>
+<li><strong>Development Tools:</strong> Hot-reload development server and CSS build process.</li>
+</ul>
+<h2>Development Workflow</h2>
+<p>The project is set up with multiple development approaches:</p>
+<h3>Using Make (Traditional)</h3>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>devserver<span class="w">          </span><span class="c1"># Development server with auto-regeneration</span>
+make<span class="w"> </span>html<span class="w">              </span><span class="c1"># Generate static site</span>
+make<span class="w"> </span>serve<span class="w">             </span><span class="c1"># Serve generated site</span>
+make<span class="w"> </span>clean<span class="w">             </span><span class="c1"># Remove generated files</span>
+make<span class="w"> </span>github<span class="w">            </span><span class="c1"># Deploy to GitHub Pages</span>
+</code></pre></div>
+
+<h3>Using Invoke (Python tasks.py)</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>livereload<span class="w">      </span><span class="c1"># Live reload with browser refresh</span>
+invoke<span class="w"> </span>serve<span class="w">          </span><span class="c1"># Development server</span>
+invoke<span class="w"> </span>build<span class="w">          </span><span class="c1"># Build the site</span>
+invoke<span class="w"> </span>preview<span class="w">        </span><span class="c1"># Production build</span>
+</code></pre></div>
+
+<h3>Using npm (CSS builds)</h3>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>build:css<span class="w">      </span><span class="c1"># Build Tailwind CSS</span>
+npm<span class="w"> </span>run<span class="w"> </span>watch:css<span class="w">      </span><span class="c1"># Watch and rebuild CSS</span>
+</code></pre></div>
+
+<h2>Configuration</h2>
+<h3>Main Settings (pelicanconf.py)</h3>
+<ul>
+<li><strong>Site Name:</strong> sparkpelican</li>
+<li><strong>Author:</strong> Infinity Spark</li>
+<li><strong>Timezone:</strong> America/Toronto</li>
+<li><strong>Theme:</strong> Custom theme in <code>themes/mytheme/</code></li>
+<li><strong>Pagination:</strong> 12 posts per page</li>
+<li><strong>Language:</strong> English</li>
+</ul>
+<h3>CSS Build Process</h3>
+<p>The project uses Tailwind CSS v4 with a simple build process:
+- Source file: <code>themes/mytheme/static/css/input.css</code>
+- Output file: <code>themes/mytheme/static/css/output.css</code>
+- Build command: <code>npx @tailwindcss/cli</code></p>
+<h2>Template System</h2>
+<p>The custom theme includes several key templates:</p>
+<h3>base.html</h3>
+<ul>
+<li>Main layout with navigation and footer</li>
+<li>Responsive design using Tailwind utilities</li>
+<li>Clean typography and spacing</li>
+</ul>
+<h3>index.html</h3>
+<ul>
+<li>Home page displaying blog posts in a grid layout</li>
+<li>Responsive grid (1 column on mobile, 2 on tablet, 3 on desktop)</li>
+<li>Hover effects and smooth transitions</li>
+</ul>
+<h3>article.html</h3>
+<ul>
+<li>Individual post layout</li>
+<li>Article header with title, date, and category</li>
+<li>Clean typography for content</li>
+</ul>
+<h2>Content Management</h2>
+<p>All content is stored as Markdown files in the <code>content/</code> directory with front matter:</p>
+<div class="highlight"><pre><span></span><code>---
+layout: post.njk
+title: Your Post Title
+date: 2025-10-08T00:00:00.000Z
+description: &quot;Brief description of the post&quot;
+author: &quot;Infinity Spark&quot;
+readingTime: &quot;5 min read&quot;
+tags:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Tag1
+<span class="gu">  - Tag2</span>
+<span class="gu">---</span>
+
+<span class="gh"># Your content here...</span>
+</code></pre></div>
+
+<h2>Build and Deployment</h2>
+<p>The project supports multiple deployment methods:</p>
+<ol>
+<li><strong>Local Development:</strong> Use <code>make devserver</code> or <code>invoke livereload</code> for development</li>
+<li><strong>GitHub Pages:</strong> Use <code>make github</code> for automatic deployment to GitHub Pages</li>
+<li><strong>Production:</strong> Use <code>make publish</code> for production builds</li>
+</ol>
+<h2>Recent Content Analysis</h2>
+<p>Based on the existing content, the blog covers:
+- Project documentation and tutorials
+- Technical guides and best practices
+- Weekly summaries and diagnostics
+- Eleventy and static site generator topics</p>
+<h2>What's Next?</h2>
+<p>While the foundation is solid, there are several areas for potential enhancement:</p>
+<ol>
+<li><strong>Enhanced Styling:</strong> Add more custom animations and visual effects</li>
+<li><strong>Content Features:</strong> Implement search functionality and tag pages</li>
+<li><strong>Performance:</strong> Add image optimization and CSS purging</li>
+<li><strong>Deployment:</strong> Set up automated CI/CD pipelines</li>
+</ol>
+<p>This project serves as an excellent example of a modern, maintainable static site generator setup using Pelican and Tailwind CSS. The clean architecture and well-organized codebase make it easy to extend and customize for various use cases.</p>
+<h2>Technical Notes</h2>
+<ul>
+<li>The project uses Pelican's built-in pagination and archive generation</li>
+<li>CSS is processed using Tailwind CLI v4 for optimal performance</li>
+<li>Templates follow semantic HTML practices for accessibility</li>
+<li>The build system supports both traditional Make and modern Invoke tasks</li>
+</ul>
+<p>Thanks for exploring the SparkPelican project architecture!</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

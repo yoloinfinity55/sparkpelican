@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Complete Guide - How to Create New Blog Posts in SparkPelican - sparkpelican</title>
+    <link rel="stylesheet" href="/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/complete-guide-how-to-create-new-blog-posts-in-sparkpelican/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Complete Guide - How to Create New Blog Posts in SparkPelican</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-17T10:00:00+00:00">Fri 17 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <p>Learn all the methods for creating blog posts in SparkPelican, from simple command-line scripts to API integration and manual creation. This comprehensive guide covers every approach.
+author: "Infinity Spark"
+readingTime: "8 min read"
+tags: ["Tutorial", "Blogging", "Pelican", "Content Creation", "Guide"]</p>
+<hr>
+<h1>Complete Guide: How to Create New Blog Posts in SparkPelican</h1>
+<p>Creating blog posts in SparkPelican is straightforward and flexible, with multiple methods to suit different workflows. Whether you prefer simple command-line scripts, powerful task automation, API integration, or manual control, SparkPelican has you covered.</p>
+<h2>Method 1: Command Line Script (Easiest)</h2>
+<h3>Step 1: Basic Usage</h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>process_youtube_video.py<span class="w"> </span><span class="s2">&quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;</span>
+</code></pre></div>
+
+<h3>Step 2: Verify the post was created</h3>
+<ul>
+<li>Check <code>content/posts/</code> directory for the new <code>.md</code> file</li>
+<li>The file will have front matter with title, date, author, and tags</li>
+</ul>
+<p><strong>Example output:</strong></p>
+<div class="highlight"><pre><span></span><code>🔄 Processing YouTube video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+📹 Video ID: dQw4w9WgXcQ
+📝 Extracting transcript...
+✅ Transcript extracted (2847 characters)
+🤖 Generating blog post...
+✅ Blog post generated
+💾 Post saved to: 2025-10-17-never-gonna-give-you-up.md
+🎉 Video processing completed successfully!
+</code></pre></div>
+
+<h2>Method 2: Invoke Tasks (Recommended)</h2>
+<h3>Step 1: Generate post with custom options</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-generate<span class="w"> </span>--youtube-url<span class="o">=</span><span class="s2">&quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;</span><span class="w"> </span>--title<span class="o">=</span><span class="s2">&quot;Custom Title&quot;</span><span class="w"> </span>--category<span class="o">=</span><span class="s2">&quot;Technology&quot;</span><span class="w"> </span>--tags<span class="o">=</span><span class="s2">&quot;AI,Tutorial&quot;</span>
+</code></pre></div>
+
+<p><strong>Available parameters:</strong>
+- <code>--youtube-url</code>: The YouTube video URL (required)
+- <code>--title</code>: Custom title for the post (optional)
+- <code>--category</code>: Post category (default: "General")
+- <code>--tags</code>: Comma-separated list of tags (optional)</p>
+<h3>Step 2: Build the site to include your new post</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>build
+</code></pre></div>
+
+<h3>Step 3: Preview your changes locally</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>serve
+</code></pre></div>
+
+<p><strong>Example with custom options:</strong></p>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-generate<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--youtube-url<span class="o">=</span><span class="s2">&quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--title<span class="o">=</span><span class="s2">&quot;Advanced AI Tutorial&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--category<span class="o">=</span><span class="s2">&quot;Technology&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tags<span class="o">=</span><span class="s2">&quot;AI,Machine Learning,Python&quot;</span>
+</code></pre></div>
+
+<h2>Method 3: Manual Creation (Full Control)</h2>
+<h3>Step 1: Create a new markdown file</h3>
+<p>Create a file in <code>content/posts/</code> with the naming convention: <code>YYYY-MM-DD-post-title.md</code></p>
+<p><strong>Example filename:</strong> <code>2025-10-17-my-awesome-post.md</code></p>
+<h3>Step 2: Add front matter metadata</h3>
+<div class="highlight"><pre><span></span><code>---
+title: Your Post Title Here
+date: 2025-10-17T10:00:00.000Z
+layout: post.njk
+description: Brief description of your post content
+author: &quot;Your Name&quot;
+readingTime: &quot;5 min read&quot;
+<span class="gu">tags: [&quot;Tag1&quot;, &quot;Tag2&quot;, &quot;Tag3&quot;]</span>
+<span class="gu">---</span>
+</code></pre></div>
+
+<h3>Step 3: Write your content</h3>
+<p>Add your blog post content in markdown format below the front matter.</p>
+<p><strong>Required front matter fields:</strong>
+- <code>title</code>: The post title
+- <code>date</code>: Publication date in ISO format
+- <code>layout</code>: Always <code>post.njk</code> for blog posts
+- <code>description</code>: Brief summary for SEO
+- <code>author</code>: Author name
+- <code>readingTime</code>: Estimated reading time
+- <code>tags</code>: Array of relevant tags</p>
+<h2>Method 4: FastAPI Server (For Integration)</h2>
+<h3>Step 1: Start the API server</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-server
+</code></pre></div>
+
+<p><strong>Server endpoints:</strong>
+- Health check: <code>http://localhost:8001/health</code>
+- Generate post: <code>http://localhost:8001/generate</code>
+- Validate posts: <code>http://localhost:8001/validate</code>
+- API documentation: <code>http://localhost:8001/docs</code></p>
+<h3>Step 2: Generate post via API</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://localhost:8001/generate&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;youtube_url&quot;: &quot;https://www.youtube.com/watch?v=VIDEO_ID&quot;,</span>
+<span class="s1">    &quot;custom_title&quot;: &quot;Optional custom title&quot;,</span>
+<span class="s1">    &quot;category&quot;: &quot;Technology&quot;,</span>
+<span class="s1">    &quot;tags&quot;: [&quot;AI&quot;, &quot;Tutorial&quot;]</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
+
+<p><strong>API response:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Post generated successfully&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-10-17-post-title.md&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Generated Post Title&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Technology&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AI&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Tutorial&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>Quality Assurance Steps</h2>
+<h3>Step 1: Validate titles</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>validate-titles
+</code></pre></div>
+
+<p><strong>What it checks:</strong>
+- No quotes in titles
+- Proper formatting
+- Consistency across all posts</p>
+<h3>Step 2: Fix any title issues (if needed)</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-validate-posts<span class="w"> </span>--fix
+</code></pre></div>
+
+<h3>Step 3: Validate API compatibility</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-validate-posts
+</code></pre></div>
+
+<h2>Environment Setup</h2>
+<h3>Step 1: Install dependencies</h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+npm<span class="w"> </span>install
+</code></pre></div>
+
+<h3>Step 2: Set your Gemini API key</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GEMINI_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_google_gemini_api_key_here&quot;</span>
+</code></pre></div>
+
+<p><strong>Verify API key is set:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$GEMINI_API_KEY</span>
+</code></pre></div>
+
+<h2>Development Workflow</h2>
+<h3>Step 1: Generate your post</h3>
+<p>Choose any method above to create your blog post.</p>
+<h3>Step 2: Build and serve locally</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>build
+invoke<span class="w"> </span>serve
+</code></pre></div>
+
+<h3>Step 3: Preview at http://localhost:8001</h3>
+<p>Open your browser and navigate to <code>http://localhost:8001</code> to see your site with the new post.</p>
+<h3>Step 4: Make edits to your post file if needed</h3>
+<ul>
+<li>Edit the markdown file directly in <code>content/posts/</code></li>
+<li>Update front matter or content as needed</li>
+</ul>
+<h3>Step 5: Rebuild to see changes</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>rebuild
+</code></pre></div>
+
+<h2>Troubleshooting Common Issues</h2>
+<h3>Problem: "GEMINI_API_KEY not set"</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GEMINI_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_api_key_here&quot;</span>
+</code></pre></div>
+
+<p><strong>Verify it's set:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$GEMINI_API_KEY</span>
+<span class="c1"># Should show your API key</span>
+</code></pre></div>
+
+<h3>Problem: Title validation errors</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>api-validate-posts<span class="w"> </span>--fix
+</code></pre></div>
+
+<p><strong>Manual fix process:</strong>
+1. Check the error message for specific issues
+2. Edit the problematic post files
+3. Run validation again</p>
+<h3>Problem: Port conflicts</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Kill process using port 8001</span>
+lsof<span class="w"> </span>-ti:8001<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9
+
+<span class="c1"># Or use different port</span>
+invoke<span class="w"> </span>api-server<span class="w"> </span>--port<span class="o">=</span><span class="m">8002</span>
+</code></pre></div>
+
+<h3>Problem: YouTube transcript not available</h3>
+<p><strong>Common causes:</strong>
+- Video doesn't have captions/subtitles
+- Video is private or restricted
+- Video ID is incorrect</p>
+<p><strong>Solutions:</strong>
+- Choose videos with captions enabled
+- Verify the video URL is correct
+- Try a different video</p>
+<h2>Best Practices</h2>
+<h3>Content Quality</h3>
+<ol>
+<li><strong>Choose videos with clear audio</strong> and good captions for better AI generation</li>
+<li><strong>Review generated content</strong> before publishing - AI isn't perfect</li>
+<li><strong>Use descriptive titles</strong> that clearly indicate the post content</li>
+<li><strong>Add relevant tags</strong> to help with organization and SEO</li>
+</ol>
+<h3>Performance</h3>
+<ol>
+<li><strong>Use background processing</strong> for large batches of videos</li>
+<li><strong>Monitor API rate limits</strong> for Gemini API (usually 60 requests per minute)</li>
+<li><strong>Cache transcripts</strong> when possible to avoid re-processing</li>
+<li><strong>Batch similar operations</strong> together</li>
+</ol>
+<h3>Workflow Efficiency</h3>
+<ol>
+<li><strong>Validate titles</strong> before building to catch issues early</li>
+<li><strong>Test locally</strong> before deploying to production</li>
+<li><strong>Use consistent naming</strong> for post files</li>
+<li><strong>Keep front matter</strong> updated and accurate</li>
+</ol>
+<h2>Advanced Usage</h2>
+<h3>Batch Processing Multiple Videos</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">process_youtube_video</span> <span class="kn">import</span> <span class="n">process_youtube_video</span>
+
+<span class="n">videos</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;https://youtube.com/watch?v=video1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://youtube.com/watch?v=video2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://youtube.com/watch?v=video3&quot;</span>
+<span class="p">]</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">batch_process</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">video_url</span> <span class="ow">in</span> <span class="n">videos</span><span class="p">:</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="k">await</span> <span class="n">process_youtube_video</span><span class="p">(</span><span class="n">video_url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Processed: </span><span class="si">{</span><span class="n">video_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Failed: </span><span class="si">{</span><span class="n">video_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">batch_process</span><span class="p">())</span>
+</code></pre></div>
+
+<h3>Custom Post Templates</h3>
+<p>You can modify the AI generation prompts in <code>myapp/ai_generator.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Customize the generation prompt</span>
+<span class="n">custom_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Generate a blog post based on this transcript: </span><span class="si">{</span><span class="n">transcript</span><span class="si">}</span>
+<span class="s2">Style: Technical tutorial</span>
+<span class="s2">Length: 800-1200 words</span>
+<span class="s2">Include code examples and practical steps</span>
+<span class="s2">Focus on: </span><span class="si">{</span><span class="n">category</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
+
+<h2>File Structure Reference</h2>
+<div class="highlight"><pre><span></span><code><span class="nx">sparkpelican</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">content</span><span class="o">/</span><span class="nx">posts</span><span class="o">/</span><span class="w">              </span><span class="err">#</span><span class="w"> </span><span class="nx">Your</span><span class="w"> </span><span class="nx">blog</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="nx">live</span><span class="w"> </span><span class="nx">here</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">YYYY</span><span class="o">-</span><span class="nx">MM</span><span class="o">-</span><span class="nx">DD</span><span class="o">-</span><span class="nx">title</span><span class="p">.</span><span class="nx">md</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">Individual</span><span class="w"> </span><span class="nx">post</span><span class="w"> </span><span class="nx">files</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">...</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">pelicanconf</span><span class="p">.</span><span class="nx">py</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="nx">Site</span><span class="w"> </span><span class="nx">configuration</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">tasks</span><span class="p">.</span><span class="nx">py</span><span class="w">                   </span><span class="err">#</span><span class="w"> </span><span class="nx">Available</span><span class="w"> </span><span class="nx">commands</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">process_youtube_video</span><span class="p">.</span><span class="nx">py</span><span class="w">   </span><span class="err">#</span><span class="w"> </span><span class="nx">Simple</span><span class="w"> </span><span class="nx">generation</span><span class="w"> </span><span class="nx">script</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">myapp</span><span class="o">/</span><span class="w">                     </span><span class="err">#</span><span class="w"> </span><span class="nx">FastAPI</span><span class="w"> </span><span class="nx">application</span>
+<span class="err">└──</span><span class="w"> </span><span class="nx">requirements</span><span class="p">.</span><span class="nx">txt</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="nx">Python</span><span class="w"> </span><span class="nx">dependencies</span>
+</code></pre></div>
+
+<h2>Quick Reference Commands</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate post from YouTube</span>
+python<span class="w"> </span>process_youtube_video.py<span class="w"> </span><span class="s2">&quot;YOUTUBE_URL&quot;</span>
+
+<span class="c1"># Generate with custom options</span>
+invoke<span class="w"> </span>api-generate<span class="w"> </span>--youtube-url<span class="o">=</span><span class="s2">&quot;URL&quot;</span><span class="w"> </span>--title<span class="o">=</span><span class="s2">&quot;Title&quot;</span><span class="w"> </span>--tags<span class="o">=</span><span class="s2">&quot;tag1,tag2&quot;</span>
+
+<span class="c1"># Build site</span>
+invoke<span class="w"> </span>build
+
+<span class="c1"># Serve locally</span>
+invoke<span class="w"> </span>serve
+
+<span class="c1"># Validate posts</span>
+invoke<span class="w"> </span>validate-titles
+
+<span class="c1"># Fix validation issues</span>
+invoke<span class="w"> </span>api-validate-posts<span class="w"> </span>--fix
+
+<span class="c1"># Start API server</span>
+invoke<span class="w"> </span>api-server
+</code></pre></div>
+
+<h2>Getting Help</h2>
+<h3>Documentation</h3>
+<ul>
+<li><strong>API Documentation:</strong> <code>http://localhost:8001/docs</code></li>
+<li><strong>Project Repository:</strong> <a href="https://github.com/yoloinfinity55/sparkpelican">GitHub</a></li>
+<li><strong>Pelican Documentation:</strong> <a href="https://docs.getpelican.com/">Official Site</a></li>
+</ul>
+<h3>Common Next Steps</h3>
+<ol>
+<li><strong>Review generated posts</strong> in <code>content/posts/</code></li>
+<li><strong>Customize content</strong> as needed</li>
+<li><strong>Build and preview</strong> your site</li>
+<li><strong>Deploy to production</strong> when ready</li>
+</ol>
+<p>This comprehensive guide covers every method for creating blog posts in SparkPelican, from the simplest approaches for beginners to advanced integration options for developers. Choose the method that best fits your workflow and start creating content efficiently!</p>
+<hr>
+<p><em>This guide was created using SparkPelican's AI-powered content generation system. For more information about SparkPelican, visit the <a href="https://github.com/yoloinfinity55/sparkpelican">GitHub repository</a>.</em></p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>

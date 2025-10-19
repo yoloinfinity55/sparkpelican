@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pelican 博客工作流程指南 - 从创建到发布的完整步骤 - sparkpelican</title>
+    <link rel="stylesheet" href="/theme/css/output.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-gray-800">sparkpelican</a>
+                <div class="space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="/archives.html" class="text-gray-600 hover:text-gray-900">Archives</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+<article class="bg-white rounded-lg shadow-md p-8">
+    <div class="m-8 mt-8">
+        <img src='https://picsum.photos/seed/pelican-bo-ke-gong-zuo-liu-cheng-zhi-nan-cong-chuang-jian-dao-fa-bu-de-wan-zheng-bu-zou/800/600' alt='Default cover image' class="rounded-lg w-full h-auto object-contain mx-auto shadow-sm">
+    </div>
+    <div class="p-8">
+        <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">Pelican 博客工作流程指南 - 从创建到发布的完整步骤</h1>
+        <div class="text-gray-600">
+            <time datetime="2025-10-09T00:00:00-04:00">Thu 09 October 2025</time>
+            <span class="mx-2">•</span>
+            <span>posts</span>
+        </div>
+    </header>
+    
+    <div class="article-content prose max-w-none">
+        <h1>Pelican 博客工作流程指南 - 从创建到发布的完整步骤</h1>
+<p>基于你的 Pelican 项目结构，这里是创建新博客文章的完整工作流程。本指南将帮助你快速掌握从内容创作到网站发布的整个过程。</p>
+<h2>工作流程概览</h2>
+<p>Pelican 是一个强大的静态站点生成器，使用 Python 构建。整个工作流程包括：创建文章文件 → 编写内容 → 本地预览 → 发布部署。</p>
+<h2>1. 创建博客文章文件</h2>
+<h3>文件位置和命名规范</h3>
+<ul>
+<li><strong>目录</strong>: <code>content/posts/</code></li>
+<li><strong>命名格式</strong>: <code>YYYY-MM-DD-post-title.md</code></li>
+<li><strong>示例</strong>: <code>2025-10-09-my-new-post.md</code></li>
+</ul>
+<p>使用日期前缀有助于文章的自动排序和组织管理。</p>
+<h3>添加 Front Matter</h3>
+<p>每个文章文件顶部都需要包含 front matter，使用以下格式：</p>
+<div class="highlight"><pre><span></span><code>---
+layout: post.njk
+title: 你的文章标题
+date: 2025-10-09
+description: 文章的简要描述（用于 meta 标签和预览）
+author: &quot;Infinity Spark&quot;
+<span class="gu">readingTime: &quot;X min read&quot;</span>
+<span class="gu">---</span>
+
+文章正文内容...
+</code></pre></div>
+
+<h3>Front Matter 字段说明</h3>
+<ul>
+<li><code>layout</code>: 必须使用 <code>post.njk</code>（除非创建特殊页面）</li>
+<li><code>title</code>: 文章标题，会显示在页面和导航中</li>
+<li><code>date</code>: 发布日期，格式为 <code>YYYY-MM-DD</code></li>
+<li><code>description</code>: 文章描述，用于 SEO 和社交媒体分享</li>
+<li><code>author</code>: 作者名称</li>
+<li><code>readingTime</code>: 预计阅读时间</li>
+</ul>
+<h2>2. 编写文章内容</h2>
+<h3>内容格式</h3>
+<ul>
+<li>使用标准的 Markdown 语法</li>
+<li>支持标题、列表、链接、图片、代码块等</li>
+<li>主题支持 Nunjucks 模板语法的高级功能</li>
+</ul>
+<h3>内容组织建议</h3>
+<ol>
+<li><strong>引言</strong>: 开门见山说明文章主题</li>
+<li><strong>主体内容</strong>: 按逻辑分段，使用标题分隔</li>
+<li><strong>结论</strong>: 总结要点，提供行动号召</li>
+<li><strong>代码示例</strong>: 如果涉及技术内容，使用代码块</li>
+</ol>
+<h2>3. 本地预览和测试</h2>
+<p>Pelican 提供了多种本地预览方式，选择最适合你的工作方式：</p>
+<h3>选项一：快速预览（推荐）</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>serve
+</code></pre></div>
+
+<ul>
+<li>启动本地服务器：<code>http://localhost:8000</code></li>
+<li>文件变更时自动重新构建</li>
+<li>适合开发过程中的快速预览</li>
+</ul>
+<h3>选项二：构建后预览</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>reserve
+</code></pre></div>
+
+<ul>
+<li>先构建站点，再启动服务器</li>
+<li>确保构建产物是最新的</li>
+</ul>
+<h3>选项三：实时重载（最佳体验）</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>livereload
+</code></pre></div>
+
+<ul>
+<li>文件变更时自动刷新浏览器</li>
+<li>提供最佳的开发体验</li>
+<li>推荐用于内容创作阶段</li>
+</ul>
+<h3>预览检查清单</h3>
+<p>访问 <code>http://localhost:8000</code> 后，请检查：</p>
+<ul>
+<li>[ ] 新文章是否出现在文章列表中</li>
+<li>[ ] 点击文章链接能否正常访问</li>
+<li>[ ] 文章格式是否正确显示</li>
+<li>[ ] 标题、日期、作者信息是否正确</li>
+<li>[ ] 响应式布局是否正常工作</li>
+</ul>
+<h2>4. 编辑和优化</h2>
+<p>如果需要修改文章：</p>
+<ol>
+<li>编辑 <code>content/posts/</code> 下的 markdown 文件</li>
+<li>保存文件（如果使用 <code>livereload</code>，浏览器会自动刷新）</li>
+<li>刷新浏览器查看更改</li>
+<li>重复直到满意为止</li>
+</ol>
+<h2>5. 发布部署</h2>
+<p>确认文章内容无误后，选择合适的发布方式：</p>
+<h3>选项一：发布到 GitHub Pages</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>gh_pages
+</code></pre></div>
+
+<p>此命令会：
+- 使用生产配置构建站点
+- 自动推送到 <code>gh-pages</code> 分支
+- GitHub Pages 会自动检测更新并发布</p>
+<h3>选项二：生产环境构建</h3>
+<div class="highlight"><pre><span></span><code>invoke<span class="w"> </span>preview
+</code></pre></div>
+
+<ul>
+<li>使用 <code>publishconf.py</code> 中的生产配置</li>
+<li>生成优化后的站点文件</li>
+</ul>
+<h3>发布检查清单</h3>
+<ul>
+<li>[ ] 本地预览确认无误</li>
+<li>[ ] 生产构建成功完成</li>
+<li>[ ] 文章内容在生产环境中正确显示</li>
+<li>[ ] 所有链接和图片正常加载</li>
+</ul>
+<h2>6. 版本控制</h2>
+<p>将新文章提交到 Git 仓库：</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>content/posts/2025-10-09-your-post-title.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;添加新文章：你的文章标题&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+
+<h2>高级技巧</h2>
+<h3>1. 文章元数据优化</h3>
+<div class="highlight"><pre><span></span><code>---
+layout: post.njk
+title: 文章标题
+date: 2025-10-09
+description: &quot;吸引人的描述，包含关键词&quot;
+author: &quot;Infinity Spark&quot;
+readingTime: &quot;5 min read&quot;
+tags: [&quot;pelican&quot;, &quot;博客&quot;, &quot;教程&quot;]  # 添加标签分类
+<span class="gu">category: &quot;技术教程&quot;  # 分类</span>
+<span class="gu">---</span>
+
+文章内容...
+</code></pre></div>
+
+<h3>2. 使用草稿模式</h3>
+<p>对于未完成的文章，可以添加 <code>status</code> 字段：</p>
+<div class="highlight"><pre><span></span><code>---
+layout: post.njk
+title: 草稿文章
+date: 2025-10-09
+<span class="gu">status: draft  # 标记为草稿，不会发布</span>
+<span class="gu">---</span>
+</code></pre></div>
+
+<h3>3. 定时发布</h3>
+<p>设置未来的发布日期：</p>
+<div class="highlight"><pre><span></span><code>---
+layout: post.njk
+title: 定时发布文章
+<span class="gu">date: 2025-12-25  # 未来的日期</span>
+<span class="gu">---</span>
+</code></pre></div>
+
+<p>注意：生产构建时，未来日期的文章不会被包含，除非在构建命令中添加特殊参数。</p>
+<h2>故障排除</h2>
+<h3>常见问题</h3>
+<ol>
+<li><strong>文章不显示</strong></li>
+<li>检查文件命名格式是否正确</li>
+<li>确认 front matter 格式无误</li>
+<li>
+<p>查看构建日志中的错误信息</p>
+</li>
+<li>
+<p><strong>格式显示异常</strong></p>
+</li>
+<li>确认 Markdown 语法正确</li>
+<li>
+<p>检查是否遗漏了必要的 front matter 字段</p>
+</li>
+<li>
+<p><strong>图片无法加载</strong></p>
+</li>
+<li>确认图片路径正确</li>
+<li>检查图片文件是否存在于静态目录中</li>
+</ol>
+<h3>获取帮助</h3>
+<p>如果遇到问题：
+1. 查看 Pelican 官方文档
+2. 检查项目配置和主题设置
+3. 在社区论坛寻求帮助</p>
+<h2>总结</h2>
+<p>Pelican 工作流程的核心是：<strong>创建 → 编写 → 预览 → 发布</strong>。掌握这个流程后，你可以高效地创作和发布博客内容。</p>
+<p>记住：始终在本地充分测试后再发布到生产环境，确保最佳的用户体验。</p>
+<p>祝你写作愉快！🎉</p>
+    </div>
+</article>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; sparkpelican. Powered by Pelican and Tailwind CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>
